@@ -26,8 +26,6 @@ git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/l
 git clone --depth 1 https://github.com/morytyann/OpenWrt-mihomo.git package/OpenWrt-mihomo
 
 git clone --depth 1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
-sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh-cn/modem.po
-sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh_Hans/modem.po
 
 # iStore
 git clone --depth 1 -b main https://github.com/linkease/istore.git package/istore
