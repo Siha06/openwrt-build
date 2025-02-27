@@ -1,5 +1,5 @@
 #添加TurboAcc
-#curl -sSL https://raw.githubusercontent.com/chenmozhijin/turboacc/luci/add_turboacc.sh -o add_turboacc.sh && bash add_turboacc.sh
+curl -sSL https://raw.githubusercontent.com/chenmozhijin/turboacc/luci/add_turboacc.sh -o add_turboacc.sh && bash add_turboacc.sh
 sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 #mv $GITHUB_WORKSPACE/patch/openwrt-24.10/199-7621.sh package/base-files/files/etc/uci-defaults/199-7621.sh
@@ -25,9 +25,9 @@ git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/l
 git clone --depth 1 https://github.com/morytyann/OpenWrt-mihomo.git package/OpenWrt-mihomo
 
 git clone --depth 1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
-sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh-cn/modem.po
-sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh_Hans/modem.po
-mv $GITHUB_WORKSPACE/patch/mhi_qti.c package/5g-modem/quectel_MHI/src/controllers/mhi_qti.c
+#sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh-cn/modem.po
+#sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh_Hans/modem.po
+#mv $GITHUB_WORKSPACE/patch/mhi_qti.c package/5g-modem/quectel_MHI/src/controllers/mhi_qti.c
 
 # iStore
 git clone --depth 1 -b main https://github.com/linkease/istore.git package/istore
@@ -45,6 +45,8 @@ git clone --depth 1 https://github.com/sirpdboy/luci-app-chatgpt-web.git package
 git clone --depth 1 https://github.com/sirpdboy/luci-app-ddns-go.git package/luci-app-ddns-go
 git clone --depth 1 https://github.com/sirpdboy/netspeedtest.git package/netspeedtest
 git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/openwrt-oaf
+git clone --depth 1 https://github.com/Diciya/luci-app-broadbandacc.git package/broadbandacc
+git clone --depth 1 https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git package/unblockneteasemusic
 
 git clone --depth 1 -b openwrt-24.10 https://github.com/immortalwrt/luci.git package/mypkg/imm24-luci
 mv package/mypkg/imm24-luci/applications/luci-app-autoreboot package/mypkg/luci-app-autoreboot
@@ -58,6 +60,8 @@ sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' $(find ./package/mypkg/ 
 
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/kz8-small
 mv package/kz8-small/luci-app-adguardhome package/luci-app-adguardhome
+mv package/kz8-small/baidupcs-web package/baidupcs-web
+mv package/kz8-small/luci-app-baidupcs-web package/luci-app-baidupcs-web
 mv package/kz8-small/luci-app-ikoolproxy package/luci-app-ikoolproxy
 mv package/kz8-small/luci-app-macvlan package/luci-app-macvlan
 mv package/kz8-small/luci-app-partexp package/luci-app-partexp
