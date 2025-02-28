@@ -38,6 +38,8 @@ git clone --depth 1 https://github.com/vernesong/OpenClash.git  package/openclas
 mv package/openclash/luci-app-openclash feeds/luci/applications/
 rm -rf package/openclash
 
+git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
+
 rm -rf feeds/packages/net/adguardhome
 git clone --depth=1 https://github.com/sirpdboy/luci-app-advancedplus.git package/luci-app-advancedplus
 git clone --depth=1 https://github.com/kenzok8/small-package.git package/kz8-small
@@ -53,5 +55,3 @@ mv package/kz8-small/luci-app-wrtbwmon package/luci-app-wrtbwmon
 mv package/kz8-small/wrtbwmon package/wrtbwmon
 rm -rf package/kz8-small
 
-#chmod +x package/emortal/luci-app-athena-led/root/etc/init.d/athena_led 
-#chmod +x package/emortal/luci-app-athena-led/root/usr/sbin/athena-led
