@@ -1,8 +1,8 @@
 # 修改默认IP，主机名
 sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
-#sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
-#sed -i 's/ImmortalWrt/OpenWrt/g' include/version.mk
+sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
+sed -i 's/ImmortalWrt/OpenWrt/g' include/version.mk
 
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 #mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/998-ipq60xx.sh package/base-files/files/etc/uci-defaults/998-ipq60xx.sh
@@ -48,6 +48,7 @@ mv package/kz8-small/luci-app-fileassistant package/luci-app-fileassistant
 mv package/kz8-small/luci-app-ikoolproxy package/luci-app-ikoolproxy
 mv package/kz8-small/luci-app-macvlan package/luci-app-macvlan
 mv package/kz8-small/luci-app-partexp package/luci-app-partexp
+mv package/kz8-small/luci-app-pptp-server package/luci-app-pptp-server
 mv package/kz8-small/luci-app-wrtbwmon package/luci-app-wrtbwmon
 mv package/kz8-small/wrtbwmon package/wrtbwmon
 rm -rf package/kz8-small
