@@ -23,8 +23,8 @@ sed -i 's#downloads.immortalwrt.org#mirrors.pku.edu.cn/immortalwrt#g' package/em
 #下载5g模块
 git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
 sed -i '/pcie_mhi/d' package/5g-modem/luci-app-modem/Makefile
-sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh-cn/modem.po
-sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh_Hans/modem.po
+#sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh-cn/modem.po
+#sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh_Hans/modem.po
 #mv $GITHUB_WORKSPACE/patch/modem.lua $OPENWRT_PATH/package/5g-modem/luci-app-modem/luasrc/controller/modem.lua
 rm -rf feeds/packages/net/quectel-cm
 rm -rf feeds/packages/kernel/fibocom-qmi-wwan
