@@ -22,10 +22,10 @@ uci set wireless.default_radio1.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macadd
 #uci set wireless.default_radio0.key=123456qwwerty
 #uci set wireless.default_radio1.key=123456qwwerty
 
-uci set network.usbwan=interface
-uci set network.usbwan.proto='dhcp'
-uci set network.usbwan.device='usb0'
-uci commit network
+#uci set network.usbwan=interface
+#uci set network.usbwan.proto='dhcp'
+#uci set network.usbwan.device='usb0'
+#uci commit network
 
 uci commit
 
