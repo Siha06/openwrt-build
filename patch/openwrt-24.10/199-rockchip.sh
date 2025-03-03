@@ -12,10 +12,10 @@ uci del wireless.radio0.disabled
 uci del wireless.default_radio0.disabled
 uci commit wireless
 
-uci set network.usbwan=interface
-uci set network.usbwan.proto='dhcp'
-uci set network.usbwan.device='usb0'
-uci commit network
+#uci set network.usbwan=interface
+#uci set network.usbwan.proto='dhcp'
+#uci set network.usbwan.device='usb0'
+#uci commit network
 
 uci commit
 
