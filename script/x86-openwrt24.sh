@@ -45,8 +45,8 @@ mv package/mypkg/imm24-luci/applications/luci-app-diskman package/mypkg/luci-app
 mv package/mypkg/imm24-luci/applications/luci-app-homeproxy package/mypkg/luci-app-homeproxy
 mv package/mypkg/imm24-luci/applications/luci-app-ramfree package/mypkg/luci-app-ramfree
 mv package/mypkg/imm24-luci/applications/luci-app-syncdial package/mypkg/luci-app-syncdial
-#rm -rf feeds/luci/modules
-#mv package/mypkg/imm24-luci/modules feeds/luci/modules
+rm -rf feeds/luci/modules
+mv package/mypkg/imm24-luci/modules feeds/luci/modules
 rm -rf package/mypkg/imm24-luci
 sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' $(find ./package/mypkg/ -type f -name "Makefile")
 
