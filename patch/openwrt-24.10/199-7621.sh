@@ -1,5 +1,28 @@
 #!/bin/sh
 
+uci -q get system.@imm_init[0] > "/dev/null" || uci -q add system imm_init > "/dev/null"
+
+if ! uci -q get system.@imm_init[0].system_chn > "/dev/null"; then
+	uci -q batch <<-EOF
+		set system.@system[0].timezone="CST-8"
+		set system.@system[0].zonename="Asia/Shanghai"
+
+		delete system.ntp.server
+		add_list system.ntp.server="ntp.tencent.com"
+		add_list system.ntp.server="ntp1.aliyun.com"
+		add_list system.ntp.server="ntp.ntsc.ac.cn"
+		add_list system.ntp.server="cn.ntp.org.cn"
+
+		set system.@imm_init[0].system_chn="1"
+		commit system
+	EOF
+fi
+
+sed -i "/log-facility/d" "/etc/dnsmasq.conf"
+echo "log-facility=/dev/null" >> "/etc/dnsmasq.conf"
+
+ln -sf "/sbin/ip" "/usr/bin/ip"
+
 # 设置默认防火墙规则，方便虚拟机首次访问 WebUI
 #uci set firewall.@zone[1].input='ACCEPT'
 
