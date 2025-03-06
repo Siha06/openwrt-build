@@ -19,6 +19,11 @@ sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-stat
 sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/usr/lib/os-release
 sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/etc/openwrt_release
 
+git clone --depth 1 https://github.com/coolsnowwolf/lede.git package/lede
+mv package/lede/package/lean/luci-app-leigod-acc package/luci-app-leigod-acc
+mv package/lede/package/lean/leigod-acc package/leigod-acc
+rm -rf package/lede
+
 #有编译openwrt环境后，加入UA2F模块和RKP-IPID模块
 #git clone https://github.com/lucikap/luci-app-ua2f.git package/luci-app-ua2f
 #git clone https://github.com/EOYOHOO/UA2F.git package/UA2F
