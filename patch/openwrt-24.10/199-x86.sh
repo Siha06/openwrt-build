@@ -38,6 +38,9 @@ uci del wireless.default_radio0.disabled
 uci set network.lan.ip6assign='64'
 uci set network.lan.ip6ifaceid='eui64'
 
+uci set luci.main.mediaurlbase=/luci-static/infinityfreedom
+uci commit luci
+
 uci commit
 
 # 设置编译作者信息
@@ -50,6 +53,10 @@ sed -i 's#downloads.openwrt.org#mirrors.pku.edu.cn/openwrt#g' /etc/opkg/distfeed
 sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/openwrt/releases/24.10.0/targets/x86/64/kmods/6.6.73-1-a21259e4f338051d27a6443a3a7f7f1f' /etc/opkg/customfeeds.conf
 sed -i '$a src/gz kiddin9 https://dl.openwrt.ai/packages-24.10/x86_64/kiddin9' /etc/opkg/customfeeds.conf
 wifi up
+
+tar -zxf /etc/clash-linux-amd64.tar.gz
+mv /etc/clash /etc/openclash/core/clash
+rm -rf /etc/clash-linux-amd64.tar.gz
 
 /etc/init.d/network restart
 exit 0
