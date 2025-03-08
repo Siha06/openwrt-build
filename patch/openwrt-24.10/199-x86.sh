@@ -55,6 +55,7 @@ sed -i '$a src/gz kiddin9 https://dl.openwrt.ai/packages-24.10/x86_64/kiddin9' /
 wifi up
 
 tar -zxf /etc/clash-linux-amd64.tar.gz -C /etc/openclash/core/
+mv /etc/openclash/core/clash /etc/openclash/core/clash_meta
 rm -rf /etc/clash-linux-amd64.tar.gz
 
 /etc/init.d/network restart
