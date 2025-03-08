@@ -1,4 +1,4 @@
-name: 7620-immortalwrt-21.02
+name: immortalwrt-18.06-k5.4
 # 脚本参考github/haiibo和dzlea
 # Add a button to trigger the workflow
 on: 
@@ -6,15 +6,15 @@ on:
 
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt.git
-  REPO_BRANCH: openwrt-21.02
-  CONFIG_FILE: config/7620-imm21.02
-  DIY_SCRIPT: script/imm21.02-7621.sh
+  REPO_BRANCH: openwrt-18.06-k5.4
+  CONFIG_FILE: config/immortalwrt-18.06-k5.4
+  DIY_SCRIPT: script/7620-imm1806.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   FIRMWARE_RELEASE: false
-  FIRMWARE_TAG: 7620-immortalwrt-21.02
+  FIRMWARE_TAG: immortalwrt-18.06-k5.4
   TZ: Asia/Shanghai
 
 jobs:
@@ -78,7 +78,7 @@ jobs:
       uses: HiGarfield/cachewrtbuild@main
       with:
         ccache: false
-        mixkey: ${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-${{ env.SOURCE_AUTHOR }}-mt7620
+        mixkey: ${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-${{ env.SOURCE_AUTHOR }}-ath79
         prefix: ${{ env.OPENWRT_PATH }}
 
     - name: Install Feeds(安装feeds)
@@ -94,16 +94,6 @@ jobs:
         chmod +x $DIY_SCRIPT
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_SCRIPT
-
-    - name: edit md5
-      run: |
-        rm -rf $OPENWRT_PATH/.vermagic
-        mv $GITHUB_WORKSPACE/vm/imm2102-mt7620 $OPENWRT_PATH/vermagic
-        cd $OPENWRT_PATH
-        sed -i '109d' include/kernel-defaults.mk
-        sed -i '109i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
-        sed -i '27d' package/kernel/linux/Makefile
-        sed -i '27i\  STAMP_BUILT:=$(STAMP_BUILT)_$(shell cat $(LINUX_DIR)/.vermagic)' package/kernel/linux/Makefile
 
     - name: Download DL Package
       run: |
