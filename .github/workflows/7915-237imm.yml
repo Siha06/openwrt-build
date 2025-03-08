@@ -7,8 +7,8 @@ on:
 env:
   REPO_URL: https://github.com/padavanonly/immortalwrt.git
   REPO_BRANCH: mt7915_mtwifi
-  CONFIG_FILE: patch/7621-237imm/aimydee.config
-  DIY_SCRIPT: patch/7621-237imm/aimydee.sh
+  CONFIG_FILE: config/7915-237imm
+  DIY_SCRIPT: script/7915-237.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
