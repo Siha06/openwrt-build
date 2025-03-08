@@ -1,7 +1,9 @@
 sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 mv $GITHUB_WORKSPACE/patch/openwrt-24.10/199-x86.sh package/base-files/files/etc/uci-defaults/199-x86.sh
-mv $GITHUB_WORKSPACE/patch/openwrt-24.10/clash-linux-amd64.tar.gz package/base-files/files/etc/clash-linux-amd64.tar.gz
+git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
+mv package/openclash-core/master/meta/clash-linux-amd64.tar.gz package/base-files/files/etc/clash-linux-amd64.tar.gz
+rm -rf package/openclash-core
 
 #添加编译日期
 sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/usr/lib/os-release
