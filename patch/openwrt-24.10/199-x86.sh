@@ -38,8 +38,8 @@ uci del wireless.default_radio0.disabled
 uci set network.lan.ip6assign='64'
 uci set network.lan.ip6ifaceid='eui64'
 
-uci set luci.main.mediaurlbase=/luci-static/infinityfreedom
-uci commit luci
+#uci set luci.main.mediaurlbase=/luci-static/infinityfreedom
+#uci commit luci
 
 uci commit
 
