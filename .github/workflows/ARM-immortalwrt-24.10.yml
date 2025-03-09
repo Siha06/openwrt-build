@@ -13,7 +13,7 @@ env:
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
-  FIRMWARE_RELEASE: true
+  FIRMWARE_RELEASE: false
   FIRMWARE_TAG: ARM64-immortalwrtwrt-24.10
   TZ: Asia/Shanghai
 
@@ -84,8 +84,8 @@ jobs:
     - name: Install Feeds(安装feeds)
       run: |
         cd $OPENWRT_PATH
-        git checkout v24.10.0-rc3
-        git checkout v24.10.0-rc3
+        git checkout v24.10.0
+        git checkout v24.10.0
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds update -a
@@ -100,7 +100,7 @@ jobs:
     - name: edit md5
       run: |
         rm -rf $OPENWRT_PATH/.vermagic
-        mv $GITHUB_WORKSPACE/vm/arm64-imm24.10.0-rc3 $OPENWRT_PATH/vermagic
+        mv $GITHUB_WORKSPACE/vm/arm64-imm24.10.0 $OPENWRT_PATH/vermagic
         cd $OPENWRT_PATH
         sed -i '130d' include/kernel-defaults.mk
         sed -i '130i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
