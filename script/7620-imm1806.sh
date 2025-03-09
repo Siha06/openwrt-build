@@ -1,7 +1,6 @@
 sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
 sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
-#mv $GITHUB_WORKSPACE/patch/imm18.06-k5.4/mac80211.sh $OPENWRT_PATH/package/kernel/mac80211/files/lib/wifi/mac80211.sh
 sed -i 's/ImmortalWrt/OpenWrt/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 #rm -rf feeds/luci/modules/luci-base/po/zh-cn
@@ -10,21 +9,17 @@ sed -i 's/ImmortalWrt/OpenWrt/g' package/kernel/mac80211/files/lib/wifi/mac80211
 #rm -rf feeds/luci/applications/luci-app-firewall/po/zh-cn
 #rm -rf feeds/luci/applications/luci-app-upnp/po/zh-cn
 
-
-# sed -i 's/bootstrap/design/g' feeds/luci/modules/luci-base/root/etc/config/luci
-# sed -i "s/luci-theme-design/luci-theme-design/g" $(find ./feeds/luci/collections/ -type f -name "Makefile")
-#rm -rf feeds/luci/applications/luci-app-filetransfer
+git clone --depth 1 https://github.com/lllrrr/luci-app-sfe.git package/luci-app-sfe
 
 rm -rf feeds/luci/themes/luci-theme-argonv3
 rm -rf feeds/luci/themes/luci-theme-argonv2
 rm -rf feeds/luci/themes/luci-theme-argon
-git clone -b 18.06 --depth=1 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
-#git clone --depth=1 https://github.com/kenzok8/openwrt-packages.git  package/openwrt-packages
+git clone -b 18.06 --depth 1 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
+#git clone --depth 1 https://github.com/kenzok8/openwrt-packages.git  package/openwrt-packages
 #mv package/openwrt-packages/luci-theme-design package/luci-theme-design
 #rm -rf package/openwrt-packages
 
-# rm -rf feeds/luci/themes/luci-theme-bootstrap
-# git clone --depth=1 https://github.com/sirpdboy/luci-app-eqosplus package/luci-app-eqosplus
+# git clone --depth 1 https://github.com/sirpdboy/luci-app-eqosplus package/luci-app-eqosplus
 # rm -rf feeds/luci/themes/luci-theme-argon
 # rm -rf feeds/luci/applications/luci-app-argon-config
 # git clone -b 18.06 --depth=1 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
