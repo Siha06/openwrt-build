@@ -1,3 +1,5 @@
+#添加TurboAcc
+curl -sSL https://raw.githubusercontent.com/chenmozhijin/turboacc/luci/add_turboacc.sh -o add_turboacc.sh && bash add_turboacc.sh
 sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 mv $GITHUB_WORKSPACE/patch/openwrt-24.10/199-x86.sh package/base-files/files/etc/uci-defaults/199-x86.sh
@@ -34,27 +36,34 @@ git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/l
 git clone --depth 1 https://github.com/morytyann/OpenWrt-mihomo.git package/OpenWrt-mihomo
 
 git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
-#git clone --depth 1 https://github.com/sirpdboy/luci-app-advancedplus package/luci-app-advancedplus
+git clone --depth 1 -b js https://github.com/sirpdboy/luci-theme-kucat.git package/luci-theme-kucat
 git clone --depth 1 https://github.com/sirpdboy/luci-app-autotimeset package/luci-app-autotimeset
 git clone --depth 1 https://github.com/sirpdboy/luci-app-chatgpt-web.git package/luci-app-chatgpt-web
 git clone --depth 1 https://github.com/sirpdboy/luci-app-ddns-go.git package/luci-app-ddns-go
+git clone --depth 1 https://github.com/sirpdboy/luci-app-eqosplus.git package/luci-app-eqosplus
 git clone --depth 1 https://github.com/sirpdboy/netspeedtest.git package/netspeedtest
 git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/openwrt-oaf
-git clone --depth 1 -b js https://github.com/sirpdboy/luci-theme-kucat.git package/luci-theme-kucat
 
+mkdir package/mypkg
 git clone --depth 1 -b openwrt-24.10 https://github.com/immortalwrt/luci.git package/mypkg/imm24-luci
 mv package/mypkg/imm24-luci/applications/luci-app-autoreboot package/mypkg/luci-app-autoreboot
 mv package/mypkg/imm24-luci/applications/luci-app-diskman package/mypkg/luci-app-diskman
 mv package/mypkg/imm24-luci/applications/luci-app-homeproxy package/mypkg/luci-app-homeproxy
+mv package/mypkg/imm24-luci/applications/luci-app-ipsec-vpnserver-manyusers package/mypkg/luci-app-ipsec-vpnserver-manyusers
 mv package/mypkg/imm24-luci/applications/luci-app-ramfree package/mypkg/luci-app-ramfree
 mv package/mypkg/imm24-luci/applications/luci-app-syncdial package/mypkg/luci-app-syncdial
+mv package/mypkg/imm24-luci/applications/luci-app-vsftpd package/mypkg/luci-app-vsftpd
+mv package/mypkg/imm24-luci/applications/luci-app-qbittorrent package/mypkg/luci-app-qbittorrent
 rm -rf feeds/luci/modules
 mv package/mypkg/imm24-luci/modules feeds/luci/modules
 rm -rf package/mypkg/imm24-luci
 sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' $(find ./package/mypkg/ -type f -name "Makefile")
-
 #完全删除luci版本
 sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
+
+git clone --depth 1 -b openwrt-24.10 https://github.com/immortalwrt/packages.git package/mypkg/imm24-packages
+mv package/mypkg/imm24-packages/net/qBittorrent-Enhanced-Edition package/qBittorrent-Enhanced-Edition
+rm -rf package/mypkg/imm24-packages
 
 rm -rf feeds/packages/net/adguardhome
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/kz8-small
@@ -65,4 +74,6 @@ mv package/kz8-small/luci-app-partexp package/luci-app-partexp
 mv package/kz8-small/luci-app-wrtbwmon package/luci-app-wrtbwmon
 mv package/kz8-small/wrtbwmon package/wrtbwmon
 mv package/kz8-small/luci-app-poweroff package/luci-app-poweroff
+mv package/kz8-small/luci-app-vlmcsd package/luci-app-vlmcsd
+mv package/kz8-small/vlmcsd package/vlmcsd
 rm -rf package/kz8-small
