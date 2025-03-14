@@ -47,7 +47,7 @@ rm -rf feeds/packages/utils/v2dat
 find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
 find ./ | grep Makefile | grep mosdns | xargs rm -f
 git clone --depth 1 https://github.com/vernesong/OpenClash.git package/OpenClash
-git clone --depth 1 https://github.com/morytyann/OpenWrt-mihomo.git package/mihomo
+git clone --depth 1 https://github.com/nikkinikki-org/OpenWrt-nikki.git package/nikki
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/passwall
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
