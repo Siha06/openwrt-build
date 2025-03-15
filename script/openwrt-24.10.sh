@@ -43,9 +43,9 @@ git clone --depth 1 https://github.com/sirpdboy/luci-app-chatgpt-web.git package
 git clone --depth 1 https://github.com/sirpdboy/luci-app-ddns-go.git package/luci-app-ddns-go
 git clone --depth 1 https://github.com/sirpdboy/luci-app-eqosplus package/luci-app-eqosplus
 git clone --depth 1 https://github.com/sirpdboy/netspeedtest.git package/netspeedtest
-git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/openwrt-oaf
-git clone --depth 1 https://github.com/Diciya/luci-app-broadbandacc.git package/broadbandacc
-git clone --depth 1 https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git package/unblockneteasemusic
+#git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/openwrt-oaf
+#git clone --depth 1 https://github.com/Diciya/luci-app-broadbandacc.git package/broadbandacc
+#git clone --depth 1 https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git package/unblockneteasemusic
 
 git clone --depth 1 -b openwrt-24.10 https://github.com/immortalwrt/luci.git package/mypkg/imm24-luci
 mv package/mypkg/imm24-luci/applications/luci-app-autoreboot package/mypkg/luci-app-autoreboot
