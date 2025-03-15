@@ -26,6 +26,6 @@ tar -zxf /etc/clash-linux-arm64.tar.gz -C /etc/openclash/core/
 mv /etc/openclash/core/clash /etc/openclash/core/clash_meta
 rm -rf /etc/clash-linux-arm64.tar.gz
 
-#/etc/init.d/network restart
+/etc/init.d/network restart
 
 exit 0
