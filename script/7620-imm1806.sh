@@ -9,7 +9,9 @@ sed -i 's/ImmortalWrt/OpenWrt/g' package/kernel/mac80211/files/lib/wifi/mac80211
 #rm -rf feeds/luci/applications/luci-app-firewall/po/zh-cn
 #rm -rf feeds/luci/applications/luci-app-upnp/po/zh-cn
 
-git clone --depth 1 https://github.com/lllrrr/luci-app-sfe.git package/luci-app-sfe
+#git clone --depth 1 https://github.com/lllrrr/luci-app-sfe.git package/luci-app-sfe
+mv $GITHUB_WORKSPACE/patch/lean/luci-app-sfe.zip package/luci-app-sfe.zip
+unzip package/luci-app-sfe.zip -d package/luci-app-sfe
 
 rm -rf feeds/luci/themes/luci-theme-argonv3
 rm -rf feeds/luci/themes/luci-theme-argonv2
