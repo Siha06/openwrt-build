@@ -33,7 +33,7 @@ git clone --depth 1 https://github.com/vernesong/OpenClash.git  package/openclas
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/luci-app-passwall2
-git clone --depth 1 https://github.com/morytyann/OpenWrt-mihomo.git package/OpenWrt-mihomo
+git clone --depth 1 https://github.com/nikkinikki-org/OpenWrt-nikki.git package/OpenWrt-nikki
 
 git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 git clone --depth 1 -b js https://github.com/sirpdboy/luci-theme-kucat.git package/luci-theme-kucat
@@ -50,10 +50,11 @@ mv package/mypkg/imm24-luci/applications/luci-app-autoreboot package/mypkg/luci-
 mv package/mypkg/imm24-luci/applications/luci-app-diskman package/mypkg/luci-app-diskman
 mv package/mypkg/imm24-luci/applications/luci-app-homeproxy package/mypkg/luci-app-homeproxy
 mv package/mypkg/imm24-luci/applications/luci-app-ipsec-vpnserver-manyusers package/mypkg/luci-app-ipsec-vpnserver-manyusers
+mv package/mypkg/imm24-luci/applications/luci-app-msd_lite package/mypkg/luci-app-msd_lite
 mv package/mypkg/imm24-luci/applications/luci-app-ramfree package/mypkg/luci-app-ramfree
 mv package/mypkg/imm24-luci/applications/luci-app-syncdial package/mypkg/luci-app-syncdial
 mv package/mypkg/imm24-luci/applications/luci-app-vsftpd package/mypkg/luci-app-vsftpd
-mv package/mypkg/imm24-luci/applications/luci-app-qbittorrent package/mypkg/luci-app-qbittorrent
+#mv package/mypkg/imm24-luci/applications/luci-app-qbittorrent package/mypkg/luci-app-qbittorrent
 rm -rf feeds/luci/modules
 mv package/mypkg/imm24-luci/modules feeds/luci/modules
 rm -rf package/mypkg/imm24-luci
@@ -61,9 +62,10 @@ sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' $(find ./package/mypkg/ 
 #完全删除luci版本
 sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
 
-#git clone --depth 1 -b openwrt-24.10 https://github.com/immortalwrt/packages.git package/mypkg/imm24-packages
+git clone --depth 1 -b openwrt-24.10 https://github.com/immortalwrt/packages.git package/mypkg/imm24-packages
 #mv package/mypkg/imm24-packages/net/qBittorrent-Enhanced-Edition package/qBittorrent-Enhanced-Edition
-#rm -rf package/mypkg/imm24-packages
+mv package/mypkg/imm24-packages/net/msd_lite package/msd_lite
+rm -rf package/mypkg/imm24-packages
 
 rm -rf feeds/packages/net/adguardhome
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/kz8-small
