@@ -61,9 +61,9 @@ sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' $(find ./package/mypkg/ 
 #完全删除luci版本
 sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
 
-git clone --depth 1 -b openwrt-24.10 https://github.com/immortalwrt/packages.git package/mypkg/imm24-packages
-mv package/mypkg/imm24-packages/net/qBittorrent-Enhanced-Edition package/qBittorrent-Enhanced-Edition
-rm -rf package/mypkg/imm24-packages
+#git clone --depth 1 -b openwrt-24.10 https://github.com/immortalwrt/packages.git package/mypkg/imm24-packages
+#mv package/mypkg/imm24-packages/net/qBittorrent-Enhanced-Edition package/qBittorrent-Enhanced-Edition
+#rm -rf package/mypkg/imm24-packages
 
 rm -rf feeds/packages/net/adguardhome
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/kz8-small
