@@ -56,8 +56,6 @@ git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
 rm -rf feeds/packages/net/adguardhome
 #git clone --depth 1 https://github.com/jarod360/luci-app-xupnpd.git package/luci-app-xupnpd
-git clone --depth 1 https://github.com/NONGFAH/luci-app-athena-led.git package/luci-app-athena-led
-git clone --depth=1 https://github.com/sirpdboy/luci-app-advancedplus.git package/luci-app-advancedplus
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/kz8-small
 mv package/kz8-small/adguardhome package/adguardhome
 mv package/kz8-small/luci-app-adguardhome package/luci-app-adguardhome
