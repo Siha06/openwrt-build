@@ -29,6 +29,10 @@ uci set wireless.default_radio1.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macadd
 
 uci commit
 
+tar -zxf /etc/clash-linux-arm64.tar.gz -C /etc/openclash/core/
+mv /etc/openclash/core/clash /etc/openclash/core/clash_meta
+rm -rf /etc/clash-linux-arm64.tar.gz
+
 /etc/init.d/network restart
 #sleep 2
 #/etc/init.d/system restart
