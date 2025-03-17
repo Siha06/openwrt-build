@@ -5,7 +5,7 @@ sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/l
 sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 sed -i 's/ImmortalWrt/WiFi/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 sed -i 's/ImmortalWrt/WiFi/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
-mv $GITHUB_WORKSPACE/patch/imm23/199-rockchip.sh package/base-files/files/etc/uci-defaults/199-rockchip.sh
+mv $GITHUB_WORKSPACE/patch/imm-24.10/199-rockchip.sh package/base-files/files/etc/uci-defaults/199-rockchip.sh
 
 #完全删除luci版本
 sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
@@ -19,7 +19,7 @@ find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
 find ./ | grep Makefile | grep mosdns | xargs rm -f
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
-git clone --depth 1 https://github.com/fw876/helloworld.git package/helloworld
+#git clone --depth 1 https://github.com/fw876/helloworld.git package/helloworld
 git clone --depth 1 https://github.com/vernesong/OpenClash.git  package/openclash
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
