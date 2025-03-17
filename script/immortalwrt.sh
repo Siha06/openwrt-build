@@ -66,5 +66,5 @@ mv package/mypkg/imm24-luci/applications/luci-app-advancedsetting package/mypkg/
 mv package/mypkg/imm24-luci/applications/luci-app-filetransfer package/mypkg/luci-app-filetransfer
 mv package/mypkg/imm24-luci/applications/luci-app-webadmin package/mypkg/luci-app-webadmin
 mv package/mypkg/imm24-luci/applications/luci-app-wireguard package/mypkg/luci-app-wireguard
-rm -rf package/mypkg/imm24-luci
+rm -rf package/mypkg/imm21-luci
 sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' $(find ./package/mypkg/ -type f -name "Makefile")
