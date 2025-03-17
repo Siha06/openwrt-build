@@ -1,12 +1,5 @@
 #!/bin/sh
 
-uci set network.wan.device='eth0'
-uci set network.wan6.device='eth0'
-uci del network.cfg030f15.ports
-uci add_list network.cfg030f15.ports='eth1'
-uci add_list network.cfg030f15.ports='eth2'
-uci add_list network.cfg030f15.ports='eth3'
-uci commit network
 # 设置所有网口可访问网页终端
 uci delete ttyd.@ttyd[0].interface
 
