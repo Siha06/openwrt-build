@@ -26,7 +26,7 @@ git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/lu
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/luci-app-passwall2
 git clone --depth 1 https://github.com/nikkinikki-org/OpenWrt-nikki.git package/OpenWrt-nikki
 rm -rf feeds/packages/devel/gn
-rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-openclash}
+rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-openclash,luci-app-v2raya}
 rm -rf feeds/packages/net/v2ray-geodata
 rm -rf feeds/packages/net/mosdns
 rm -rf feeds/packages/net/{microsocks,v2ray*,xray*,mosdns,sing-box}
@@ -72,5 +72,6 @@ mv package/mypkg/imm21-luci/applications/luci-app-advancedsetting package/mypkg/
 mv package/mypkg/imm21-luci/applications/luci-app-filetransfer package/mypkg/luci-app-filetransfer
 mv package/mypkg/imm21-luci/applications/luci-app-webadmin package/mypkg/luci-app-webadmin
 mv package/mypkg/imm21-luci/applications/luci-app-wireguard package/mypkg/luci-app-wireguard
+mv package/mypkg/imm21-luci/libs/luci-lib-fs package/mypkg/luci-lib-fs
 rm -rf package/mypkg/imm21-luci
 sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' $(find ./package/mypkg/ -type f -name "Makefile")
