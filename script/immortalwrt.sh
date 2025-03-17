@@ -68,9 +68,9 @@ mv package/kz8-small/luci-app-wolplus package/luci-app-wolplus
 rm -rf package/kz8-small
 
 git clone --depth 1 -b openwrt-21.02 https://github.com/immortalwrt/luci.git package/mypkg/imm21-luci
-mv package/mypkg/imm24-luci/applications/luci-app-advancedsetting package/mypkg/luci-app-advancedsetting
-mv package/mypkg/imm24-luci/applications/luci-app-filetransfer package/mypkg/luci-app-filetransfer
-mv package/mypkg/imm24-luci/applications/luci-app-webadmin package/mypkg/luci-app-webadmin
-mv package/mypkg/imm24-luci/applications/luci-app-wireguard package/mypkg/luci-app-wireguard
+mv package/mypkg/imm21-luci/applications/luci-app-advancedsetting package/mypkg/luci-app-advancedsetting
+mv package/mypkg/imm21-luci/applications/luci-app-filetransfer package/mypkg/luci-app-filetransfer
+mv package/mypkg/imm21-luci/applications/luci-app-webadmin package/mypkg/luci-app-webadmin
+mv package/mypkg/imm21-luci/applications/luci-app-wireguard package/mypkg/luci-app-wireguard
 rm -rf package/mypkg/imm21-luci
 sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' $(find ./package/mypkg/ -type f -name "Makefile")
