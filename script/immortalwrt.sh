@@ -25,6 +25,12 @@ git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git p
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/luci-app-passwall2
 git clone --depth 1 https://github.com/nikkinikki-org/OpenWrt-nikki.git package/OpenWrt-nikki
+rm -rf feeds/packages/devel/gn
+rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-openclash}
+rm -rf feeds/packages/net/v2ray-geodata
+rm -rf feeds/packages/net/mosdns
+rm -rf feeds/packages/net/{microsocks,v2ray*,xray*,mosdns,sing-box}
+rm -rf feeds/packages/utils/v2dat
 
 git clone --depth 1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
 
