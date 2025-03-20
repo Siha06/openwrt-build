@@ -16,6 +16,10 @@ sed -i 's#downloads.immortalwrt.org#mirrors.pku.edu.cn/immortalwrt#g' /etc/opkg/
 sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/immortalwrt/releases/24.10.0/targets/rockchip/armv8/kmods/6.6.73-1-f03df7cf7b7424bf4377334a801e4b66' /etc/opkg/customfeeds.conf
 #sed -i '$a src/gz kiddin9 https://dl.openwrt.ai/packages-24.10/aarch64_generic/kiddin9' /etc/opkg/customfeeds.conf
 
+tar -zxf /etc/clash-linux-arm64.tar.gz -C /etc/openclash/core/
+mv /etc/openclash/core/clash /etc/openclash/core/clash_meta
+rm -rf /etc/clash-linux-arm64.tar.gz
+
 #/etc/init.d/network restart
 
 exit 0
