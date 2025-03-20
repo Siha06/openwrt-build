@@ -7,6 +7,10 @@ sed -i 's/ImmortalWrt/WiFi/g' package/network/config/wifi-scripts/files/lib/wifi
 sed -i 's/ImmortalWrt/WiFi/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 mv $GITHUB_WORKSPACE/patch/imm-24.10/199-rockchip.sh package/base-files/files/etc/uci-defaults/199-rockchip.sh
 
+git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
+mv package/openclash-core/master/meta/clash-linux-arm64.tar.gz package/base-files/files/etc/clash-linux-arm64.tar.gz
+rm -rf package/openclash-core
+
 #完全删除luci版本
 sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
 #添加编译日期
