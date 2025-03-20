@@ -23,7 +23,7 @@ find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
 find ./ | grep Makefile | grep mosdns | xargs rm -f
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
-#git clone --depth 1 https://github.com/fw876/helloworld.git package/helloworld
+git clone --depth 1 https://github.com/fw876/helloworld.git package/helloworld
 git clone --depth 1 https://github.com/vernesong/OpenClash.git  package/openclash
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
@@ -34,6 +34,7 @@ git clone --depth 1 https://github.com/yichya/luci-app-xray.git package/luci-app
 git clone --depth 1 https://github.com/Thaolga/openwrt-nekobox.git package/openwrt-nekobox
 git clone --depth 1 https://github.com/fcshark-org/openwrt-fchomo.git package/openwrt-fchomo
 
+rm -rf package/helloworld/gn
 rm -rf feeds/packages/devel/gn
 rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-openclash,luci-app-v2raya}
 rm -rf feeds/packages/net/v2ray-geodata
