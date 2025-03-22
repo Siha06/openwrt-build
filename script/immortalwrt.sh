@@ -2,10 +2,11 @@
 #curl -sSL https://raw.githubusercontent.com/chenmozhijin/turboacc/luci/add_turboacc.sh -o add_turboacc.sh && bash add_turboacc.sh
 sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
-#sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
+sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 #sed -i 's/ImmortalWrt/WiFi/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 #sed -i 's/ImmortalWrt/WiFi/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 mv $GITHUB_WORKSPACE/patch/imm-24.10/199-rockchip.sh package/base-files/files/etc/uci-defaults/199-rockchip.sh
+mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 
 git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
 mv package/openclash-core/master/meta/clash-linux-arm64.tar.gz package/base-files/files/etc/clash-linux-arm64.tar.gz
@@ -35,7 +36,7 @@ git clone --depth 1 https://github.com/Thaolga/openwrt-nekobox.git package/openw
 git clone --depth 1 https://github.com/fcshark-org/openwrt-fchomo.git package/openwrt-fchomo
 
 rm -rf package/helloworld/gn
-rm -rf feeds/packages/devel/gn
+#rm -rf feeds/packages/devel/gn
 rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-openclash,luci-app-v2raya}
 rm -rf feeds/packages/net/v2ray-geodata
 rm -rf feeds/packages/net/mosdns
