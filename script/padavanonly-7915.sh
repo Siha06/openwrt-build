@@ -4,7 +4,7 @@ sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 mv $GITHUB_WORKSPACE/patch/7621-237imm/defset-7915 package/emortal/default-settings/files/99-default-settings
 mv $GITHUB_WORKSPACE/patch/7621-237imm/dts/mt7621_netgear_r6220.dts target/linux/ramips/dts/mt7621_netgear_r6220.dts
 mv $GITHUB_WORKSPACE/patch/7621-237imm/dts/mt7621_netgear_sercomm_ayx.dtsi target/linux/ramips/dts/mt7621_netgear_sercomm_ayx.dtsi
-#mv $GITHUB_WORKSPACE/patch/7621-237imm/dts/02_network target/linux/ramips/mt7621/base-files/etc/board.d/02_network
+mv $GITHUB_WORKSPACE/patch/7621-237imm/dts/02_network target/linux/ramips/mt7621/base-files/etc/board.d/02_network
 
 #rm -rf feeds/luci/applications/luci-app-filetransfer
 rm -rf package/emortal/luci-app-mwan3helper-chinaroute
