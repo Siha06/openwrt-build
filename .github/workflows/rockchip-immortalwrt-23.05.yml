@@ -1,4 +1,4 @@
-name: x86-immortalwrt-23.05
+name: rockchip-immortalwrt-23.05
 # 脚本参考github/haiibo和dzlea
 # Add a button to trigger the workflow
 on: 
@@ -7,14 +7,14 @@ on:
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt.git
   REPO_BRANCH: openwrt-23.05
-  CONFIG_FILE: config/x86-imm2305
-  DIY_SCRIPT: script/x86-imm2305.sh
+  CONFIG_FILE: config/rockchip-imm
+  DIY_SCRIPT: script/immortalwrt.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
-  FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: x86-immortalwrt-23.05
+  FIRMWARE_RELEASE: false
+  FIRMWARE_TAG: rockchip-immortalwrt-23.05
   TZ: Asia/Shanghai
 
 jobs:
@@ -102,7 +102,7 @@ jobs:
     - name: edit md5
       run: |
         rm -rf $OPENWRT_PATH/.vermagic
-        mv $GITHUB_WORKSPACE/vm/imm23.05.4-x86 $OPENWRT_PATH/vermagic
+        mv $GITHUB_WORKSPACE/vm/imm23.05.4-rockchip $OPENWRT_PATH/vermagic
         cd $OPENWRT_PATH
         sed -i '121d' include/kernel-defaults.mk
         sed -i '121i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
@@ -167,7 +167,7 @@ jobs:
         body: |
           ### 📒 固件信息
           - 这是基于官方immortalwrt-23.05源码编译的固件
-          - 💻 这是x86 平台使用的 OpenWrt 固件
+          - 💻 这是rockchip 平台使用的 OpenWrt 固件
           - ⚽ 固件源码: ${{ env.REPO_URL }}
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
           - 🌐 默认地址: 192.168.23.1
