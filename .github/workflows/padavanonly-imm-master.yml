@@ -8,7 +8,7 @@ env:
   REPO_URL: https://github.com/padavanonly/immortalwrt.git
   REPO_BRANCH: master
   CONFIG_FILE: config/padavanonly-master-7621
-  DIY_SCRIPT: script/padavanonly-7915.sh
+  DIY_SCRIPT: script/padavanonly-7621.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
