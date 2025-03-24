@@ -48,3 +48,6 @@ git clone --depth 1 https://github.com/coolsnowwolf/lede.git package/lede
 mv package/lede/package/lean/luci-app-leigod-acc package/luci-app-leigod-acc
 mv package/lede/package/lean/leigod-acc package/leigod-acc
 rm -rf package/lede
+git clone --depth 1 https://github.com/coolsnowwolf/packages.git package/lede-pkg
+mv package/lede-pkg/net/conntrack-tools package/conntrack-tools
+rm -rf package/lede-pkg
