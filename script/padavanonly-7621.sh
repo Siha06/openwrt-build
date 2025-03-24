@@ -43,3 +43,8 @@ mv package/kz8-small/luci-app-ikoolproxy package/luci-app-ikoolproxy
 mv package/kz8-small/luci-app-wrtbwmon package/luci-app-wrtbwmon
 mv package/kz8-small/wrtbwmon package/wrtbwmon
 rm -rf package/kz8-small
+
+git clone --depth 1 https://github.com/coolsnowwolf/lede.git package/lede
+mv package/lede/package/lean/luci-app-leigod-acc package/luci-app-leigod-acc
+mv package/lede/package/lean/leigod-acc package/leigod-acc
+rm -rf package/lede
