@@ -86,7 +86,7 @@ jobs:
         cd $OPENWRT_PATH
         git checkout v23.05.4
         git checkout v23.05.4
-        mv $GITHUB_WORKSPACE/patch/imm23/feeds.conf.default feeds.conf.default
+        mv $GITHUB_WORKSPACE/patch/imm23.05/feeds.conf.default feeds.conf.default
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds update -a
