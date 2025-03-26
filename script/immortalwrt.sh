@@ -9,7 +9,7 @@ mv $GITHUB_WORKSPACE/patch/imm-24.10/199-ac68u.sh package/base-files/files/etc/u
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 
 git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
-mv package/openclash-core/master/meta/clash-linux-arm64.tar.gz package/base-files/files/etc/clash-linux-arm64.tar.gz
+mv package/openclash-core/master/meta/clash-linux-armv7.tar.gz package/base-files/files/etc/clash-linux-armv7.tar.gz
 rm -rf package/openclash-core
 
 #完全删除luci版本
