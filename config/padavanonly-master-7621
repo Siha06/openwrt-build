@@ -4,6 +4,9 @@ CONFIG_TARGET_ramips_mt7621_DEVICE_glinet_gl-mt1300=y
 CONFIG_LUCI_LANG_zh_Hans=y
 CONFIG_PACKAGE_luci=y
 
+CONFIG_PACKAGE_mt_wifi=y
+CONFIG_PACKAGE_luci-app-mtwifi=y
+
 # CONFIG_PACKAGE_luci-app-turboacc-mtk is not set
 CONFIG_PACKAGE_luci-theme-bootstrap=y
 # CONFIG_PACKAGE_luci-theme-argon is not set
