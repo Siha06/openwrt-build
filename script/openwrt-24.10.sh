@@ -2,8 +2,9 @@
 #curl -sSL https://raw.githubusercontent.com/chenmozhijin/turboacc/luci/add_turboacc.sh -o add_turboacc.sh && bash add_turboacc.sh
 sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
-#mv $GITHUB_WORKSPACE/patch/openwrt-24.10/199-7621.sh package/base-files/files/etc/uci-defaults/199-7621.sh
-mv $GITHUB_WORKSPACE/patch/openwrt-24.10/199-rockchip.sh package/base-files/files/etc/uci-defaults/199-rockchip.sh
+sed -i 's/disabled='"'"'\${defaults ? 0 : 1}'"'"'/disabled=0/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
+mv $GITHUB_WORKSPACE/patch/openwrt-24.10/199-7621.sh package/base-files/files/etc/uci-defaults/199-7621.sh
+#mv $GITHUB_WORKSPACE/patch/openwrt-24.10/199-rockchip.sh package/base-files/files/etc/uci-defaults/199-rockchip.sh
 
 #添加编译日期
 sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/usr/lib/os-release
