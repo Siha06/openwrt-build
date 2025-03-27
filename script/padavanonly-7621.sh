@@ -5,8 +5,7 @@ mv $GITHUB_WORKSPACE/patch/7621-237imm/999-diy package/base-files/files/etc/uci-
 mv $GITHUB_WORKSPACE/patch/7621-237imm/dts/mt7621_netgear_r6220.dts target/linux/ramips/dts/mt7621_netgear_r6220.dts
 mv $GITHUB_WORKSPACE/patch/7621-237imm/dts/mt7621_netgear_sercomm_ayx.dtsi target/linux/ramips/dts/mt7621_netgear_sercomm_ayx.dtsi
 mv $GITHUB_WORKSPACE/patch/7621-237imm/dts/02_network target/linux/ramips/mt7621/base-files/etc/board.d/02_network
-#sed -i 's/wan/gmac1/g' target/linux/ramips/dts/mt7621_netgear_wndr3700-v5.dts
-mv $GITHUB_WORKSPACE/patch/7621-237imm/dts/mt7621_netgear_wndr3700-v5.dts target/linux/ramips/dts/mt7621_netgear_wndr3700-v5.dts
+sed -i 's/wan/gmac1/g' target/linux/ramips/dts/mt7621_netgear_wndr3700-v5.dts
 
 #rm -rf feeds/luci/applications/luci-app-filetransfer
 rm -rf package/emortal/luci-app-mwan3helper-chinaroute
