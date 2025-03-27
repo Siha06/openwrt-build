@@ -12,7 +12,7 @@ rm -rf feeds/luci/themes/luci-theme-argon
 rm -rf feeds/luci/applications/luci-app-argon-config
 git clone -b 18.06 --depth 1 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
 
-#rm -rf feeds/packages/lang/golang
+rm -rf feeds/packages/lang/golang
 #git clone --depth 1 https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
 #删除自带的老旧依赖，ssr-plus，passwall
 rm -rf feeds/packages/net/{brook,chinadns-ng,dns2socks,dns2tcp,hysteria,ipt2socks,microsocks,naiveproxy}
@@ -46,6 +46,7 @@ mv package/lede/package/lean/luci-app-leigod-acc package/luci-app-leigod-acc
 mv package/lede/package/lean/leigod-acc package/leigod-acc
 rm -rf package/lede
 
-#git clone --depth 1 -b openwrt-21.02 https://github.com/immortalwrt/packages.git package/imm21-packages
+git clone --depth 1 -b openwrt-21.02 https://github.com/immortalwrt/packages.git package/imm21-packages
 #mv package/imm21-packages/net/conntrack-tools package/conntrack-tools
-#rm -rf package/imm21-packages
+mv package/imm21-packages/lang/golang feeds/packages/lang/golang
+rm -rf package/imm21-packages
