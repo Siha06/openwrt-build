@@ -10,10 +10,11 @@ uci commit
 
 uci set network.lan.ipaddr='192.168.23.1'
 uci commit network
-/etc/init.d/network restart
+
 
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 
 tar -xzf /etc/adg.tar.gz -C /
 
+/etc/init.d/network restart
 exit 0
