@@ -14,7 +14,8 @@ uci commit network
 
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 
-#tar -xzf /etc/adg.tar.gz -C /
+tar -xzf /etc/adg.tar.gz -C /
 
-/etc/init.d/network restart
+#/etc/init.d/network restart
+reboot
 exit 0
