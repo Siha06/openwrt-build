@@ -3,9 +3,9 @@ sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/l
 sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 mv $GITHUB_WORKSPACE/patch/7621-237imm/999-diy package/base-files/files/etc/uci-defaults/zz-diy
 #mv $GITHUB_WORKSPACE/patch/7621-237imm/adg.tar.gz package/base-files/files/etc/adg.tar.gz
-mv $GITHUB_WORKSPACE/patch/7621-237imm/adg/AdGuardHome.yaml package/base-files/files/etc/adgh.yaml
-mv $GITHUB_WORKSPACE/patch/7621-237imm/adg/firewall package/base-files/files/etc/firewall
-mv $GITHUB_WORKSPACE/patch/7621-237imm/adg/firewall.user package/base-files/files/etc/firewall.user
+mv $GITHUB_WORKSPACE/patch/7621-237imm/adg/AdGuardHome.yaml package/base-files/files/etc/my-adgh.yaml
+mv $GITHUB_WORKSPACE/patch/7621-237imm/adg/firewall package/base-files/files/etc/my-firewall
+mv $GITHUB_WORKSPACE/patch/7621-237imm/adg/firewall.user package/base-files/files/etc/my-firewall.user
 
 #rm -rf feeds/luci/applications/luci-app-filetransfer
 rm -rf package/emortal/luci-app-mwan3helper-chinaroute
