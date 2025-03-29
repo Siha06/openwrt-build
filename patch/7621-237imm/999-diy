@@ -35,4 +35,5 @@ mv /etc/adgh.yaml /etc/AdGuardHome.yaml
 #tar -xzf /etc/adg.tar.gz -C /
 
 /etc/init.d/network restart
+/etc/init.d/firewall restart
 exit 0
