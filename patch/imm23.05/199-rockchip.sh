@@ -16,6 +16,10 @@ sed -i 's#downloads.immortalwrt.org#mirrors.pku.edu.cn/immortalwrt#g' /etc/opkg/
 sed -i '$a src/gz kmods https://mirror.nju.edu.cn/immortalwrt/releases/23.05.4/targets/rockchip/armv8/kmods/5.15.167-1-0ce3444fa49c0c1c5ea3ad054c05ca27' /etc/opkg/customfeeds.conf
 #sed -i '$a src/gz kiddin9 https://dl.openwrt.ai/packages-24.10/aarch64_generic/kiddin9' /etc/opkg/customfeeds.conf
 
+uci set network.usbwan=interface
+uci set network.usbwan.proto='dhcp'
+uci commit network
+
 OPENCLASH_FILE="/etc/config/openclash"
 if [ -f "$OPENCLASH_FILE" ]; then
     tar -zxf /etc/clash-linux-arm64.tar.gz -C /etc/openclash/core/
