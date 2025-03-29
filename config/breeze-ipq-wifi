@@ -10,7 +10,7 @@ CONFIG_LUCI_LANG_zh_Hans=y
 CONFIG_PACKAGE_luci-i18n-base-zh-cn=y
 # CONFIG_PACKAGE_wpad-basic-mbedtls is not set
 CONFIG_PACKAGE_wpad-openssl=y
-CONFIG_PACKAGE_firewall=m
+# CONFIG_PACKAGE_firewall is not set
 CONFIG_PACKAGE_firewall4=y
 CONFIG_PACKAGE_block-mount=y
 CONFIG_PACKAGE_kmod-fs-exportfs=y
