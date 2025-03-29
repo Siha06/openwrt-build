@@ -8,8 +8,8 @@ uci set dropbear.@dropbear[0].Interface=''
 
 uci commit
 
-#uci set network.lan.ipaddr='192.168.23.1'
-#uci commit network
+uci set network.lan.ipaddr='192.168.23.1'
+uci commit network
 
 
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
