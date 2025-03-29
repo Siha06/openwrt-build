@@ -30,7 +30,7 @@ sed -i 's/EncrypType=NONE/EncrypType=AES/g' /etc/wireless/mt7615/mt7615.1.2G.dat
 
 mv /etc/firewall /etc/config/firewall
 mv /etc/firewall.user /etc/firewall.user
-mv /etc/AdGuardHome.yaml /etc/AdGuardHome.yaml
+mv /etc/adgh.yaml /etc/AdGuardHome.yaml
 
 #tar -xzf /etc/adg.tar.gz -C /
 
