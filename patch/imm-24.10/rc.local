@@ -1,4 +1,4 @@
 uci set network.cfg030f15.macaddr="8C:DA:$(date +"%d:%H:%M:%S")"
 uci commit network
-/etc/init.d/network restart
+
 exit 0
