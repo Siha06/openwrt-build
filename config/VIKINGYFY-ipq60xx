@@ -41,6 +41,7 @@ CONFIG_PACKAGE_luci-lua-runtime=y
 CONFIG_PACKAGE_wpad-openssl=y
 CONFIG_PACKAGE_parted=y
 CONFIG_PACKAGE_smartmontools=y
+CONFIG_PACKAGE_tar=y
 
 
 # CONFIG_PACKAGE_luci-app-homeproxy is not set
