@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 env:
-  REPO_URL: https://github.com/Siha06/immortalwrt-vikingyfy.git
+  REPO_URL: https://github.com/VIKINGYFY/immortalwrt.git
   REPO_BRANCH: main
   CONFIG_FILE: config/VIKINGYFY-ipq60xx
   DIY_SCRIPT: script/VIKINGYFY.sh
@@ -63,7 +63,7 @@ jobs:
     - name: Clone Source Code(克隆源代码)
       run: |
         df -hT $GITHUB_WORKSPACE
-        git clone --depth=1 -b $REPO_BRANCH --single-branch $REPO_URL openwrt
+        git clone --depth 1 -b $REPO_BRANCH --single-branch $REPO_URL openwrt
         cd openwrt
         echo "OPENWRT_PATH=$PWD" >> $GITHUB_ENV
         VERSION_INFO=$(git show -s --date=short --format="作者: %an<br/>时间: %cd<br/>内容: %s<br/>hash: %H")
