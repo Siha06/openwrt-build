@@ -42,7 +42,7 @@ uci set dropbear.@dropbear[0].Interface=''
 uci set network.lan.ip6assign='64'
 uci set network.lan.ip6ifaceid='eui64'
 
-uci commit
+uci commit network
 
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 sed -i 's#downloads.openwrt.org#mirrors.pku.edu.cn/openwrt#g' /etc/opkg/distfeeds.conf
