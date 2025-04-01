@@ -38,15 +38,23 @@ rm -rf feeds/packages/kernel/quectel-qmi-wwan
 rm -rf feeds/luci/protocols/luci-proto-quectel
 rm -rf feeds/nss_packages/wwan
 
-#安装最新openclash
-rm -rf feeds/luci/applications/luci-app-openclash
-git clone --depth 1 https://github.com/vernesong/OpenClash.git  package/openclash
-mv package/openclash/luci-app-openclash feeds/luci/applications/
-rm -rf package/openclash
+rm -rf feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
+git clone --depth 1 https://github.com/vernesong/OpenClash.git package/OpenClash
+git clone --depth 1 https://github.com/nikkinikki-org/OpenWrt-nikki.git package/OpenWrt-nikki
+git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/passwall
+git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
+git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
+#rm -rf feeds/packages/devel/gn
+rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-openclash}
 
-#git clone --depth 1 https://github.com/fw876/helloworld.git package/helloworld
+#find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
+#find ./ | grep Makefile | grep mosdns | xargs rm -f
+rm -rf feeds/packages/net/{mosdns,v2ray-geodata}
+git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
+git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
+
 git clone --depth 1 https://github.com/destan19/OpenAppFilter.git  package/oaf
-
 git clone --depth 1 https://github.com/kiddin9/kwrt-packages.git package/kwrt-packages
 mv package/kwrt-packages/uugamebooster package/uugamebooster
 mv package/kwrt-packages/luci-app-uugamebooster package/luci-app-uugamebooster
