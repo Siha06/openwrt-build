@@ -50,6 +50,7 @@ git clone --depth 1 https://github.com/destan19/OpenAppFilter.git  package/oaf
 git clone --depth 1 https://github.com/kiddin9/kwrt-packages.git package/kwrt-packages
 mv package/kwrt-packages/uugamebooster package/uugamebooster
 mv package/kwrt-packages/luci-app-uugamebooster package/luci-app-uugamebooster
+mv package/kwrt-packages/luci-app-pushbot package/luci-app-pushbot
 rm -rf package/kwrt-packages
 
 rm -rf feeds/packages/net/adguardhome
