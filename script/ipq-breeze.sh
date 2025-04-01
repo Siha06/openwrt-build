@@ -58,6 +58,10 @@ rm -rf feeds/packages/net/mosdns
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
+find ./ | grep Makefile | grep oaf | xargs rm -f
+rm -rf feeds/packages/net/open-app-filter
+git clone --depth 1 https://github.com/destan19/OpenAppFilter.git  package/oaf
+
 rm -rf feeds/packages/net/adguardhome
 #git clone --depth 1 https://github.com/jarod360/luci-app-xupnpd.git package/luci-app-xupnpd
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/kz8-small
