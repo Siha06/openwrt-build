@@ -2,6 +2,7 @@ sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_genera
 sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 sed -i 's/ImmortalWrt/OpenWrt/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+mv $GITHUB_WORKSPACE/patch/7621-237imm/999-diy package/base-files/files/etc/uci-defaults/zz-diy
 
 #rm -rf feeds/luci/modules/luci-base/po/zh-cn
 #rm -rf feeds/luci/applications/luci-app-passwall/po/zh-cn
@@ -10,13 +11,13 @@ sed -i 's/ImmortalWrt/OpenWrt/g' package/kernel/mac80211/files/lib/wifi/mac80211
 #rm -rf feeds/luci/applications/luci-app-upnp/po/zh-cn
 
 #git clone --depth 1 https://github.com/lllrrr/luci-app-sfe.git package/luci-app-sfe
-mv $GITHUB_WORKSPACE/patch/lean/luci-app-sfe.zip package/luci-app-sfe.zip
-unzip package/luci-app-sfe.zip -d package/luci-app-sfe
+#mv $GITHUB_WORKSPACE/patch/lean/luci-app-sfe.zip package/luci-app-sfe.zip
+#unzip package/luci-app-sfe.zip -d package/luci-app-sfe
 
-rm -rf feeds/luci/themes/luci-theme-argonv3
-rm -rf feeds/luci/themes/luci-theme-argonv2
-rm -rf feeds/luci/themes/luci-theme-argon
-git clone -b 18.06 --depth 1 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
+#rm -rf feeds/luci/themes/luci-theme-argonv3
+#rm -rf feeds/luci/themes/luci-theme-argonv2
+#rm -rf feeds/luci/themes/luci-theme-argon
+#git clone -b 18.06 --depth 1 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
 #git clone --depth 1 https://github.com/kenzok8/openwrt-packages.git  package/openwrt-packages
 #mv package/openwrt-packages/luci-theme-design package/luci-theme-design
 #rm -rf package/openwrt-packages
