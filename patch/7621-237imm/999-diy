@@ -9,19 +9,24 @@ uci set dropbear.@dropbear[0].Interface=''
 uci commit
 
 uci set network.lan.ipaddr='192.168.23.1'
+uci del network.lan.ip6assign
 uci commit network
-
+uci del dhcp.lan.dhcpv6
+uci del dhcp.lan.ndp
+uci del dhcp.lan.ra
+uci del dhcp.lan.ra_management
+uci commit dhcp
 
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 
-sed -i 's/192.168.1.1/192.168.23.1/g' /etc/wireless/mt7615/mt7615.1.5G.dat
+#sed -i 's/192.168.1.1/192.168.23.1/g' /etc/wireless/mt7615/mt7615.1.5G.dat
 #sed -i 's/Openwrt_5G/PingBi-5G/g' /etc/wireless/mt7615/mt7615.1.5G.dat
 #sed -i 's/12345678/88888888/g' /etc/wireless/mt7615/mt7615.1.5G.dat
 #sed -i 's/AuthMode=OPEN/AuthMode=WPA2PSK/g' /etc/wireless/mt7615/mt7615.1.5G.dat
 #sed -i 's/EncrypType=NONE/EncrypType=AES/g' /etc/wireless/mt7615/mt7615.1.5G.dat
 #sed -i 's/CountryCode=US/CountryCode=CN/g' /etc/wireless/mt7615/mt7615.1.5G.dat
 
-sed -i 's/192.168.1.1/192.168.23.1/g' /etc/wireless/mt7615/mt7615.1.2G.dat
+#sed -i 's/192.168.1.1/192.168.23.1/g' /etc/wireless/mt7615/mt7615.1.2G.dat
 #sed -i 's/CR660X_2.4G/PingBi-2.4G/g' /etc/wireless/mt7615/mt7615.1.2G.dat
 #sed -i 's/12345678/88888888/g' /etc/wireless/mt7615/mt7615.1.2G.dat
 #sed -i 's/AuthMode=OPEN/AuthMode=WPA2PSK/g' /etc/wireless/mt7615/mt7615.1.2G.dat
