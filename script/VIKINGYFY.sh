@@ -74,3 +74,11 @@ mv package/kz8-small/luci-app-wrtbwmon package/luci-app-wrtbwmon
 mv package/kz8-small/wrtbwmon package/wrtbwmon
 rm -rf package/kz8-small
 
+#修改qca-nss-drv启动顺序
+sed -i 's/START=.*/START=85/g' feeds/nss_packages/qca-nss-drv/files/qca-nss-drv.init
+#修改qca-nss-pbuf启动顺序
+sed -i 's/START=.*/START=86/g' package/kernel/mac80211/files/qca-nss-pbuf.init
+#修复TailScale配置文件冲突
+sed -i '/\/files/d'  feeds/packages/net/tailscale/Makefile
+#修复Coremark编译失败
+sed -i 's/mkdir/mkdir -p/g' feeds/packages/utils/coremark/Makefile
