@@ -6,15 +6,15 @@ on:
 
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt.git
-  REPO_BRANCH: openwrt-18.06
-  CONFIG_FILE: config/immortalwrt-18.06
+  REPO_BRANCH: openwrt-18.06-k5.4
+  CONFIG_FILE: config/7620-imm18.06-k5.4
   DIY_SCRIPT: script/7620-imm1806.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   FIRMWARE_RELEASE: false
-  FIRMWARE_TAG: 7620-imm18.06
+  FIRMWARE_TAG: 7620-imm18.06-k5.4
   TZ: Asia/Shanghai
 
 jobs:
