@@ -10,6 +10,7 @@ uci commit
 
 uci set network.lan.ipaddr='192.168.23.1'
 uci del network.lan.ip6assign
+uci del network.wan6
 uci commit network
 uci del dhcp.lan.dhcpv6
 uci del dhcp.lan.ndp
@@ -43,6 +44,13 @@ if [ -f "$OPENCLASH_FILE" ]; then
     mv /etc/openclash/core/clash /etc/openclash/core/clash_meta
     rm -rf /etc/clash-linux-mipsle-softfloat.tar.gz
 fi
+
+sed -i '/core/d' /etc/opkg/distfeeds.conf
+date_version=$(date +"%Y.%m.%d")
+sed -i '/DISTRIB_REVISION/d' /etc/openwrt_release
+echo "DISTRIB_REVISION='V${date_version}'" >> /etc/openwrt_release
+sed -i '/DISTRIB_DESCRIPTION/d' /etc/openwrt_release
+echo "DISTRIB_DESCRIPTION='OpenWrt  '" >> /etc/openwrt_release
 
 /etc/init.d/network restart
 # /etc/init.d/firewall restart
