@@ -23,18 +23,17 @@ rm -rf feeds/packages/net/{pdnsd-alt,simple-obfs,sing-box,tcping,trojan*,tuic-cl
 rm -rf feeds/packages/net/{ssocks,shadow-tls}
 rm -rf feeds/packages/devel/gn
 rm -rf feeds/packages/utils/v2dat
-rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-ssr-plus,luci-app-mosdns}
+rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-ssr-plus,luci-app-mosdns,luci-app-openclash}
 
-#安装最新openclash
-rm -rf feeds/luci/applications/luci-app-openclash
 git clone --depth 1 https://github.com/vernesong/OpenClash.git  package/openclash
-mv package/openclash/luci-app-openclash feeds/luci/applications/
-rm -rf package/openclash
-
 git clone --depth 1 https://github.com/fw876/helloworld.git package/helloworld
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/passwall
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
 git clone --depth 1 https://github.com/sirpdboy/netspeedtest.git package/netspeedtest
+rm -rf feeds/packages/net/v2ray-geodata
+rm -rf feeds/packages/net/mosdns
+git clone https://github.com/sbwml/luci-app-mosdns -b v5-lua package/mosdns
+git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
 #rm -rf feeds/packages/net/adguardhome
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/kz8-small
@@ -50,6 +49,6 @@ mv package/lede/package/lean/luci-app-leigod-acc package/luci-app-leigod-acc
 mv package/lede/package/lean/leigod-acc package/leigod-acc
 rm -rf package/lede
 
-git clone --depth 1 -b openwrt-21.02 https://github.com/immortalwrt/packages.git package/imm21-packages
-mv package/imm21-packages/net/conntrack-tools package/conntrack-tools
-rm -rf package/imm21-packages
+#git clone --depth 1 -b openwrt-21.02 https://github.com/immortalwrt/packages.git package/imm21-packages
+#mv package/imm21-packages/net/conntrack-tools package/conntrack-tools
+#rm -rf package/imm21-packages
