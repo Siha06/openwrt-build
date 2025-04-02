@@ -69,6 +69,7 @@ mv package/kz8-small/luci-app-easymesh package/luci-app-easymesh
 mv package/kz8-small/luci-app-onliner package/luci-app-onliner
 mv package/kz8-small/luci-app-partexp package/luci-app-partexp
 mv package/kz8-small/luci-app-pptp-server package/luci-app-pptp-server
+mv package/kz8-small/luci-app-pushbot package/luci-app-pushbot
 mv package/kz8-small/luci-app-wrtbwmon package/luci-app-wrtbwmon
 mv package/kz8-small/wrtbwmon package/wrtbwmon
 rm -rf package/kz8-small
