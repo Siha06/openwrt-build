@@ -1,6 +1,6 @@
 sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
-#sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
+sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 mv $GITHUB_WORKSPACE/patch/7621-237imm/999-diy package/base-files/files/etc/uci-defaults/zz-diy
 mv $GITHUB_WORKSPACE/patch/7621-237imm/dts/mt7621_netgear_r6220.dts target/linux/ramips/dts/mt7621_netgear_r6220.dts
 mv $GITHUB_WORKSPACE/patch/7621-237imm/dts/mt7621_netgear_sercomm_ayx.dtsi target/linux/ramips/dts/mt7621_netgear_sercomm_ayx.dtsi
