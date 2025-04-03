@@ -1,12 +1,15 @@
-sed -i 's/192.168.1.1/192.168.11.1/g' package/base-files/files/bin/config_generate
-sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.11.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
+sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
+sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 #sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 #sed -i 's/ImmortalWrt/OpenWrt/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 
 mv $GITHUB_WORKSPACE/patch/imm-24.10/199-arm64.sh package/base-files/files/etc/uci-defaults/zz-arm64.sh
-git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
-mv package/openclash-core/master/meta/clash-linux-arm64.tar.gz package/base-files/files/etc/clash-linux-arm64.tar.gz
-rm -rf package/openclash-core
+
+if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
+    git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
+    mv package/openclash-core/master/meta/clash-linux-arm64.tar.gz package/base-files/files/etc/clash-linux-arm64.tar.gz
+    rm -rf package/openclash-core
+fi
 
 #完全删除luci版本
 sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
@@ -17,6 +20,10 @@ sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/etc/
 git clone --depth 1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
 #sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh-cn/modem.po
 #sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh_Hans/modem.po
+rm -rf feeds/packages/net/quectel-cm
+rm -rf feeds/packages/kernel/fibocom-qmi-wwan
+rm -rf feeds/packages/kernel/quectel-qmi-wwan
+rm -rf feeds/luci/protocols/luci-proto-quectel
 
 # iStore
 git clone --depth 1 -b main https://github.com/linkease/istore.git package/istore
