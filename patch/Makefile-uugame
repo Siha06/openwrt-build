@@ -8,8 +8,7 @@ PKG_NAME:=uugamebooster
 PKG_VERSION:=8.7.0
 PKG_RELEASE:=5
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-$(ARCH).tar.gz
-PKG_SOURCE_URL:=https://uu.gdl.netease.com/uuplugin/openwrt-$(ARCH)/v$(PKG_VERSION)/uu.tar.gz?
+PKG_SOURCE_URL:=https://drive.usercontent.google.com/u/0/uc?id=12_3iZ-GekZ7NTxUS1y5YANZVftep5Vu3&export=download
 ifeq ($(ARCH),aarch64)
   PKG_HASH:=skip
 else ifeq ($(ARCH),arm)
