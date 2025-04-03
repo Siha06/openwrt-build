@@ -74,6 +74,10 @@ mv package/kz8-small/luci-app-wrtbwmon package/luci-app-wrtbwmon
 mv package/kz8-small/wrtbwmon package/wrtbwmon
 rm -rf package/kz8-small
 
+
+if grep -q "uugamebooster=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
+    mv $GITHUB_WORKSPACE/patch/Makefile-uugame package/uugamebooster/Makefile
+fi
 #修改qca-nss-drv启动顺序
 sed -i 's/START=.*/START=85/g' feeds/nss_packages/qca-nss-drv/files/qca-nss-drv.init
 #修改qca-nss-pbuf启动顺序
