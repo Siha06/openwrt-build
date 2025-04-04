@@ -32,21 +32,11 @@ uci delete ttyd.@ttyd[0].interface
 # 设置所有网口可连接 SSH
 uci set dropbear.@dropbear[0].Interface=''
 
-#其他网络设置
-uci del wireless.radio0.disabled
-uci del wireless.default_radio0.disabled
-uci set network.lan.ip6assign='64'
-uci set network.lan.ip6ifaceid='eui64'
 
 #uci set luci.main.mediaurlbase=/luci-static/infinityfreedom
 #uci commit luci
 
 uci commit
-
-# 设置编译作者信息
-#FILE_PATH="/etc/openwrt_release"
-#NEW_DESCRIPTION="OpenWrt V25.1.23"
-#sed -i "s/DISTRIB_DESCRIPTION='[^']*'/DISTRIB_DESCRIPTION='$NEW_DESCRIPTION'/" "$FILE_PATH"
 
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 sed -i 's#downloads.openwrt.org#mirrors.pku.edu.cn/openwrt#g' /etc/opkg/distfeeds.conf
@@ -54,9 +44,37 @@ sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/openwrt/releases/24.10.0/targ
 sed -i '$a src/gz kiddin9 https://dl.openwrt.ai/packages-24.10/x86_64/kiddin9' /etc/opkg/customfeeds.conf
 wifi up
 
-tar -zxf /etc/clash-linux-amd64.tar.gz -C /etc/openclash/core/
-mv /etc/openclash/core/clash /etc/openclash/core/clash_meta
-rm -rf /etc/clash-linux-amd64.tar.gz
+OPENCLASH_FILE="/etc/config/openclash"
+if [ -f "$OPENCLASH_FILE" ]; then
+    tar -zxf /etc/clash-linux-amd64.tar.gz -C /etc/openclash/core/
+    mv /etc/openclash/core/clash /etc/openclash/core/clash_meta
+    rm -rf /etc/clash-linux-amd64.tar.gz
+fi
+
+# 统计eth接口数量，大于1个则将eth0设为wan其它网口设为lan，只有1个则设置成DHCP模式
+eth_count=$(ls /sys/class/net | grep -c '^eth')
+if [ $eth_count -gt 1 ]; then
+    uci set network.lan.ipaddr='192.168.23.1'
+
+    uci del dhcp.lan.ra_slaac
+    uci del dhcp.lan.dhcpv6
+    uci del dhcp.lan.ra_flags
+    uci add_list dhcp.lan.ra_flags='none'
+    uci set dhcp.lan.dns_service='0'
+
+    uci del network.wan6
+    uci del network.globals.packet_steering
+    uci del network.globals.ula_prefix
+    uci set network.lan.ip6assign='64'
+    uci set network.lan.ip6ifaceid='eui64'
+
+    uci set network.wan.device='eth0'
+    uci del network.cfg030f15.ports
+    ls /sys/class/net | awk '/^eth[0-9]+$/ && $0 != "eth0" {print "uci add_list network.cfg030f15.ports="$0}' | sh   
+else
+    uci set network.lan.proto='dhcp'
+    uci set dhcp.lan.ignore='1'
+fi
 
 /etc/init.d/network restart
 exit 0
