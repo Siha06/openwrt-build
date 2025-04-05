@@ -90,6 +90,7 @@ jobs:
         ./scripts/feeds install -a
         ./scripts/feeds update -a
         ./scripts/feeds install -a
+        ./scripts/feeds install -a -f -p modem
 
     - name: Load Custom Script(加载自定义脚本)
       run: |
