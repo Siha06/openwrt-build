@@ -17,6 +17,11 @@ uci set dropbear.@dropbear[0].Interface=''
 uci set wireless.default_radio0.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-5G
 uci set wireless.default_radio1.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-2.4G
 uci commit wireless
+
+uci set network.usbwan=interface
+uci set network.usbwan.proto='dhcp'
+uci set network.usbwan.device='usb0'
+uci commit network
 uci commit
 
 OPENCLASH_FILE="/etc/config/openclash"
