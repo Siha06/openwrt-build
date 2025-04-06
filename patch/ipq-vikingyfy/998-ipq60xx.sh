@@ -20,7 +20,8 @@ uci commit wireless
 
 uci set network.usbwan=interface
 uci set network.usbwan.proto='dhcp'
-uci set network.usbwan.device='usb0'
+uci set network.usbwan.device='eth0'
+#uci add_list firewall.cfg03dc81.network='usbwan'
 uci commit network
 uci commit
 
