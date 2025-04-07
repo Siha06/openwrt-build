@@ -18,12 +18,12 @@ uci set wireless.default_radio0.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macadd
 uci set wireless.default_radio1.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-2.4G
 uci commit wireless
 
-uci set network.lan.ipaddr='192.168.1.1'
-uci set network.usbwan=interface
-uci set network.usbwan.proto='dhcp'
-uci set network.usbwan.device='eth0'
+#uci set network.lan.ipaddr='192.168.1.1'
+#uci set network.usbwan=interface
+#uci set network.usbwan.proto='dhcp'
+#uci set network.usbwan.device='eth0'
 #uci add_list firewall.cfg03dc81.network='usbwan'
-uci commit network
+#uci commit network
 uci commit
 
 OPENCLASH_FILE="/etc/config/openclash"
