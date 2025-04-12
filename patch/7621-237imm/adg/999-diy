@@ -1,0 +1,39 @@
+#!/bin/sh
+
+# 设置所有网口可访问网页终端
+uci delete ttyd.@ttyd[0].interface
+
+# 设置所有网口可连接 SSH
+uci set dropbear.@dropbear[0].Interface=''
+
+uci commit
+
+uci set network.lan.ipaddr='192.168.23.1'
+uci commit network
+
+
+sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
+
+sed -i 's/192.168.1.1/192.168.23.1/g' /etc/wireless/mt7615/mt7615.1.5G.dat
+sed -i 's/Openwrt_5G/PingBi-5G/g' /etc/wireless/mt7615/mt7615.1.5G.dat
+sed -i 's/12345678/88888888/g' /etc/wireless/mt7615/mt7615.1.5G.dat
+sed -i 's/AuthMode=OPEN/AuthMode=WPA2PSK/g' /etc/wireless/mt7615/mt7615.1.5G.dat
+sed -i 's/EncrypType=NONE/EncrypType=AES/g' /etc/wireless/mt7615/mt7615.1.5G.dat
+#sed -i 's/CountryCode=US/CountryCode=CN/g' /etc/wireless/mt7615/mt7615.1.5G.dat
+
+sed -i 's/192.168.1.1/192.168.23.1/g' /etc/wireless/mt7615/mt7615.1.2G.dat
+sed -i 's/CR660X_2.4G/PingBi-2.4G/g' /etc/wireless/mt7615/mt7615.1.2G.dat
+sed -i 's/12345678/88888888/g' /etc/wireless/mt7615/mt7615.1.2G.dat
+sed -i 's/AuthMode=OPEN/AuthMode=WPA2PSK/g' /etc/wireless/mt7615/mt7615.1.2G.dat
+sed -i 's/EncrypType=NONE/EncrypType=AES/g' /etc/wireless/mt7615/mt7615.1.2G.dat
+#sed -i 's/CountryCode=US/CountryCode=CN/g' /etc/wireless/mt7615/mt7615.1.2G.dat
+
+mv /etc/my-firewall /etc/config/firewall
+mv /etc/my-firewall.user /etc/firewall.user
+mv /etc/my-adgh.yaml /etc/AdGuardHome.yaml
+
+#tar -xzf /etc/adg.tar.gz -C /
+
+/etc/init.d/network restart
+/etc/init.d/firewall restart
+exit 0
