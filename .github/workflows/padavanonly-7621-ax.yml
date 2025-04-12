@@ -1,4 +1,4 @@
-name: 7915-237imm
+name: padavanonly-7621-ax
 # 脚本参考github/haiibo和dzlea
 # Add a button to trigger the workflow
 on: 
@@ -7,14 +7,14 @@ on:
 env:
   REPO_URL: https://github.com/padavanonly/immortalwrt.git
   REPO_BRANCH: mt7915_mtwifi
-  CONFIG_FILE: config/padavanonly-7915
-  DIY_SCRIPT: script/padavanonly-7915.sh
+  CONFIG_FILE: config/padavanonly-7621-ax
+  DIY_SCRIPT: script/padavanonly-7621-ax.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   FIRMWARE_RELEASE: false
-  FIRMWARE_TAG: 7915-237imm
+  FIRMWARE_TAG: padavanonly-7621-ax
   TZ: Asia/Shanghai
 
 jobs:
@@ -83,7 +83,7 @@ jobs:
       uses: HiGarfield/cachewrtbuild@main
       with:
         ccache: false
-        mixkey: ${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-${{ env.SOURCE_AUTHOR }}-7915-237imm
+        mixkey: ${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-${{ env.SOURCE_AUTHOR }}-7621-ax
         prefix: ${{ env.OPENWRT_PATH }}
 
     - name: Install Feeds(安装feeds)
