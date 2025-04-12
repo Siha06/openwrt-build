@@ -1,4 +1,4 @@
-name: padavanonly-imm-master
+name: padavanonly-7621-ac
 # 脚本参考github/haiibo和dzlea
 # Add a button to trigger the workflow
 on: 
@@ -7,14 +7,14 @@ on:
 env:
   REPO_URL: https://github.com/padavanonly/immortalwrt.git
   REPO_BRANCH: master
-  CONFIG_FILE: config/2padavanonly-master-7621
-  DIY_SCRIPT: script/padavanonly-7621.sh
+  CONFIG_FILE: config/padavanonly-7621-ac
+  DIY_SCRIPT: script/padavanonly-7621-ac.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   FIRMWARE_RELEASE: false
-  FIRMWARE_TAG: padavanonly-imm-master
+  FIRMWARE_TAG: padavanonly-7621-ac
   TZ: Asia/Shanghai
 
 jobs:
