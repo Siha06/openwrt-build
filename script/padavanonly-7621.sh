@@ -36,6 +36,10 @@ rm -rf feeds/packages/net/mosdns
 git clone https://github.com/sbwml/luci-app-mosdns -b v5-lua package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
+rm -rf feeds/packages/multimedia/{UnblockNeteaseMusic-Go,UnblockNeteaseMusic}
+rm -rf feeds/luci/applications/{luci-app-unblockneteasemusic,luci-app-unblockneteasemusic-go,luci-app-unblockmusic}
+git clone --depth 1 https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git  package/luci-app-unblockneteasemusic
+
 #rm -rf feeds/packages/net/adguardhome
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/kz8-small
 #mv package/kz8-small/adguardhome package/adguardhome
