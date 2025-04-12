@@ -10,9 +10,9 @@ if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
 fi
 
 #mv $GITHUB_WORKSPACE/patch/7621-237imm/adg.tar.gz package/base-files/files/etc/adg.tar.gz
-#mv $GITHUB_WORKSPACE/patch/7621-237imm/adg/AdGuardHome.yaml package/base-files/files/etc/my-adgh.yaml
-#mv $GITHUB_WORKSPACE/patch/7621-237imm/adg/firewall package/base-files/files/etc/my-firewall
-#mv $GITHUB_WORKSPACE/patch/7621-237imm/adg/firewall.user package/base-files/files/etc/my-firewall.user
+mv $GITHUB_WORKSPACE/patch/7621-237imm/adg/AdGuardHome.yaml package/base-files/files/etc/my-adgh.yaml
+mv $GITHUB_WORKSPACE/patch/7621-237imm/adg/firewall package/base-files/files/etc/my-firewall
+mv $GITHUB_WORKSPACE/patch/7621-237imm/adg/firewall.user package/base-files/files/etc/my-firewall.user
 
 #rm -rf feeds/luci/applications/luci-app-filetransfer
 rm -rf package/emortal/luci-app-mwan3helper-chinaroute
