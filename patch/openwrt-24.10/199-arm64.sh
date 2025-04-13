@@ -41,6 +41,7 @@ uci commit
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 sed -i 's#downloads.openwrt.org#mirrors.pku.edu.cn/openwrt#g' /etc/opkg/distfeeds.conf
 sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/openwrt/releases/24.10.0/targets/armsr/armv8/kmods/6.6.73-1-5f0e657555378f3e0673e256ddb6fb86' /etc/opkg/customfeeds.conf
+sed -i '$a src/gz kiddin9 https://dl.openwrt.ai/packages-24.10/aarch64_generic/kiddin9' /etc/opkg/customfeeds.conf
 
 #/etc/init.d/network restart
 
