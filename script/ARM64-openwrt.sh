@@ -41,6 +41,7 @@ git clone --depth 1 -b js https://github.com/sirpdboy/luci-theme-kucat.git packa
 git clone --depth 1 https://github.com/ophub/luci-app-amlogic package/luci-app-amlogic
 git clone --depth 1 https://github.com/Siha06/my-openwrt-packages.git package/my-openwrt-packages
 git clone --depth 1 https://github.com/bobbyunknown/luci-app-syscontrol.git package/luci-app-syscontrol
+git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/luci-app-oaf
 
 git clone --depth 1 -b openwrt-24.10 https://github.com/immortalwrt/luci.git package/mypkg/imm24-luci
 mv package/mypkg/imm24-luci/applications/luci-app-autoreboot package/mypkg/luci-app-autoreboot
