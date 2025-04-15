@@ -23,6 +23,12 @@ echo "log-facility=/dev/null" >> "/etc/dnsmasq.conf"
 
 ln -sf "/sbin/ip" "/usr/bin/ip"
 
+OPENCLASH_FILE="/etc/config/openclash"
+if [ -f "$OPENCLASH_FILE" ]; then
+    tar -zxf /etc/clash-linux-arm64.tar.gz -C /etc/openclash/core/
+    mv /etc/openclash/core/clash /etc/openclash/core/clash_meta
+    rm -rf /etc/clash-linux-arm64.tar.gz
+fi
 
 # 设置所有网口可访问网页终端
 uci delete ttyd.@ttyd[0].interface
@@ -32,17 +38,44 @@ uci set dropbear.@dropbear[0].Interface=''
 
 #其他网络设置
 
-uci set network.lan.ip6assign='64'
-uci set network.lan.ip6ifaceid='eui64'
-uci commit network
-
-uci commit
+#uci set network.lan.ip6assign='64'
+#uci set network.lan.ip6ifaceid='eui64'
+#uci commit network
 
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 sed -i 's#downloads.openwrt.org#mirrors.pku.edu.cn/openwrt#g' /etc/opkg/distfeeds.conf
-sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/openwrt/releases/24.10.0/targets/armsr/armv8/kmods/6.6.73-1-5f0e657555378f3e0673e256ddb6fb86' /etc/opkg/customfeeds.conf
-sed -i '$a src/gz kiddin9 https://dl.openwrt.ai/packages-24.10/aarch64_generic/kiddin9' /etc/opkg/customfeeds.conf
+sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/openwrt/releases/24.10.1/targets/armsr/armv8/kmods/6.6.86-1-1fbbf4bedbd6cd5ecacfa33e18d228fb' /etc/opkg/customfeeds.conf
+sed -i '$a #src/gz kiddin9 https://dl.openwrt.ai/packages-24.10/aarch64_generic/kiddin9' /etc/opkg/customfeeds.conf
 
-#/etc/init.d/network restart
+# 统计eth接口数量，大于1个则将eth0设为wan其它网口设为lan，只有1个则设置成DHCP模式
+eth_count=$(ls /sys/class/net | grep -c '^eth')
+if [ $eth_count -gt 1 ]; then
+    uci set network.lan.ipaddr='192.168.23.1'
+
+    uci del dhcp.lan.ra_slaac
+    uci del dhcp.lan.dhcpv6
+    uci del dhcp.lan.ra_flags
+    uci add_list dhcp.lan.ra_flags='none'
+    uci set dhcp.lan.dns_service='0'
+
+    uci del network.wan6
+    uci del network.globals.packet_steering
+    uci del network.globals.ula_prefix
+    uci set network.lan.ip6assign='64'
+    uci set network.lan.ip6ifaceid='eui64'
+
+    uci set network.wan.device='eth0'
+    uci del network.cfg030f15.ports
+    ls /sys/class/net | awk '/^eth[0-9]+$/ && $0 != "eth0" {print "uci add_list network.cfg030f15.ports="$0}' | sh   
+else
+    uci set network.lan.proto='dhcp'
+    uci set dhcp.lan.ignore='1'
+fi
+
+uci commit network
+uci commit dhcp
+uci commit
+
+/etc/init.d/network restart
 
 exit 0
