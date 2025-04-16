@@ -50,8 +50,18 @@ if [ -f "$OPENCLASH_FILE" ]; then
     rm -rf /etc/clash-linux-amd64.tar.gz
 fi
 
+
+# 根据网卡数量配置网络
+eth_count=0
+for iface in /sys/class/net/*; do
+  iface_name=$(basename "$iface")
+  # 检查是否为物理网卡（排除回环设备和无线设备）
+  if [ -e "$iface/device" ] && echo "$iface_name" | grep -Eq '^eth|^en'; then
+    eth_count=$((count + 1))
+  fi
+done
 # 统计eth接口数量，大于1个则将eth0设为wan其它网口设为lan，只有1个则设置成DHCP模式
-eth_count=$(ls /sys/class/net | grep -c '^eth')
+#丢弃eth_count=$(ls /sys/class/net | grep -c '^eth')
 if [ $eth_count -gt 1 ]; then
     uci set network.lan.ipaddr='192.168.23.1'
 
