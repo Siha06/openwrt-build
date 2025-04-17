@@ -25,11 +25,6 @@ echo "DISTRIB_REVISION='V${date_version}'" >> /etc/openwrt_release
 sed -i '/DISTRIB_DESCRIPTION/d' /etc/openwrt_release
 echo "DISTRIB_DESCRIPTION='OpenWrt  '" >> /etc/openwrt_release
 
-uci set network.lan.proto=dhcp
-uci set dhcp.lan.ignore=1
-uci commit network
-uci commit dhcp
-uci commit
-/etc/init.d/network restart
+#/etc/init.d/network restart
 
 exit 0
