@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 env:
-  REPO_URL: https://github.com/5und4y2023/vikingyfy-immortalwrt.git
+  REPO_URL: https://github.com/Siha06/immortalwrt-vikingyfy.git
   REPO_BRANCH: main
   CONFIG_FILE: config/VIKINGYFY-ipq807x
   DIY_SCRIPT: script/VIKINGYFY.sh
