@@ -13,7 +13,7 @@ uci commit
 
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 sed -i 's#downloads.immortalwrt.org#mirrors.pku.edu.cn/immortalwrt#g' /etc/opkg/distfeeds.conf
-sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/immortalwrt/releases/24.10.0/targets/rockchip/armv8/kmods/6.6.73-1-f03df7cf7b7424bf4377334a801e4b66' /etc/opkg/customfeeds.conf
+sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/immortalwrt/releases/24.10.0/targets/rockchip/armv8/kmods/6.6.86-1-422144fea623288f7402e1a9a15724c8' /etc/opkg/customfeeds.conf
 #sed -i '$a src/gz kiddin9 https://dl.openwrt.ai/packages-24.10/aarch64_generic/kiddin9' /etc/opkg/customfeeds.conf
 
 #uci set network.usbwan=interface
@@ -27,6 +27,7 @@ if [ -f "$OPENCLASH_FILE" ]; then
     rm -rf /etc/clash-linux-arm64.tar.gz
 fi
 
+mv /etc/my-crontabs /etc/crontabs/root
 #/etc/init.d/network restart
 
 exit 0
