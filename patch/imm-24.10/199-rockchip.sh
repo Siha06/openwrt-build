@@ -27,7 +27,13 @@ if [ -f "$OPENCLASH_FILE" ]; then
     rm -rf /etc/clash-linux-arm64.tar.gz
 fi
 
-mv /etc/my-crontabs /etc/crontabs/root
-#/etc/init.d/network restart
+uci set network.cfg030f15.macaddr="8C:DA:$(date +"%d:%H:%M:%S")"
+uci set network.cfg060f15.macaddr="9C:DA:$(date +"%d:%H:%M:%S")"
+uci commit network
+uci set wireless.default_radio0.macaddr='random'
+uci commit wireless
+uci commit
+#mv /etc/my-crontabs /etc/crontabs/root
+/etc/init.d/network restart
 
 exit 0
