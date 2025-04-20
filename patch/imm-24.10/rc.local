@@ -1,5 +1,5 @@
 uci set network.cfg030f15.macaddr="8C:DA:$(date +"%d:%H:%M:%S")"
-uci set network.cfg080f15.macaddr="9C:DA:$(date +"%d:%H:%M:%S")"
+uci set network.cfg060f15.macaddr="9C:DA:$(date +"%d:%H:%M:%S")"
 uci commit network
 
 exit 0
