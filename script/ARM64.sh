@@ -22,10 +22,10 @@ sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/etc/
 #git clone --depth 1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
 #sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh-cn/modem.po
 #sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh_Hans/modem.po
-rm -rf feeds/packages/net/quectel-cm
-rm -rf feeds/packages/kernel/fibocom-qmi-wwan
-rm -rf feeds/packages/kernel/quectel-qmi-wwan
-rm -rf feeds/luci/protocols/luci-proto-quectel
+#rm -rf feeds/packages/net/quectel-cm
+#rm -rf feeds/packages/kernel/fibocom-qmi-wwan
+#rm -rf feeds/packages/kernel/quectel-qmi-wwan
+#rm -rf feeds/luci/protocols/luci-proto-quectel
 
 # iStore
 git clone --depth 1 -b main https://github.com/linkease/istore.git package/istore
@@ -63,7 +63,7 @@ git clone --depth 1 https://github.com/nikkinikki-org/OpenWrt-nikki.git package/
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/passwall
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
-rm -rf feeds/packages/devel/gn
+#rm -rf feeds/packages/devel/gn
 rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-openclash}
 rm -rf feeds/packages/net/v2ray-geodata
 rm -rf feeds/packages/net/mosdns
