@@ -5,7 +5,12 @@ sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.8.1/g" $(find ./feeds/luci/modules/lu
 sed -i 's/${defaults ? 0 : 1}/0/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 
 mv $GITHUB_WORKSPACE/patch/openwrt-24.10/199-x86.sh package/base-files/files/etc/uci-defaults/199-x86.sh
-
+if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
+    git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
+    tar -zxf package/openclash-core/master/meta/clash-linux-amd64.tar.gz -C package/base-files/files/etc/
+    mv package/base-files/files/etc/clash package/base-files/files/etc/my-clash
+    rm -rf package/openclash-core
+fi
 #完全删除luci版本
 sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
 #添加编译日期
