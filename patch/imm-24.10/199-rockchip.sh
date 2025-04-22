@@ -22,16 +22,14 @@ sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/immortalwrt/releases/24.10.0/
 
 OPENCLASH_FILE="/etc/config/openclash"
 if [ -f "$OPENCLASH_FILE" ]; then
-    tar -zxf /etc/clash-linux-arm64.tar.gz -C /etc/openclash/core/
-    mv /etc/openclash/core/clash /etc/openclash/core/clash_meta
-    rm -rf /etc/clash-linux-arm64.tar.gz
+    mv /etc/my-clash /etc/openclash/core/clash_meta
 fi
 
-uci set network.cfg030f15.macaddr="8C:DA:$(date +"%d:%H:%M:%S")"
-uci set network.cfg060f15.macaddr="9C:DA:$(date +"%d:%H:%M:%S")"
-uci commit network
-uci set wireless.default_radio0.macaddr='random'
-uci commit wireless
+#uci set network.cfg030f15.macaddr="8C:DA:$(date +"%d:%H:%M:%S")"
+#uci set network.cfg060f15.macaddr="9C:DA:$(date +"%d:%H:%M:%S")"
+#uci commit network
+#uci set wireless.default_radio0.macaddr='random'
+#uci commit wireless
 uci commit
 #mv /etc/my-crontabs /etc/crontabs/root
 /etc/init.d/network restart
