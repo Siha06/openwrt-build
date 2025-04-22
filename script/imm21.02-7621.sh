@@ -70,12 +70,12 @@ mv package/mypackage/nas-packages/network/services/* package/mypackage/nas-packa
 rm -rf package/mypackage/nas-packages/network
 
 #下载5g模块
-#git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
-#sed -i '/pcie_mhi/d' package/5g-modem/luci-app-modem/Makefile
-#rm -rf feeds/packages/net/quectel-cm
-#rm -rf feeds/packages/kernel/fibocom-qmi-wwan
-#rm -rf feeds/packages/kernel/quectel-qmi-wwan
-#rm -rf feeds/luci/protocols/luci-proto-quectel
+git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
+sed -i '/pcie_mhi/d' package/5g-modem/luci-app-modem/Makefile
+rm -rf feeds/packages/net/quectel-cm
+rm -rf feeds/packages/kernel/fibocom-qmi-wwan
+rm -rf feeds/packages/kernel/quectel-qmi-wwan
+rm -rf feeds/luci/protocols/luci-proto-quectel
 
 git clone --depth 1 https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
 #git clone --depth=1 https://github.com/kenzok8/small-package.git package/small-package
