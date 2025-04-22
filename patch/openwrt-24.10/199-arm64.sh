@@ -18,16 +18,9 @@ if ! uci -q get system.@imm_init[0].system_chn > "/dev/null"; then
 	EOF
 fi
 
-sed -i "/log-facility/d" "/etc/dnsmasq.conf"
-echo "log-facility=/dev/null" >> "/etc/dnsmasq.conf"
-
-ln -sf "/sbin/ip" "/usr/bin/ip"
-
 OPENCLASH_FILE="/etc/config/openclash"
 if [ -f "$OPENCLASH_FILE" ]; then
-    tar -zxf /etc/clash-linux-arm64.tar.gz -C /etc/openclash/core/
-    mv /etc/openclash/core/clash /etc/openclash/core/clash_meta
-    rm -rf /etc/clash-linux-arm64.tar.gz
+    mv /etc/my-clash /etc/openclash/core/clash_meta
 fi
 
 # 设置所有网口可访问网页终端
