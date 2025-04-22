@@ -18,11 +18,6 @@ if ! uci -q get system.@imm_init[0].system_chn > "/dev/null"; then
 	EOF
 fi
 
-sed -i "/log-facility/d" "/etc/dnsmasq.conf"
-echo "log-facility=/dev/null" >> "/etc/dnsmasq.conf"
-
-ln -sf "/sbin/ip" "/usr/bin/ip"
-
 # 设置默认防火墙规则，方便虚拟机首次访问 WebUI
 #uci set firewall.@zone[1].input='ACCEPT'
 
