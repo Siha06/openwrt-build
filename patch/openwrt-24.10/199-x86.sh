@@ -39,4 +39,9 @@ sed -i 's#downloads.openwrt.org#mirrors.pku.edu.cn/openwrt#g' /etc/opkg/distfeed
 sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/openwrt/releases/23.05.5/targets/x86/64/kmods/5.15.167-1-59d1431675acc6823a33c7eb2323daeb' /etc/opkg/customfeeds.conf
 #sed -i '$a #src/gz kiddin9 https://dl.openwrt.ai/packages-24.10/x86_64/kiddin9' /etc/opkg/customfeeds.conf
 
+OPENCLASH_FILE="/etc/config/openclash"
+if [ -f "$OPENCLASH_FILE" ]; then
+    mv /etc/my-clash /etc/openclash/core/clash_meta
+fi
+
 exit 0
