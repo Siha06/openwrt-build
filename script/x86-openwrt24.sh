@@ -10,6 +10,8 @@ if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     mv package/openclash-core/master/meta/clash-linux-amd64.tar.gz package/base-files/files/etc/clash-linux-amd64.tar.gz
     rm -rf package/openclash-core
 fi
+#完全删除luci版本
+sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
 #添加编译日期
 sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/usr/lib/os-release
 sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/etc/openwrt_release
@@ -82,3 +84,9 @@ mv package/kz8-small/luci-app-poweroff package/luci-app-poweroff
 mv package/kz8-small/luci-app-vlmcsd package/luci-app-vlmcsd
 mv package/kz8-small/vlmcsd package/vlmcsd
 rm -rf package/kz8-small
+
+git clone --depth 1 https://github.com/kiddin9/kwrt-packages.git package/kwrt-packages
+mv package/kwrt-packages/luci-theme-design package/luci-theme-design
+mv package/kwrt-packages/luci-theme-material3 package/luci-theme-material3
+mv package/kwrt-packages/luci-app-npc package/luci-app-npc
+rm -rf package/kwrt-packages
