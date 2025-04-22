@@ -15,12 +15,50 @@ CONFIG_GRUB_EFI_IMAGES=y
 # CONFIG_VHDX_IMAGES is not set
 CONFIG_TARGET_IMAGES_GZIP=y
 CONFIG_TARGET_KERNEL_PARTSIZE=128
-CONFIG_TARGET_ROOTFS_PARTSIZE=512
+CONFIG_TARGET_ROOTFS_PARTSIZE=1024
 # CONFIG_TARGET_ROOTFS_TARGZ is not set
 CONFIG_LUCI_LANG_zh_Hans=y
+# CONFIG_PACKAGE_dnsmasq is not set
+CONFIG_PACKAGE_dnsmasq-full=y
 
-CONFIG_PACKAGE_luci-app-modem=y
-CONFIG_PACKAGE_luci-app-sms-tool=y
-CONFIG_PACKAGE_luci-i18n-modem-zh-cn=y
-CONFIG_PACKAGE_luci-app-syncdial=y
-CONFIG_PACKAGE_luci-app-mwan3=y
+CONFIG_PACKAGE_luci-theme-argon=y
+CONFIG_PACKAGE_luci-app-autoreboot=y
+CONFIG_PACKAGE_luci-app-filemanager=y
+CONFIG_PACKAGE_luci-app-ramfree=y
+CONFIG_PACKAGE_luci-app-ttyd=y
+CONFIG_PACKAGE_luci-app-poweroff=y
+
+CONFIG_PACKAGE_luci-app-diskman=y
+CONFIG_PACKAGE_luci-app-npc=y
+CONFIG_PACKAGE_luci-app-partexp=y
+CONFIG_PACKAGE_luci-theme-material3=y
+CONFIG_PACKAGE_luci-theme-design=y
+
+CONFIG_PACKAGE_luci-app-nikki=y
+CONFIG_PACKAGE_luci-app-ssr-plus=y
+# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks_NONE_Client is not set
+CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks_Libev_Client=y
+# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks_Rust_Client is not set
+CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks_NONE_Server=y
+# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks_Libev_Server is not set
+# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks_Rust_Server is not set
+# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_NONE_V2RAY is not set
+# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_V2ray is not set
+CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Xray=y
+CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ChinaDNS_NG=y
+CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_DNS2SOCKS=y
+# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_DNS2SOCKS_RUST is not set
+# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_DNSPROXY is not set
+CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_MosDNS=y
+CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Hysteria=y
+CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Tuic_Client=y
+CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadow_TLS=y
+CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_IPT2Socks=y
+CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Kcptun=y
+# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_NaiveProxy is not set
+CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Redsocks2=y
+CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks_Simple_Obfs=y
+CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks_V2ray_Plugin=y
+CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Libev_Client=y
+# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Libev_Server is not set
+# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Trojan is not set
