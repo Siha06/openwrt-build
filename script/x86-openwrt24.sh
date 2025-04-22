@@ -66,6 +66,7 @@ sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-stat
 git clone --depth 1 -b openwrt-24.10 https://github.com/immortalwrt/packages.git package/mypkg/imm24-packages
 #mv package/mypkg/imm24-packages/net/qBittorrent-Enhanced-Edition package/qBittorrent-Enhanced-Edition
 mv package/mypkg/imm24-packages/net/msd_lite package/msd_lite
+mv package/mypkg/imm24-packages/net/nps package/nps
 rm -rf package/mypkg/imm24-packages
 
 rm -rf feeds/packages/net/adguardhome
