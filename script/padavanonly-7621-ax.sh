@@ -5,10 +5,10 @@ mv $GITHUB_WORKSPACE/patch/7621-237imm/adg/ax-999-diy package/base-files/files/e
 
 if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
-    mv package/openclash-core/master/meta/clash-linux-mipsle-softfloat.tar.gz package/base-files/files/etc/clash-linux-mipsle-softfloat.tar.gz
+    tar -zxf package/openclash-core/master/meta/clash-linux-mipsle-softfloat.tar.gz -C package/base-files/files/etc/
+    mv package/base-files/files/etc/clash package/base-files/files/etc/my-clash
     rm -rf package/openclash-core
 fi
-
 #mv $GITHUB_WORKSPACE/patch/7621-237imm/adg.tar.gz package/base-files/files/etc/adg.tar.gz
 #mv $GITHUB_WORKSPACE/patch/7621-237imm/adg/AdGuardHome.yaml package/base-files/files/etc/my-adgh.yaml
 #mv $GITHUB_WORKSPACE/patch/7621-237imm/adg/firewall package/base-files/files/etc/my-firewall
