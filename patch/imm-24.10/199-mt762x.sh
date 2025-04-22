@@ -17,9 +17,7 @@ sed -i '$a src/gz kmods https://mirror.nju.edu.cn/immortalwrt/releases/24.10.0/t
 
 OPENCLASH_FILE="/etc/config/openclash"
 if [ -f "$OPENCLASH_FILE" ]; then
-    tar -zxf /etc/clash-linux-mipsle-softfloat.tar.gz -C /etc/openclash/core/
-    mv /etc/openclash/core/clash /etc/openclash/core/clash_meta
-    rm -rf /etc/clash-linux-arm64.tar.gz
+    mv /etc/my-clash /etc/openclash/core/clash_meta
 fi
 
 #/etc/init.d/network restart
