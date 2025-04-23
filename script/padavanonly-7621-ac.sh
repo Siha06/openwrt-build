@@ -7,6 +7,13 @@ mv $GITHUB_WORKSPACE/patch/7621-237imm/ac-999-diy package/base-files/files/etc/u
 #mv $GITHUB_WORKSPACE/patch/7621-237imm/dts/02_network target/linux/ramips/mt7621/base-files/etc/board.d/02_network
 sed -i 's/wan/gmac1/g' target/linux/ramips/dts/mt7621_netgear_wndr3700-v5.dts
 
+if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
+    git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
+    tar -zxf package/openclash-core/master/meta/clash-linux-mipsle-softfloat.tar.gz -C package/base-files/files/etc/
+    mv package/base-files/files/etc/clash package/base-files/files/etc/my-clash
+    rm -rf package/openclash-core
+fi
+
 #rm -rf feeds/luci/applications/luci-app-filetransfer
 rm -rf package/emortal/luci-app-mwan3helper-chinaroute
 rm -rf feeds/luci/themes/luci-theme-argonv3
@@ -18,8 +25,8 @@ git clone -b 18.06 --depth 1 https://github.com/jerrykuku/luci-theme-argon.git f
 rm -rf feeds/packages/lang/golang
 git clone --depth 1 https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
 #删除自带的老旧依赖，ssr-plus，passwall
-rm -rf feeds/packages/net/{chinadns-ng,dns2socks,dns2tcp,dnsproxy,hysteria,ipt2socks,microsocks,naiveproxy}
-rm -rf feeds/packages/net/{simple-obfs,sing-box,tcping,trojan*,tuic-client,v2ray*,xray*,mosdns,redsocks2,shadow-tls}
+rm -rf feeds/packages/net/{chinadns-ng,dns2socks,geoview,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocks-rust}
+rm -rf feeds/packages/net/{shadowsocksr-libev,simple-obfs,sing-box,tcping,trojan-plus,tuic-client,v2ray-geodata,v2ray-plugin,xray-core,xray-plugin}
 rm -rf feeds/packages/devel/gn
 rm -rf feeds/packages/utils/v2dat
 rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-ssr-plus,luci-app-mosdns,luci-app-openclash}
