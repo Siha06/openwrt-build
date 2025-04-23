@@ -13,7 +13,7 @@ sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 
 OPENCLASH_FILE="/etc/config/openclash"
 if [ -f "$OPENCLASH_FILE" ]; then
-    mv /etc/openclash/core/my-clash /etc/openclash/core/clash_meta
+    mv /etc/my-clash /etc/openclash/core/clash_meta
 fi
 
 sed -i '/core/d' /etc/opkg/distfeeds.conf
