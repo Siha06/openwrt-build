@@ -5,10 +5,10 @@ sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/l
 #sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 sed -i 's/ImmortalWrt/WiFi/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 #sed -i 's/ImmortalWrt/WiFi/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
-
 mv $GITHUB_WORKSPACE/patch/imm-24.10/199-rockchip.sh package/base-files/files/etc/uci-defaults/zz-rockchip.sh
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
-mv $GITHUB_WORKSPACE/patch/imm-24.10/rc.local package/base-files/files/etc/rc.local
+
+#mv $GITHUB_WORKSPACE/patch/imm-24.10/rc.local package/base-files/files/etc/rc.local
 #mv $GITHUB_WORKSPACE/patch/imm-24.10/my-crontabs package/base-files/files/etc/my-crontabs
 
 if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
@@ -46,7 +46,8 @@ git clone --depth 1 https://github.com/nikkinikki-org/OpenWrt-nikki.git package/
 rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-openclash,luci-app-v2raya}
 rm -rf feeds/packages/net/v2ray-geodata
 rm -rf feeds/packages/net/mosdns
-rm -rf feeds/packages/net/{microsocks,v2ray*,xray*,mosdns,sing-box}
+rm -rf feeds/packages/net/{chinadns-ng,dns2socks,geoview,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocks-rust}
+rm -rf feeds/packages/net/{shadowsocksr-libev,simple-obfs,sing-box,tcping,trojan-plus,tuic-client,v2ray-geodata,v2ray-plugin,xray-core,xray-plugin}
 rm -rf feeds/packages/utils/v2dat
 
 #git clone --depth 1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
