@@ -7,7 +7,7 @@ on:
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt.git
   REPO_BRANCH: openwrt-24.10
-  CONFIG_FILE: config/rockchip-imm
+  CONFIG_FILE: config/rockchip-imm-2
   DIY_SCRIPT: script/immortalwrt.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
