@@ -51,8 +51,9 @@ git clone --depth 1 https://github.com/sirpdboy/luci-app-autotimeset package/luc
 git clone --depth 1 https://github.com/sirpdboy/luci-app-chatgpt-web.git package/luci-app-chatgpt-web
 git clone --depth 1 https://github.com/sirpdboy/luci-app-ddns-go.git package/luci-app-ddns-go
 git clone --depth 1 https://github.com/sirpdboy/luci-app-eqosplus package/luci-app-eqosplus
+git clone --depth 1 https://github.com/destan19/fros-packages-openwrt.git package/fros
 git clone --depth 1 https://github.com/sirpdboy/netspeedtest.git package/netspeedtest
-#git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/openwrt-oaf
+git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/openwrt-oaf
 #git clone --depth 1 https://github.com/Diciya/luci-app-broadbandacc.git package/broadbandacc
 #git clone --depth 1 https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git package/unblockneteasemusic
 
