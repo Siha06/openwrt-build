@@ -18,7 +18,12 @@ uci commit
 #wget -P /usr/sha/ https://testingcf.jsdelivr.net/gh/HiboyHiboy/opt-file/Advanced_Extensions_virtualhereasp
 
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
+sed -i 's#downloads.immortalwrt.org#mirrors.pku.edu.cn/immortalwrt#g' /etc/opkg/distfeeds.conf
 
+OPENCLASH_FILE="/etc/config/openclash"
+if [ -f "$OPENCLASH_FILE" ]; then
+    mv /etc/my-clash /etc/openclash/core/clash_meta
+fi
 #/etc/init.d/system restart
 #/etc/init.d/network restart
 
