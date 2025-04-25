@@ -7,7 +7,7 @@ mv $GITHUB_WORKSPACE/patch/imm21.02/199-mt762x package/base-files/files/etc/uci-
 
 #安装最新openclash
 rm -rf feeds/luci/applications/luci-app-openclash
-git clone --depth=1 https://github.com/vernesong/OpenClash.git  package/openclash
+git clone --depth 1 https://github.com/vernesong/OpenClash.git  package/openclash
 mv package/openclash/luci-app-openclash feeds/luci/applications/
 rm -rf package/openclash
 if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
@@ -29,17 +29,16 @@ fi
 
 #rm -rf feeds/luci/themes/luci-theme-argonv3
 #rm -rf feeds/luci/themes/luci-theme-argonv2
-#rm -rf feeds/luci/themes/luci-theme-argon
-#git clone -b 18.06 --depth 1 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
+rm -rf feeds/luci/themes/luci-theme-argon
+# rm -rf feeds/luci/applications/luci-app-argon-config
+git clone -b 18.06 --depth 1 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
+# git clone -b 18.06 --depth 1 https://github.com/jerrykuku/luci-app-argon-config feeds/luci/applications/luci-app-argon-config
 #git clone --depth 1 https://github.com/kenzok8/openwrt-packages.git  package/openwrt-packages
 #mv package/openwrt-packages/luci-theme-design package/luci-theme-design
 #rm -rf package/openwrt-packages
 
 # git clone --depth 1 https://github.com/sirpdboy/luci-app-eqosplus package/luci-app-eqosplus
-# rm -rf feeds/luci/themes/luci-theme-argon
-# rm -rf feeds/luci/applications/luci-app-argon-config
-# git clone -b 18.06 --depth=1 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
-# git clone -b 18.06 --depth=1 https://github.com/jerrykuku/luci-app-argon-config feeds/luci/applications/luci-app-argon-config
+
 
 # git clone -b openwrt-21.02 --single-branch --depth=1 https://github.com/immortalwrt/luci.git package/imm21pkg
 # mv package/imm21pkg/protocols/luci-proto-sstp package/luci-proto-sstp
