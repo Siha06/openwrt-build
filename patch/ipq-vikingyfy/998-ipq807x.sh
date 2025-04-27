@@ -2,6 +2,7 @@
 
 sed -i '/nss/d' /etc/apk/repositories.d/distfeeds.list
 sed -i '/sqm/d' /etc/apk/repositories.d/distfeeds.list
+sed -i '/qualcommax/d' /etc/apk/repositories.d/distfeeds.list
 sed -i 's#downloads.immortalwrt.org#mirrors.pku.edu.cn/immortalwrt#g' /etc/apk/repositories.d/distfeeds.list
 sed -i '$a https://mirrors.pku.edu.cn/immortalwrt/snapshots/targets/qualcommax/ipq807x/kmods/6.6.85-1-46b4d6b592658cfd4beedf8fd149c294/packages.adb' /etc/apk/repositories.d/customfeeds.list
 
