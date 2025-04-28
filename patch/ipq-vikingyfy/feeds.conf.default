@@ -1,0 +1,7 @@
+src-git nss_packages https://github.com/qosmio/nss-packages.git^bb4d4c9a2520f48b366c16c22a6d90df1afdfd8a
+src-git sqm_scripts_nss https://github.com/qosmio/sqm-scripts-nss.git
+src-git packages https://github.com/immortalwrt/packages.git
+src-git luci https://github.com/immortalwrt/luci.git
+src-git routing https://github.com/openwrt/routing.git
+src-git telephony https://github.com/openwrt/telephony.git
+src-git video https://github.com/openwrt/video.git
