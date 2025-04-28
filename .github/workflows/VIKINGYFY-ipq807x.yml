@@ -95,6 +95,7 @@ jobs:
     - name: Install Feeds(安装feeds)
       run: |
         cd $OPENWRT_PATH
+        mv  $GITHUB_WORKSPACE/patch/ipq-vikingyfy/feeds.conf.default feeds.conf.default
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds update -a
