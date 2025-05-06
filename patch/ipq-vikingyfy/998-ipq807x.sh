@@ -3,9 +3,9 @@
 sed -i '/nss/d' /etc/apk/repositories.d/distfeeds.list
 sed -i '/sqm/d' /etc/apk/repositories.d/distfeeds.list
 sed -i '/qualcommax/d' /etc/apk/repositories.d/distfeeds.list
-sed -i 's#downloads.immortalwrt.org#mirrors.pku.edu.cn/immortalwrt#g' /etc/apk/repositories.d/distfeeds.list
-sed -i '$a https://mirrors.pku.edu.cn/immortalwrt/snapshots/targets/qualcommax/ipq807x/kmods/6.6.85-1-46b4d6b592658cfd4beedf8fd149c294/packages.adb' /etc/apk/repositories.d/customfeeds.list
-sed -i '$a https://mirrors.pku.edu.cn/immortalwrt/snapshots/targets/qualcommax/ipq807x/packages/packages.adb' /etc/apk/repositories.d/customfeeds.list
+sed -i 's#https://downloads.immortalwrt.org#http://mirrors.pku.edu.cn/immortalwrt#g' /etc/apk/repositories.d/distfeeds.list
+sed -i '$a http://mirrors.pku.edu.cn/immortalwrt/snapshots/targets/qualcommax/ipq807x/kmods/6.6.85-1-46b4d6b592658cfd4beedf8fd149c294/packages.adb' /etc/apk/repositories.d/customfeeds.list
+sed -i '$a http://mirrors.pku.edu.cn/immortalwrt/snapshots/targets/qualcommax/ipq807x/packages/packages.adb' /etc/apk/repositories.d/customfeeds.list
 
 # 设置所有网口可访问网页终端
 uci delete ttyd.@ttyd[0].interface
