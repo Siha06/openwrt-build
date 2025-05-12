@@ -17,9 +17,9 @@ sed -i 's#downloads.immortalwrt.org#mirrors.pku.edu.cn/immortalwrt#g' /etc/opkg/
 sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/immortalwrt/releases/24.10.1/targets/rockchip/armv8/kmods/6.6.86-1-422144fea623288f7402e1a9a15724c8' /etc/opkg/customfeeds.conf
 #sed -i '$a src/gz kiddin9 https://dl.openwrt.ai/packages-24.10/aarch64_generic/kiddin9' /etc/opkg/customfeeds.conf
 
-uci set network.usbwan=interface
-uci set network.usbwan.proto='dhcp'
-uci commit network
+#uci set network.usbwan=interface
+#uci set network.usbwan.proto='dhcp'
+#uci commit network
 
 OPENCLASH_FILE="/etc/config/openclash"
 if [ -f "$OPENCLASH_FILE" ]; then
@@ -31,6 +31,19 @@ fi
 #uci commit network
 #uci set wireless.default_radio0.macaddr='random'
 #uci commit wireless
+
+uci del dhcp.lan.ra
+uci del dhcp.lan.ra_slaac
+uci del dhcp.lan.ra_flags
+uci del dhcp.lan.dhcpv6
+uci del dhcp.lan.dns_service
+uci commit dhcp
+uci del network.wan6
+uci del network.lan.ip6assign
+uci del network.globals.ula_prefix
+uci commit network
+uci commit
+
 uci commit
 #mv /etc/my-crontabs /etc/crontabs/root
 /etc/init.d/network restart
