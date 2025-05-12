@@ -1,12 +1,12 @@
 # 修改默认IP，主机名
-sed -i 's/192.168.1.1/10.0.0.1/g' package/base-files/files/bin/config_generate
-sed -i "s/192\.168\.[0-9]*\.[0-9]*/10.0.0.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
+sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
+sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 sed -i 's/ImmortalWrt/OpenWrt/g' include/version.mk
 
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
-#mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/998-ipq60xx.sh package/base-files/files/etc/uci-defaults/998-ipq60xx.sh
-mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/998-ipq807x.sh package/base-files/files/etc/uci-defaults/998-ipq807x.sh
+mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/998-ipq60xx.sh package/base-files/files/etc/uci-defaults/998-ipq60xx.sh
+#mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/998-ipq807x.sh package/base-files/files/etc/uci-defaults/998-ipq807x.sh
 
 if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
