@@ -24,7 +24,7 @@ fi
 
 #默认WiFi设置
 sed -i 's/OWRT/AP8220/g' target/linux/qualcommax/base-files/etc/uci-defaults/990_set-wireless.sh
-sed -i 's/12345678/XLNB6666/g' target/linux/qualcommax/base-files/etc/uci-defaults/990_set-wireless.sh
+sed -i 's/12345678/123456qwerty/g' target/linux/qualcommax/base-files/etc/uci-defaults/990_set-wireless.sh
 #sed -i '/BASE_WORD/d' target/linux/qualcommax/base-files/etc/uci-defaults/990_set-wireless.sh
 #sed -i 's/psk2+ccmp/none/g' target/linux/qualcommax/base-files/etc/uci-defaults/990_set-wireless.sh
 
