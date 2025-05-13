@@ -15,6 +15,9 @@ uci delete ttyd.@ttyd[0].interface
 # 设置所有网口可连接 SSH
 uci set dropbear.@dropbear[0].Interface=''
 
+uci set luci.main.mediaurlbase=/luci-static/bootstrap
+uci commit luci
+
 # wifi设置
 mymac=$(ifconfig br-lan 2>/dev/null | awk '/HWaddr/ {print $5}' | awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')
 uci set wireless.default_radio0.ssid=WiFi-${mymac}-5G
