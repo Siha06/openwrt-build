@@ -5,9 +5,9 @@ on:
   workflow_dispatch:
 
 env:
-  REPO_URL: https://github.com/VIKINGYFY/immortalwrt.git
+  REPO_URL: https://github.com/Siha06/immortalwrt-vikingyfy.git
   REPO_BRANCH: main
-  CONFIG_FILE: config/VIKINGYFY-ipq60xx-nowifi
+  CONFIG_FILE: config/VIKINGYFY-ipq60xx-wifi
   DIY_SCRIPT: script/VIKINGYFY.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
@@ -95,6 +95,7 @@ jobs:
     - name: Install Feeds(安装feeds)
       run: |
         cd $OPENWRT_PATH
+        mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/feeds.conf.default feeds.conf.default
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds update -a
