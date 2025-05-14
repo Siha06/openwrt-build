@@ -19,7 +19,7 @@ uci set luci.main.mediaurlbase=/luci-static/bootstrap
 uci commit luci
 
 # wifi设置
-mymac=$(ifconfig br-lan 2>/dev/null | awk '/HWaddr/ {print $5}' | awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')
+mymac=$(cat /sys/class/net/br-lan/address 2>/dev/null | awk -F: '{print $5 $6}' | tr 'a-z' 'A-Z')
 uci set wireless.default_radio0.ssid=WiFi-${mymac}-5G
 uci set wireless.default_radio1.ssid=WiFi-${mymac}-2.4G
 uci commit wireless
