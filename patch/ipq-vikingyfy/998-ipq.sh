@@ -6,7 +6,7 @@ sed -i '/sqm/d' /etc/opkg/distfeeds.conf
 sed -i '/qualcommax/d' /etc/opkg/distfeeds.conf
 sed -i '/video/d' /etc/opkg/distfeeds.conf
 sed -i 's#downloads.immortalwrt.org/snapshots#mirrors.pku.edu.cn/immortalwrt/releases/24.10-SNAPSHOT#g' /etc/opkg/distfeeds.conf
-sed -i '$a https://mirrors.pku.edu.cn/immortalwrt/releases/24.10-SNAPSHOT/targets/qualcommax/ipq807x/packages' /etc/opkg/customfeeds.conf
+sed -i '$a src/gz openwrt_others https://mirrors.pku.edu.cn/immortalwrt/releases/24.10-SNAPSHOT/targets/qualcommax/ipq807x/packages' /etc/opkg/customfeeds.conf
 
 # 设置所有网口可访问网页终端
 uci delete ttyd.@ttyd[0].interface
