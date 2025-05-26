@@ -43,8 +43,6 @@ sed -i '$a #src/gz kiddin9 https://dl.openwrt.ai/packages-24.10/aarch64_generic/
 # 统计eth接口数量，大于1个则将eth0设为wan其它网口设为lan，只有1个则设置成DHCP模式
 eth_count=$(ls /sys/class/net | grep -c '^eth')
 if [ $eth_count -gt 1 ]; then
-    uci set network.lan.ipaddr='192.168.23.1'
-
     uci del dhcp.lan.ra_slaac
     uci del dhcp.lan.dhcpv6
     uci del dhcp.lan.ra_flags
@@ -70,5 +68,6 @@ uci commit dhcp
 uci commit
 
 /etc/init.d/network restart
+/etc/init.d/odhcpd restart
 
 exit 0
