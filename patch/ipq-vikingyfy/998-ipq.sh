@@ -14,8 +14,8 @@ uci delete ttyd.@ttyd[0].interface
 # 设置所有网口可连接 SSH
 uci set dropbear.@dropbear[0].Interface=''
 
-uci set luci.main.mediaurlbase=/luci-static/bootstrap
-uci commit luci
+#uci set luci.main.mediaurlbase=/luci-static/bootstrap
+#uci commit luci
 
 # wifi设置
 mymac=$(cat /sys/class/net/br-lan/address 2>/dev/null | awk -F: '{print $5 $6}' | tr 'a-z' 'A-Z')
