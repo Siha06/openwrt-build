@@ -42,7 +42,8 @@ uci commit network
 
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 sed -i 's#downloads.openwrt.org#mirrors.pku.edu.cn/openwrt#g' /etc/opkg/distfeeds.conf
+sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/openwrt/releases/24.10-SNAPSHOT/targets/ramips/mt7621/kmods/6.6.92-1-c3c3b24968d2c7083ed39a0b911b24a3' /etc/opkg/distfeeds.conf
 
-#/etc/init.d/network restart
+/etc/init.d/network restart
 
 exit 0
