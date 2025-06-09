@@ -53,14 +53,30 @@ CONFIG_NSS_FIRMWARE_VERSION_12_5=y
 # CONFIG_NSS_FIRMWARE_VERSION_11_4 is not set
 
 CONFIG_PACKAGE_luci-theme-argon=y
-# CONFIG_PACKAGE_luci-app-autoreboot is not set
-CONFIG_PACKAGE_luci-app-cpufreq=y
-# CONFIG_PACKAGE_luci-app-diskman is not set
+CONFIG_PACKAGE_luci-app-autoreboot=y
+# CONFIG_PACKAGE_luci-app-cpufreq is not set
+CONFIG_PACKAGE_luci-app-diskman=y
 CONFIG_PACKAGE_luci-app-filemanager=y
 CONFIG_PACKAGE_luci-app-ramfree=y
 CONFIG_PACKAGE_luci-app-ttyd=y
 
+CONFIG_PACKAGE_luci-app-diskman=y
+CONFIG_PACKAGE_luci-app-parentcontrol=y
+CONFIG_PACKAGE_luci-app-vsftpd=y
+CONFIG_PACKAGE_luci-app-usb-printer=y
+CONFIG_PACKAGE_luci-app-samba4=y
 CONFIG_PACKAGE_luci-app-linkease=y
+CONFIG_PACKAGE_luci-app-dockerman=y
+CONFIG_PACKAGE_luci-app-gecoosac=y
+CONFIG_PACKAGE_luci-app-adguardhome=y
+CONFIG_PACKAGE_luci-app-vlmcsd=y
+CONFIG_PACKAGE_luci-app-syncdial=y
+CONFIG_PACKAGE_luci-app-mwan3=y
+CONFIG_PACKAGE_luci-app-wrtbwmon=y
+
+CONFIG_PACKAGE_luci-app-oaf=y
+CONFIG_PACKAGE_kmod-oaf=y
+CONFIG_PACKAGE_appfilter=y
 CONFIG_PACKAGE_kmod-md-mod=y
 CONFIG_PACKAGE_kmod-md-raid0=y
 CONFIG_PACKAGE_kmod-md-raid10=y
