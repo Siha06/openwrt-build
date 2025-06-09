@@ -1,6 +1,6 @@
 # 修改默认IP，主机名
-sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
-sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
+sed -i 's/192.168.1.1/192.168.15.1/g' package/base-files/files/bin/config_generate
+sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.15.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 sed -i 's/ImmortalWrt/OpenWrt/g' include/version.mk
 #rust报错
@@ -68,11 +68,13 @@ git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
 git clone --depth 1 https://github.com/destan19/OpenAppFilter.git  package/oaf
-git clone --depth 1 https://github.com/kiddin9/kwrt-packages.git package/kwrt-packages
+git clone --depth 1 https://github.com/sirpdboy/luci-app-parentcontrol package/luci-app-parentcontrol
+git clone --depth 1 https://github.com/lwb1978/openwrt-gecoosac.git package/openwrt-gecoosac
+#git clone --depth 1 https://github.com/kiddin9/kwrt-packages.git package/kwrt-packages
 #mv package/kwrt-packages/uugamebooster package/uugamebooster
 #mv package/kwrt-packages/luci-app-uugamebooster package/luci-app-uugamebooster
-mv package/kwrt-packages/luci-app-pushbot package/luci-app-pushbot
-rm -rf package/kwrt-packages
+#mv package/kwrt-packages/luci-app-pushbot package/luci-app-pushbot
+#rm -rf package/kwrt-packages
 
 #rm -rf feeds/packages/net/adguardhome
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/kz8-small
