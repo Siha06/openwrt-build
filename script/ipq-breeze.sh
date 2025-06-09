@@ -1,7 +1,8 @@
 # 修改默认IP，主机名
-sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
-sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
-sed -i 's/LibWrt/OpenWrt/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.15.1/g' package/base-files/files/bin/config_generate
+sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.15.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
+# sed -i 's/LibWrt/OpenWrt/g' package/base-files/files/bin/config_generate
+sed -i 's/LibWrt/QINGYIN/g' package/base-files/files/bin/config_generate
 sed -i 's/LiBwrt/OpenWrt/g' include/version.mk
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 
@@ -22,7 +23,8 @@ sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/etc/
 mv $GITHUB_WORKSPACE/patch/ipq-breeze/mac80211.uc package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 mv $GITHUB_WORKSPACE/patch/ipq-breeze/199-mydef.sh package/base-files/files/etc/uci-defaults/199-mydef.sh
 sed -i 's#downloads.immortalwrt.org#mirrors.pku.edu.cn/immortalwrt#g' package/emortal/default-settings/files/99-distfeeds.conf
-
+mv $GITHUB_WORKSPACE/patch/ipq-breeze/QINGYINSSIDMAC1.sh package/base-files/files/etc/QINGYINSSIDMAC1.sh
+mv $GITHUB_WORKSPACE/patch/ipq-breeze/10_system.js feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
 
 #下载5g模块
 git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
