@@ -64,6 +64,8 @@ git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 find ./ | grep Makefile | grep oaf | xargs rm -f
 rm -rf feeds/packages/net/open-app-filter
 git clone --depth 1 https://github.com/destan19/OpenAppFilter.git  package/oaf
+git clone --depth 1 https://github.com/sirpdboy/luci-app-parentcontrol package/luci-app-parentcontrol
+git clone --depth 1 https://github.com/lwb1978/openwrt-gecoosac.git package/openwrt-gecoosac
 
 rm -rf feeds/packages/net/adguardhome
 #git clone --depth 1 https://github.com/jarod360/luci-app-xupnpd.git package/luci-app-xupnpd
