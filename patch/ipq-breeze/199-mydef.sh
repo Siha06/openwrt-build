@@ -20,7 +20,7 @@ uci del dhcp.lan.ra_flags
 uci del dhcp.lan.dhcpv6
 uci del dhcp.lan.dns_service
 uci commit dhcp
-uci del network.wan6
+# uci del network.wan6
 uci del network.lan.ip6assign
 uci del network.globals.ula_prefix
 uci commit network
@@ -43,6 +43,9 @@ uci commit
 
 #sed -i 's/root::0:0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/g' /etc/shadow
 #sed -i 's/root:::0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/g' /etc/shadow
+
+mv /etc/QINGYINSSIDMAC1.sh /etc/init.d/QINGYINSSIDMAC1.sh
+chmod 775 /etc/init.d/QINGYINSSIDMAC1.sh
 
 OPENCLASH_FILE="/etc/config/openclash"
 if [ -f "$OPENCLASH_FILE" ]; then
