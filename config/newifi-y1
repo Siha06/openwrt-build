@@ -1,0 +1,12 @@
+CONFIG_TARGET_ramips=y
+CONFIG_TARGET_ramips_mt7620=y
+CONFIG_TARGET_ramips_mt7620_DEVICE_lenovo_newifi-y1=y
+CONFIG_PACKAGE_ipv6helper=y
+CONFIG_PACKAGE_kmod-usb-storage=y
+CONFIG_PACKAGE_kmod-usb-storage-extras=y
+CONFIG_PACKAGE_kmod-usb2=y
+# CONFIG_PACKAGE_luci-lib-fs is not set
+# CONFIG_PACKAGE_luci is not set
+CONFIG_PACKAGE_luci-proto-ipv6=y
+# CONFIG_PACKAGE_luci-app-filetransfer is not set
+# CONFIG_PACKAGE_luci-app-turboacc is not set
