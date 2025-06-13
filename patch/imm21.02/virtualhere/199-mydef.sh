@@ -7,7 +7,7 @@ uci set wireless.default_radio0.encryption='psk2'
 uci set wireless.default_radio0.key='11111111'
 uci set wireless.radio0.channel='auto'
 uci set wireless.radio1.disabled=1
-uci set network.lan.ipaddr='192.168.101.1'
+# uci set network.lan.ipaddr='192.168.101.1'
 uci set system.cfg01e48a.hostname=DSLR-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')
 
 # 设置所有网口可访问网页终端
