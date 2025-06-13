@@ -23,7 +23,7 @@ sed -i 's/root:::0:99999:7:::/root:$1$NdH27HBE$dmUpSX8x61asq1ewgkEvz1:20110:0:99
 
 #wget -P /usr/sha/ https://testingcf.jsdelivr.net/gh/HiboyHiboy/opt-file/Advanced_Extensions_virtualhereasp
 mv /etc/virtualhere /usr/share/virtualhere
-mv /etc/config.ini /usr/share/config.ini
+mv /etc/virtualhere-config.ini /usr/share/config.ini
 chmod +x /usr/share/virtualhere
 echo > /etc/rc.local
 sed -i '$a cd /usr/share' /etc/rc.local
