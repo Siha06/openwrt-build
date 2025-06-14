@@ -96,7 +96,6 @@ jobs:
       run: |
         cd $OPENWRT_PATH
         git checkout v24.10.1
-        mv $GITHUB_WORKSPACE/patch/openwrt-24.10/feeds.conf.default feeds.conf.default 
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds update -a
