@@ -1,27 +1,18 @@
 # 修改默认IP，主机名
-sed -i 's/192.168.1.1/192.168.15.1/g' package/base-files/files/bin/config_generate
-sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.15.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
-# sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
-sed -i 's/ImmortalWrt/QINGYIN/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
+sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
+sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 sed -i 's/ImmortalWrt/OpenWrt/g' include/version.mk
 #rust报错
-rm -rf feeds/packages/lang/rust
-git clone --depth 1 -b openwrt-24.10 https://github.com/immortalwrt/packages.git package/imm24-packages
-mv package/imm24-packages/lang/rust feeds/packages/lang/rust
-rm -rf package/imm24-packages
+#rm -rf feeds/packages/lang/rust
+#git clone --depth 1 -b openwrt-24.10 https://github.com/immortalwrt/packages.git package/imm24-packages
+#mv package/imm24-packages/lang/rust feeds/packages/lang/rust
+#rm -rf package/imm24-packages
 
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
-mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/998-ipq.sh package/base-files/files/etc/uci-defaults/998-ipq60xx.sh
-#mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/998-ipq60xx.sh package/base-files/files/etc/uci-defaults/998-ipq60xx.sh
+# mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/998-ipq.sh package/base-files/files/etc/uci-defaults/998-ipq60xx.sh
+mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/998-ipq60xx.sh package/base-files/files/etc/uci-defaults/998-ipq60xx.sh
 #mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/998-ipq807x.sh package/base-files/files/etc/uci-defaults/998-ipq807x.sh
-
-
-if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
-    git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
-    tar -zxf package/openclash-core/master/meta/clash-linux-arm64.tar.gz -C package/base-files/files/etc/
-    mv package/base-files/files/etc/clash package/base-files/files/etc/my-clash
-    rm -rf package/openclash-core
-fi
 
 # iStore
 git clone --depth=1 -b main https://github.com/linkease/istore.git package/istore
@@ -109,3 +100,5 @@ sed -i 's/START=.*/START=86/g' package/kernel/mac80211/files/qca-nss-pbuf.init
 sed -i '/\/files/d'  feeds/packages/net/tailscale/Makefile
 #修复Coremark编译失败
 sed -i 's/mkdir/mkdir -p/g' feeds/packages/utils/coremark/Makefile
+#修复Rust编译失败
+sed -i 's/ci-llvm=true/ci-llvm=false/g' feeds/packages/lang/rust/Makefile
