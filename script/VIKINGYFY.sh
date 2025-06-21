@@ -10,8 +10,8 @@ sed -i 's/ImmortalWrt/OpenWrt/g' include/version.mk
 #rm -rf package/imm24-packages
 
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
-mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/998-ipq.sh package/base-files/files/etc/uci-defaults/998-ipq60xx.sh
-# mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/998-ipq60xx.sh package/base-files/files/etc/uci-defaults/998-ipq60xx.sh
+# mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/998-ipq.sh package/base-files/files/etc/uci-defaults/998-ipq60xx.sh
+mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/998-ipq60xx.sh package/base-files/files/etc/uci-defaults/998-ipq60xx.sh
 #mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/998-ipq807x.sh package/base-files/files/etc/uci-defaults/998-ipq807x.sh
 
 # iStore
