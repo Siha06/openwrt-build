@@ -21,6 +21,8 @@ uci set firewall.@rule[-1].src='wan'
 uci set firewall.@rule[-1].name='allow5422'
 uci set firewall.@rule[-1].dest_port='5422'
 uci set firewall.@rule[-1].target='ACCEPT'
+uci commit firewall
+/etc/init.d/firewall restart >/dev/null 2>&1
 
 OPENCLASH_FILE="/etc/config/openclash"
 if [ -f "$OPENCLASH_FILE" ]; then
