@@ -8,7 +8,7 @@ on:
 env:
   REPO_URL: https://github.com/VIKINGYFY/immortalwrt.git
   REPO_BRANCH: main
-  CONFIG_FILE: config/VIKINGYFY-ipq60xx-apk
+  CONFIG_FILE: config/VIKINGYFY-ipq60xx-nowifi
   DIY_SCRIPT: script/VIKINGYFY.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
