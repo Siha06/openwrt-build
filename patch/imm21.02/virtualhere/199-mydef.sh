@@ -6,7 +6,10 @@ uci set wireless.default_radio1.ssid=WDSLR-2.4G-$(cat /sys/class/ieee80211/phy0/
 uci set wireless.default_radio0.encryption='psk2'
 uci set wireless.default_radio0.key='11111111'
 uci set wireless.radio0.channel='auto'
-uci set wireless.radio1.disabled=1
+uci set wireless.default_radio1.encryption='psk2'
+uci set wireless.default_radio1.key='11111111'
+uci set wireless.radio1.channel='auto'
+# uci set wireless.radio1.disabled=1
 # uci set network.lan.ipaddr='192.168.101.1'
 uci set system.cfg01e48a.hostname=DSLR-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')
 
