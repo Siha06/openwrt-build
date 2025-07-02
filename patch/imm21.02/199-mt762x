@@ -25,6 +25,6 @@ if [ -f "$OPENCLASH_FILE" ]; then
     mv /etc/my-clash /etc/openclash/core/clash_meta
 fi
 #/etc/init.d/system restart
-#/etc/init.d/network restart
+/etc/init.d/network restart
 
 exit 0
