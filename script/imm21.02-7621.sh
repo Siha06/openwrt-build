@@ -28,7 +28,7 @@ rm -rf package/lede
 
 #有编译openwrt环境后，加入UA2F模块和RKP-IPID模块
 git clone --depth 1 https://github.com/lucikap/luci-app-ua2f.git package/luci-app-ua2f
-git clone --depth 1 https://github.com/Zxilly/UA2F.git
+git clone --depth 1 https://github.com/Zxilly/UA2F.git package/ua2f
 #git clone https://github.com/EOYOHOO/UA2F.git package/UA2F
 #git clone https://github.com/EOYOHOO/rkp-ipid.git package/rkp-ipid
 rm -rf feeds/packages/net/ua2f
