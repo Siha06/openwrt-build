@@ -28,6 +28,6 @@ uci commit wireless
 #uci add_list firewall.cfg03dc81.network='usbwan'
 #uci commit network
 uci commit
-
+cp /etc/my-clash /etc/openclash/core/clash_meta
 
 exit 0
