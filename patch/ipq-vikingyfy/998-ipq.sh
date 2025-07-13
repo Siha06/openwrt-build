@@ -30,10 +30,8 @@ uci commit wireless
 #uci commit network
 uci commit
 
-# OPENCLASH_FILE="/etc/config/openclash"
-# if [ -f "$OPENCLASH_FILE" ]; then
-#     mv /etc/my-clash /etc/openclash/core/clash_meta
-# fi
+cp /etc/my-clash /etc/openclash/core/clash_meta
+
 
 
 /etc/init.d/network restart
