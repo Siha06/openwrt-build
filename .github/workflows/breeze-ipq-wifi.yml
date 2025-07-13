@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 env:
-  REPO_URL: https://github.com/LiBwrt/openwrt-6.x.git
+  REPO_URL: https://github.com/Siha06/openwrt-breeze.git.git
   REPO_BRANCH: openwrt-24.10
   CONFIG_FILE: config/breeze-ipq-wifi
   DIY_SCRIPT: script/ipq-breeze.sh
