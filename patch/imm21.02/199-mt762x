@@ -1,9 +1,9 @@
 #!/bin/sh
 
-#uci set wireless.default_radio0.ssid=OpenWrt-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-2.4G
-#uci set wireless.default_radio1.ssid=OpenWrt-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-5G
-uci set wireless.default_radio0.ssid=TIKTOK-2.4G
-uci set wireless.default_radio1.ssid=TIKTOK-5G
+uci set wireless.default_radio0.ssid=OpenWrt-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-2.4G
+uci set wireless.default_radio1.ssid=OpenWrt-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-5G
+#uci set wireless.default_radio0.ssid=TIKTOK-2.4G
+#uci set wireless.default_radio1.ssid=TIKTOK-5G
 uci set wireless.default_radio0.encryption=psk2+ccmp
 uci set wireless.default_radio1.encryption=psk2+ccmp
 uci set wireless.default_radio0.key=password
@@ -26,10 +26,8 @@ sed -i 's/root:::0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 sed -i 's#downloads.immortalwrt.org#mirrors.pku.edu.cn/immortalwrt#g' /etc/opkg/distfeeds.conf
 
-OPENCLASH_FILE="/etc/config/openclash"
-if [ -f "$OPENCLASH_FILE" ]; then
-    mv /etc/my-clash /etc/openclash/core/clash_meta
-fi
+cp /etc/my-clash /etc/openclash/core/clash_meta
+
 #/etc/init.d/system restart
 /etc/init.d/network restart
 
