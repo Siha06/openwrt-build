@@ -8,7 +8,7 @@ env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt.git
   REPO_BRANCH: openwrt-21.02
   CONFIG_FILE: config/7621-imm21.02
-  DIY_SCRIPT: script/immortalwrt-21.02-science
+  DIY_SCRIPT: script/imm21.02-7621.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
