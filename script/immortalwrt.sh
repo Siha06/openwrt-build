@@ -90,3 +90,6 @@ mv package/mypkg/imm21-luci/applications/luci-app-webadmin package/mypkg/luci-ap
 mv package/mypkg/imm21-luci/libs/luci-lib-fs package/mypkg/luci-lib-fs
 rm -rf package/mypkg/imm21-luci
 sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' $(find ./package/mypkg/ -type f -name "Makefile")
+
+#修复TailScale配置文件冲突
+sed -i '/\/files/d'  feeds/packages/net/tailscale/Makefile
