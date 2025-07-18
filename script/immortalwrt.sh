@@ -59,10 +59,15 @@ rm -rf package/nas-packages/network
 #git clone --depth 1 https://github.com/Siha06/my-openwrt-packages.git package/my-openwrt-packages
 git clone --depth 1 https://github.com/sirpdboy/luci-app-autotimeset package/luci-app-autotimeset
 git clone --depth 1 https://github.com/sirpdboy/luci-app-chatgpt-web.git package/luci-app-chatgpt-web
+git clone --depth 1 https://github.com/sirpdboy/luci-app-eqosplus.git package/luci-app-eqosplus
 git clone --depth 1 https://github.com/danchexiaoyang/luci-app-kodexplorer.git package/luci-app-kodexplorer
+git clone --depth 1 https://github.com/sirpdboy/luci-app-lucky.git package/lucky
 git clone --depth 1 https://github.com/sirpdboy/netspeedtest.git package/netspeedtest
 git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/openwrt-oaf
 git clone --depth 1 https://github.com/bobbyunknown/luci-app-syscontrol.git package/luci-app-syscontrol
+git clone --depth 1 https://github.com/sirpdboy/luci-app-taskplan.git package/luci-app-taskplan
+git clone --depth 1 https://github.com/sirpdboy/luci-app-timecontrol.git package/luci-app-timecontrol
+
 
 #rm -rf feeds/packages/net/adguardhome
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/kz8-small
@@ -74,7 +79,6 @@ mv package/kz8-small/luci-app-poweroffdevice package/luci-app-poweroffdevice
 mv package/kz8-small/luci-app-wrtbwmon package/luci-app-wrtbwmon
 mv package/kz8-small/wrtbwmon package/wrtbwmon
 mv package/kz8-small/luci-app-webrestriction package/luci-app-webrestriction
-mv package/kz8-small/luci-app-wechatpush package/luci-app-wechatpush
 mv package/kz8-small/luci-app-wolplus package/luci-app-wolplus
 rm -rf package/kz8-small
 
