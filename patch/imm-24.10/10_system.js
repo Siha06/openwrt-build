@@ -80,7 +80,7 @@ return baseclass.extend({
 		}
 
 		var fields = [
-			_('Hostname'),         boardinfo.hostname,
+			_('Hostname'),         'FuRui_L an',
 			_('Model'),            boardinfo.model + cpubench.cpubench,
 			_('Architecture'),     cpuinfo.cpuinfo || boardinfo.system,
 			_('Target Platform'),  (L.isObject(boardinfo.release) ? boardinfo.release.target : ''),
