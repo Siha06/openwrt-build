@@ -36,6 +36,6 @@ uci set wireless.default_radio1.key=12345678
 
 cp /etc/my-clash /etc/openclash/core/clash_meta
 
-#/etc/init.d/network restart
+/etc/init.d/network restart
 
 exit 0
