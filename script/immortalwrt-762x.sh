@@ -1,7 +1,7 @@
 sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
-sed -i 's/ImmortalWrt/FuRuiLan/g' package/base-files/files/bin/config_generate
-sed -i 's/ImmortalWrt/WiFi/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
+sed -i 's/ImmortalWrt/FuRui_Lan/g' package/base-files/files/bin/config_generate
+sed -i 's/ImmortalWrt/FuRui_Lan/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 # mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 mv $GITHUB_WORKSPACE/patch/imm-24.10/199-mt762x.sh package/base-files/files/etc/uci-defaults/zz-mt762x.sh
 
@@ -12,7 +12,7 @@ if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     rm -rf package/openclash-core
 fi
 
-mv $GITHUB_WORKSPACE/patch/imm-24.10/10_system.js feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
+#mv $GITHUB_WORKSPACE/patch/imm-24.10/10_system.js feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
 #完全删除luci版本
 sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
 #添加编译日期
