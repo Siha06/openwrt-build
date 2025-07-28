@@ -104,9 +104,9 @@ set ${si}=wifi-iface
 set ${si}.device='${name}'
 set ${si}.network='lan'
 set ${si}.mode='ap'
-set ${si}.ssid='${defaults?.ssid || "ImmortalWrt"}'
-set ${si}.encryption='${defaults?.encryption || "none"}'
-set ${si}.key='${defaults?.key || ""}'
+set ${si}.ssid='OpenWrt"}'
+set ${si}.encryption='psk2'
+set ${si}.key='password'
 
 `);
 		config[name] = {};
