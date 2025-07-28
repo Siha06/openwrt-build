@@ -3,10 +3,9 @@ sed -i 's/192.168.1.1/192.168.5.1/g' package/base-files/files/bin/config_generat
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.5.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 sed -i 's/ImmortalWrt/OpenWrt/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
-
-mv $GITHUB_WORKSPACE/patch/imm-24.10/diy.sh package/base-files/files/etc/uci-defaults/zz-diy.sh
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 
+mv $GITHUB_WORKSPACE/patch/imm-24.10/bw/diy.sh package/base-files/files/etc/uci-defaults/zz-diy.sh
 mv $GITHUB_WORKSPACE/patch/imm-24.10/bw/rc.local package/base-files/files/etc/rc.local
 #mv $GITHUB_WORKSPACE/patch/imm-24.10/my-crontabs package/base-files/files/etc/my-crontabs
 
