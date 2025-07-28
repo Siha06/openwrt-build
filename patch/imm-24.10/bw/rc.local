@@ -1,0 +1,15 @@
+uci set wireless.default_radio0.macaddr='random'
+uci set wireless.default_radio1.macaddr='random'
+uci commit wireless
+uci set network.cfg030f15.macaddr='AC:EA:$(date +"%d:%H:%M:%S")'
+uci add network device
+uci set network.@device[-1].name='wan'
+uci set network.@device[-1].macaddr='DC:D8:$(date +"%d:%H:%M:%S")'
+uci set network.@device[-1].name='lan1'
+uci set network.@device[-1].macaddr='1C:B1:$(date +"%d:%H:%M:%S")'
+uci set network.@device[-1].name='lan2'
+uci set network.@device[-1].macaddr='54:B2:$(date +"%d:%H:%M:%S")'
+uci set network.@device[-1].name='lan3'
+uci set network.@device[-1].macaddr='C8:B3:$(date +"%d:%H:%M:%S")'
+uci commit network
+exit 0
