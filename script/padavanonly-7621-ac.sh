@@ -32,7 +32,7 @@ git clone -b 18.06 --depth 1 https://github.com/jerrykuku/luci-app-argon-config.
 #rm -rf feeds/packages/utils/v2dat
 #rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-ssr-plus,luci-app-mosdns,luci-app-openclash}
 
-3git clone --depth 1 https://github.com/vernesong/OpenClash.git  package/openclash
+#git clone --depth 1 https://github.com/vernesong/OpenClash.git  package/openclash
 #git clone --depth 1 https://github.com/fw876/helloworld.git package/helloworld
 #git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/passwall
 #git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
