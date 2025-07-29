@@ -11,10 +11,7 @@ uci commit
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 
 
-OPENCLASH_FILE="/etc/config/openclash"
-if [ -f "$OPENCLASH_FILE" ]; then
-    mv /etc/my-clash /etc/openclash/core/clash_meta
-fi
+cp /etc/my-clash /etc/openclash/core/clash_meta
 
 sed -i '/core/d' /etc/opkg/distfeeds.conf
 date_version=$(date +"%Y.%m.%d")
