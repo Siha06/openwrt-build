@@ -19,7 +19,9 @@ sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/immortalwrt/releases/24.10.2/
 
 sed -i 's/root::0:0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/g' /etc/shadow
 sed -i 's/root:::0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/g' /etc/shadow
-
+echo >  /etc/rc.local
+sed -i '$a ./etc/my-mac.sh' /etc/rc.local
+sed -i '$a exit 0' /etc/rc.local
 
 #cp /etc/my-clash /etc/openclash/core/clash_meta
 
@@ -35,13 +37,9 @@ uci set wireless.default_radio1.encryption=psk2+ccmp
 uci set wireless.default_radio0.key=password
 uci set wireless.default_radio1.key=password
 uci commit wireless
+chmod +x /etc/my-mac.sh
 ./etc/my-mac.sh
 uci commit
-
-echo >  /etc/rc.local
-sed -i '$a ./etc/my-mac.sh' /etc/rc.local
-sed -i '$a exit 0' /etc/rc.local
-
 
 /etc/init.d/network restart
 
