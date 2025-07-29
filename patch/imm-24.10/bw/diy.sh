@@ -26,11 +26,23 @@ sed -i 's/root:::0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:
 #uci set network.cfg030f15.macaddr="8C:DA:$(date +"%d:%H:%M:%S")"
 #uci set network.cfg060f15.macaddr="9C:DA:$(date +"%d:%H:%M:%S")"
 #uci commit network
-#uci set wireless.default_radio0.macaddr='random'
-#uci commit wireless
-
+uci set wireless.default_radio0.macaddr='random'
+uci set wireless.default_radio1.macaddr='random'
+uci set wireless.default_radio1.ssid=OpenWrt-5G
+uci set wireless.default_radio0.ssid=OpenWrt-2.4G
+uci set wireless.default_radio0.encryption=psk2+ccmp
+uci set wireless.default_radio1.encryption=psk2+ccmp
+uci set wireless.default_radio0.key=password
+uci set wireless.default_radio1.key=password
+uci commit wireless
+./etc/my-mac.sh
 uci commit
 
-#/etc/init.d/network restart
+echo >  /etc/rc.local
+sed -i '$a ./etc/my-mac.sh' /etc/rc.local
+sed -i '$a exit 0' /etc/rc.local
+
+
+/etc/init.d/network restart
 
 exit 0
