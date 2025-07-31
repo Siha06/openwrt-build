@@ -46,7 +46,7 @@ uci add_list firewall.cfg03dc81.network='usbwan'
 
 #/etc/init.d/firewall restart >/dev/null 2>&1
 
-#cp /etc/my-clash /etc/openclash/core/clash_meta
+cp /etc/my-clash /etc/openclash/core/clash_meta
 
 uci commit wireless
 uci commit network
