@@ -3,7 +3,7 @@
 sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 #sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
-sed -i 's/ImmortalWrt/R5C/g' package/base-files/files/bin/config_generate
+sed -i 's/ImmortalWrt/R5S/g' package/base-files/files/bin/config_generate
 sed -i 's/ImmortalWrt/WiFi/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 #sed -i 's/ImmortalWrt/WiFi/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 mv $GITHUB_WORKSPACE/patch/imm-24.10/199-rockchip.sh package/base-files/files/etc/uci-defaults/zz-rockchip.sh
@@ -82,14 +82,14 @@ mv package/kz8-small/luci-app-webrestriction package/luci-app-webrestriction
 mv package/kz8-small/luci-app-wolplus package/luci-app-wolplus
 rm -rf package/kz8-small
 
-git clone --depth 1 -b openwrt-21.02 https://github.com/immortalwrt/luci.git package/mypkg/imm21-luci
-mv package/mypkg/imm21-luci/applications/luci-app-advancedsetting package/mypkg/luci-app-advancedsetting
-mv package/mypkg/imm21-luci/applications/luci-app-filetransfer package/mypkg/luci-app-filetransfer
-mv package/mypkg/imm21-luci/applications/luci-app-webadmin package/mypkg/luci-app-webadmin
+#git clone --depth 1 -b openwrt-21.02 https://github.com/immortalwrt/luci.git package/mypkg/imm21-luci
+#mv package/mypkg/imm21-luci/applications/luci-app-advancedsetting package/mypkg/luci-app-advancedsetting
+#mv package/mypkg/imm21-luci/applications/luci-app-filetransfer package/mypkg/luci-app-filetransfer
+#mv package/mypkg/imm21-luci/applications/luci-app-webadmin package/mypkg/luci-app-webadmin
 # mv package/mypkg/imm21-luci/applications/luci-app-wireguard package/mypkg/luci-app-wireguard
-mv package/mypkg/imm21-luci/libs/luci-lib-fs package/mypkg/luci-lib-fs
-rm -rf package/mypkg/imm21-luci
-sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' $(find ./package/mypkg/ -type f -name "Makefile")
+#mv package/mypkg/imm21-luci/libs/luci-lib-fs package/mypkg/luci-lib-fs
+#rm -rf package/mypkg/imm21-luci
+#sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' $(find ./package/mypkg/ -type f -name "Makefile")
 
 #修复TailScale配置文件冲突
 sed -i '/\/files/d'  feeds/packages/net/tailscale/Makefile
