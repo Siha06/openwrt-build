@@ -18,8 +18,8 @@ fi
 
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 #mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/998-ipq.sh package/base-files/files/etc/uci-defaults/998-ipq.sh
-#mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/998-ipq60xx.sh package/base-files/files/etc/uci-defaults/998-ipq60xx.sh
-mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/998-ipq807x.sh package/base-files/files/etc/uci-defaults/998-ipq807x.sh
+mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/998-ipq60xx.sh package/base-files/files/etc/uci-defaults/998-ipq60xx.sh
+#mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/998-ipq807x.sh package/base-files/files/etc/uci-defaults/998-ipq807x.sh
 
 # iStore
 git clone --depth=1 -b main https://github.com/linkease/istore.git package/istore
@@ -89,13 +89,13 @@ mv package/kz8-small/luci-app-wrtbwmon package/luci-app-wrtbwmon
 mv package/kz8-small/wrtbwmon package/wrtbwmon
 rm -rf package/kz8-small
 
-git clone --depth 1 -b openwrt-21.02 https://github.com/immortalwrt/luci.git package/imm21-luci
-mv package/imm21-luci/applications/luci-app-filetransfer package/luci-app-filetransfer
+#git clone --depth 1 -b openwrt-21.02 https://github.com/immortalwrt/luci.git package/imm21-luci
+#mv package/imm21-luci/applications/luci-app-filetransfer package/luci-app-filetransfer
 #sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' package/luci-app-accesscontrol/Makefile
-sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' package/luci-app-filetransfer/Makefile
+#sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' package/luci-app-filetransfer/Makefile
 #sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' package/luci-app-v2ray-server/Makefile
-mv package/imm21-luci/libs/luci-lib-fs package/luci-lib-fs
-rm -rf package/imm21-luci
+#mv package/imm21-luci/libs/luci-lib-fs package/luci-lib-fs
+#rm -rf package/imm21-luci
 
 #if grep -q "uugamebooster=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
 #    mv $GITHUB_WORKSPACE/patch/Makefile-uugame package/uugamebooster/Makefile
