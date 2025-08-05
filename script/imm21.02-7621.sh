@@ -48,12 +48,12 @@ mv package/mypackage/nas-packages/network/services/* package/mypackage/nas-packa
 rm -rf package/mypackage/nas-packages/network
 
 #下载5g模块
-git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
-sed -i '/pcie_mhi/d' package/5g-modem/luci-app-modem/Makefile
-rm -rf feeds/packages/net/quectel-cm
-rm -rf feeds/packages/kernel/fibocom-qmi-wwan
-rm -rf feeds/packages/kernel/quectel-qmi-wwan
-rm -rf feeds/luci/protocols/luci-proto-quectel
+#git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
+#sed -i '/pcie_mhi/d' package/5g-modem/luci-app-modem/Makefile
+#rm -rf feeds/packages/net/quectel-cm
+#rm -rf feeds/packages/kernel/fibocom-qmi-wwan
+#rm -rf feeds/packages/kernel/quectel-qmi-wwan
+#rm -rf feeds/luci/protocols/luci-proto-quectel
 
 git clone --depth 1 https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
 git clone --depth=1 https://github.com/kenzok8/small-package.git package/small-package
@@ -69,14 +69,14 @@ mv package/small-package/luci-app-adguardhome package/luci-app-adguardhome
 #rm -rf feeds/packages/net/frp
 rm -rf package/small-package
 
-rm -rf feeds/luci/applications/luci-app-msd_lite
-rm -rf feeds/packages/net/msd_lite
-git clone --depth 1 -b openwrt-23.05 https://github.com/immortalwrt/luci package/imm23luci
-mv package/imm23luci/applications/luci-app-msd_lite feeds/luci/applications/luci-app-msd_lite
-rm -rf package/imm23luci
-git clone --depth 1 -b openwrt-23.05 https://github.com/immortalwrt/packages package/imm23packages
-mv package/imm23packages/net/msd_lite feeds/packages/net/msd_lite
-rm -rf package/imm23packages
+#rm -rf feeds/luci/applications/luci-app-msd_lite
+#rm -rf feeds/packages/net/msd_lite
+#git clone --depth 1 -b openwrt-23.05 https://github.com/immortalwrt/luci package/imm23luci
+#mv package/imm23luci/applications/luci-app-msd_lite feeds/luci/applications/luci-app-msd_lite
+#rm -rf package/imm23luci
+#git clone --depth 1 -b openwrt-23.05 https://github.com/immortalwrt/packages package/imm23packages
+#mv package/imm23packages/net/msd_lite feeds/packages/net/msd_lite
+#rm -rf package/imm23packages
 
 
 #mv $GITHUB_WORKSPACE/patch/imm21.02/virtualhere/199-mydef.sh package/base-files/files/etc/uci-defaults/199-mydef.sh
