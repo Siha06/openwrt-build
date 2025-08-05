@@ -1,2 +1,0 @@
-msgid "Processor"
-msgstr "процессор"

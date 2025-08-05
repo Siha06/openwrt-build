@@ -1,2 +1,0 @@
-msgid "Release Ram"
-msgstr "Освободите память"
