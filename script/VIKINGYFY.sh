@@ -63,7 +63,8 @@ git clone --depth 1 https://github.com/nikkinikki-org/OpenWrt-nikki.git package/
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/passwall
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
-sed -i 's/34308ed827a5dd4f4e35619914102d55b00604faa44fda051d1d25fb4a319325/ffdd71e26d8c6f82083b5868025a7882eaad3846569d21610547720b999b6aaa/g' package/passwall-packages/shadowsocksr-libev/Makefile
+#sed -i 's/146fa4511a52da2aaa1e11ea0294cfb450e62643156c5da3b10e037ef43961f6/ffdd71e26d8c6f82083b5868025a7882eaad3846569d21610547720b999b6aaa/g' package/passwall-packages/shadowsocksr-libev/Makefile
+#sed -i 's/575b21803b28db8ab59ecbdb2cf21c4282881507b3a4267cc24f55bad12819cb/9d2293f16629d1e30ede304ccddbaaa4e922c1c5e7ea04cef0e9d274aafa6109/g' package/passwall-packages/shadowsocks-libev/Makefile
 
 git clone --depth 1 https://github.com/destan19/OpenAppFilter.git  package/oaf
 git clone --depth 1 https://github.com/sirpdboy/luci-app-parentcontrol package/luci-app-parentcontrol
