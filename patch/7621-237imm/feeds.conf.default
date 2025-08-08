@@ -1,3 +1,5 @@
+src-git passwall_packages https://github.com/padavanonly/packages.git^0b13cfd9330ec2e7794febdc10f920e7b6be2993
+src-git luci_app_passwall https://github.com/padavanonly/packages.git^ba0a00ef6a141ac3b2eb29c641a84b3d3ecce957
 src-git packages https://github.com/padavanonly/packages.git;openwrt-18.06
 src-git luci https://github.com/padavanonly/luci.git;openwrt-18.06-k5.4
 src-git routing https://github.com/openwrt/routing.git
