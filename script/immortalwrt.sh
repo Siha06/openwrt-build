@@ -3,7 +3,6 @@
 sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 #sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
-sed -i 's/ImmortalWrt/R5S/g' package/base-files/files/bin/config_generate
 sed -i 's/ImmortalWrt/WiFi/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 # mv $GITHUB_WORKSPACE/patch/imm-24.10/mac80211.uc package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 #sed -i 's/ImmortalWrt/WiFi/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
@@ -33,16 +32,9 @@ git clone --depth 1 https://github.com/vernesong/OpenClash.git package/OpenClash
 git clone --depth 1 https://github.com/nikkinikki-org/OpenWrt-nikki.git package/OpenWrt-nikki
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/passwall
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
-git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
 rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-openclash}
 rm -rf feeds/packages/net/{mosdns,v2ray-geodata}
-rm -rf feeds/packages/net/{chinadns-ng,dns2socks,geoview,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocks-rust}
-rm -rf feeds/packages/net/{shadowsocksr-libev,simple-obfs,sing-box,tcping,trojan-plus,tuic-client,v2ray-geodata,v2ray-plugin,xray-core,xray-plugin}
-#rm -rf feeds/packages/utils/v2dat
-#find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
-#find ./ | grep Makefile | grep mosdns | xargs rm -f
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
-git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
 #git clone --depth 1 https://github.com/yichya/luci-app-xray.git package/luci-app-xray
 #git clone --depth 1 https://github.com/Thaolga/openwrt-nekobox.git package/openwrt-nekobox
@@ -70,15 +62,18 @@ git clone --depth 1 https://github.com/sirpdboy/luci-app-taskplan.git package/lu
 git clone --depth 1 https://github.com/sirpdboy/luci-app-timecontrol.git package/luci-app-timecontrol
 
 
-#rm -rf feeds/packages/net/adguardhome
+rm -rf feeds/packages/net/{adguardhome,tailscale}
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/kz8-small
+mv package/kz8-small/adguardhome package/adguardhome
 mv package/kz8-small/luci-app-adguardhome package/luci-app-adguardhome
 mv package/kz8-small/luci-app-ikoolproxy package/luci-app-ikoolproxy
 mv package/kz8-small/luci-app-macvlan package/luci-app-macvlan
 mv package/kz8-small/luci-app-partexp package/luci-app-partexp
 mv package/kz8-small/luci-app-poweroffdevice package/luci-app-poweroffdevice
-mv package/kz8-small/luci-app-wrtbwmon package/luci-app-wrtbwmon
+mv package/kz8-small/tailscale package/tailscale
+mv package/kz8-small/luci-app-tailscale package/luci-app-tailscale
 mv package/kz8-small/wrtbwmon package/wrtbwmon
+mv package/kz8-small/luci-app-wrtbwmon package/luci-app-wrtbwmon
 mv package/kz8-small/luci-app-webrestriction package/luci-app-webrestriction
 mv package/kz8-small/luci-app-wolplus package/luci-app-wolplus
 rm -rf package/kz8-small
@@ -93,4 +88,4 @@ rm -rf package/kz8-small
 #sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' $(find ./package/mypkg/ -type f -name "Makefile")
 
 #修复TailScale配置文件冲突
-sed -i '/\/files/d'  feeds/packages/net/tailscale/Makefile
+sed -i '/\/files/d'  package/tailscale/Makefile
