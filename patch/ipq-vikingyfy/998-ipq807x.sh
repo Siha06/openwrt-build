@@ -1,5 +1,6 @@
 #!/bin/sh
 
+sed -i '/passwall/d' /etc/apk/repositories.d/distfeeds.list
 sed -i '/nss/d' /etc/apk/repositories.d/distfeeds.list
 sed -i '/sqm/d' /etc/apk/repositories.d/distfeeds.list
 sed -i '/qualcommax/d' /etc/apk/repositories.d/distfeeds.list
