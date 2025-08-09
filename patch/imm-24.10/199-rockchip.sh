@@ -12,6 +12,7 @@ uci set dropbear.@dropbear[0].Interface=''
 uci commit
 
 sed -i '/modem/d' /etc/opkg/distfeeds.conf
+sed -i '/passwall/d' /etc/opkg/distfeeds.conf
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 sed -i 's#downloads.immortalwrt.org#mirrors.pku.edu.cn/immortalwrt#g' /etc/opkg/distfeeds.conf
 
