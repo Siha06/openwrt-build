@@ -89,3 +89,5 @@ rm -rf package/kz8-small
 
 #修复TailScale配置文件冲突
 sed -i '/\/files/d'  package/tailscale/Makefile
+#修复Rust编译失败
+sed -i 's/ci-llvm=true/ci-llvm=false/g' feeds/packages/lang/rust/Makefile
