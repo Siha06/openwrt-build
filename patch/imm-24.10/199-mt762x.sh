@@ -11,6 +11,7 @@ uci set dropbear.@dropbear[0].Interface=''
 uci commit
 
 sed -i '/modem/d' /etc/opkg/distfeeds.conf
+sed -i '/passwall/d' /etc/opkg/distfeeds.conf
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 sed -i 's#downloads.immortalwrt.org#mirrors.pku.edu.cn/immortalwrt#g' /etc/opkg/distfeeds.conf
 sed -i '$a src/gz kmods https://downloads.immortalwrt.org/releases/24.10.2/targets/ramips/mt7621/kmods/6.6.93-1-730c62a2d59c0c43f493ba6554a36be8' /etc/opkg/customfeeds.conf
