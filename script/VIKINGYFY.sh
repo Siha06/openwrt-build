@@ -95,7 +95,9 @@ sed -i 's/START=.*/START=85/g' feeds/nss_packages/qca-nss-drv/files/qca-nss-drv.
 sed -i 's/START=.*/START=86/g' package/kernel/mac80211/files/qca-nss-pbuf.init
 #修复TailScale配置文件冲突
 sed -i '/\/files/d'  feeds/packages/net/tailscale/Makefile
-#修复Coremark编译失败
-sed -i 's/mkdir/mkdir -p/g' feeds/packages/utils/coremark/Makefile
 #修复Rust编译失败
 sed -i 's/ci-llvm=true/ci-llvm=false/g' feeds/packages/lang/rust/Makefile
+#修复DiskMan编译失败(未找到该文件)
+#sed -i 's/fs-ntfs/fs-ntfs3/g' feeds/luci/applications/luci-app-diskman/Makefile
+#修复Coremark编译失败（已不需要）
+#sed -i 's/mkdir/mkdir -p/g' feeds/packages/utils/coremark/Makefile
