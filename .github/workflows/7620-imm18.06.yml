@@ -8,7 +8,7 @@ env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt.git
   REPO_BRANCH: openwrt-18.06-k5.4
   CONFIG_FILE: config/7620-openwrt
-  DIY_SCRIPT: script/7620-imm1806.sh
+  DIY_SCRIPT: script/immortalwrt-18.06.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
