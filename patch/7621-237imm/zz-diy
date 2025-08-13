@@ -13,6 +13,7 @@ sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 
 cp /etc/my-clash /etc/openclash/core/clash_meta
 
+sed -i '/passwall/d' /etc/opkg/distfeeds.conf
 sed -i '/core/d' /etc/opkg/distfeeds.conf
 date_version=$(date +"%Y.%m.%d")
 sed -i '/DISTRIB_REVISION/d' /etc/openwrt_release
