@@ -34,8 +34,8 @@ mv package/openclash/luci-app-openclash feeds/luci/applications/
 rm -rf package/openclash
 
 #git clone --depth 1 https://github.com/fw876/helloworld.git package/helloworld
-git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/passwall
-git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
+#git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/passwall
+#git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
 
 rm -rf feeds/packages/net/adguardhome
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/kz8-small
