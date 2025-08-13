@@ -8,7 +8,7 @@ env:
   REPO_URL: https://github.com/padavanonly/immortalwrt.git
   REPO_BRANCH: mt7915_mtwifi
   CONFIG_FILE: config/padavanonly-7621-ax
-  DIY_SCRIPT: script/2padavanonly-7621-ax.sh
+  DIY_SCRIPT: script/padavanonly-7621-ax.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
@@ -89,6 +89,7 @@ jobs:
     - name: Install Feeds(安装feeds)
       run: |
         cd $OPENWRT_PATH
+        mv $GITHUB_WORKSPACE/patch/7621-237imm/feeds.conf.default feeds.conf.default
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds update -a
