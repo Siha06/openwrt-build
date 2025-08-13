@@ -5,7 +5,7 @@ sed -i "s/192\.168\.[0-9]*\.[0-9]*/10.3.2.1/g" $(find ./feeds/luci/modules/luci-
 
 #白雾点组
 sed -i 's/ImmortalWrt/TikTok/g' package/base-files/files/bin/config_generate
-mv $GITHUB_WORKSPACE/patch/7621-237imm/bw-diy package/base-files/files/etc/uci-defaults/zz-diy
+mv $GITHUB_WORKSPACE/patch/tiktok/7621/bw-diy package/base-files/files/etc/uci-defaults/zz-diy
 mv $GITHUB_WORKSPACE/patch/tiktok/7621/bw-index.htm package/base-files/files/etc/bw-index.htm
 
 if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
