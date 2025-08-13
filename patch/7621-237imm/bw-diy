@@ -30,6 +30,6 @@ sed -i 's/AuthMode=OPEN/AuthMode=WPA2PSK/g' /etc/wireless/mt7615/mt7615.1.2G.dat
 sed -i 's/EncrypType=NONE/EncrypType=AES/g' /etc/wireless/mt7615/mt7615.1.2G.dat
 #sed -i 's/CountryCode=US/CountryCode=RU/g' /etc/wireless/mt7615/mt7615.1.2G.dat
 
-#/etc/init.d/network restart
+/etc/init.d/network restart
 
 exit 0
