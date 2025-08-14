@@ -7,8 +7,8 @@ on:
 env:
   REPO_URL: https://github.com/openwrt/openwrt.git
   REPO_BRANCH: openwrt-23.05
-  CONFIG_FILE: config/x86-op2305
-  DIY_SCRIPT: script/x86-openwrt24.sh
+  CONFIG_FILE: config/x86-openwrt23.05
+  DIY_SCRIPT: script/x86-openwrt.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
@@ -95,9 +95,8 @@ jobs:
     - name: Install Feeds(安装feeds)
       run: |
         cd $OPENWRT_PATH
-        git checkout v23.05.5
-        git checkout v23.05.5
-        mv $GITHUB_WORKSPACE/patch/imm23.05/op-feeds.conf.default feeds.conf.default
+        git checkout v23.05.3
+        sed -i '1i src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git' feeds.conf.default
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds update -a
@@ -113,7 +112,7 @@ jobs:
     - name: edit md5
       run: |
         rm -rf $OPENWRT_PATH/.vermagic
-        mv $GITHUB_WORKSPACE/vm/op23.05-x86 $OPENWRT_PATH/vermagic
+        mv $GITHUB_WORKSPACE/vm/x86-openwrt23.05 $OPENWRT_PATH/vermagic
         cd $OPENWRT_PATH
         sed -i '121d' include/kernel-defaults.mk
         sed -i '121i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
