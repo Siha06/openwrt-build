@@ -35,13 +35,11 @@ uci commit
 
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 sed -i 's#downloads.openwrt.org#mirrors.pku.edu.cn/openwrt#g' /etc/opkg/distfeeds.conf
-sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/openwrt/releases/24.10.1/targets/x86/64/kmods/6.6.86-1-af351158cfb5febf5155a3aa53785982' /etc/opkg/distfeeds.conf
-#sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/openwrt/releases/23.05.5/targets/x86/64/kmods/5.15.167-1-59d1431675acc6823a33c7eb2323daeb' /etc/opkg/customfeeds.conf
+#sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/openwrt/releases/24.10.1/targets/x86/64/kmods/6.6.86-1-af351158cfb5febf5155a3aa53785982' /etc/opkg/distfeeds.conf
+sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/openwrt/releases/23.05.3/targets/x86/64/kmods/5.15.150-1-e496746edd89318b9810e48e36a8bd9c' /etc/opkg/customfeeds.conf
 sed -i '$a #src/gz kiddin9 https://dl.openwrt.ai/packages-24.10/x86_64/kiddin9' /etc/opkg/customfeeds.conf
 
-OPENCLASH_FILE="/etc/config/openclash"
-if [ -f "$OPENCLASH_FILE" ]; then
-    mv /etc/my-clash /etc/openclash/core/clash_meta
-fi
+cp /etc/my-clash /etc/openclash/core/clash_meta
+
 
 exit 0
