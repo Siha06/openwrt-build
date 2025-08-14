@@ -33,6 +33,7 @@ uci set dropbear.@dropbear[0].Interface=''
 
 uci commit
 
+sed -i '/passwall/d' /etc/opkg/distfeeds.conf
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 sed -i 's#downloads.openwrt.org#mirrors.pku.edu.cn/openwrt#g' /etc/opkg/distfeeds.conf
 #sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/openwrt/releases/24.10.1/targets/x86/64/kmods/6.6.86-1-af351158cfb5febf5155a3aa53785982' /etc/opkg/distfeeds.conf
