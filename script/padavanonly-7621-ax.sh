@@ -9,7 +9,11 @@ mv $GITHUB_WORKSPACE/patch/tiktok/7621/bw-diy.sh package/base-files/files/etc/uc
 #mv $GITHUB_WORKSPACE/patch/tiktok/7621/bw-index.htm package/base-files/files/etc/bw-index.htm
 mv $GITHUB_WORKSPACE/patch/tiktok/7621/bw-school-index.htm package/base-files/files/etc/bw-index.htm
 rm -rf feeds/luci/applications/luci-app-ua2f
+rm -rf feeds/packages/net/ua2f/*
 git clone --depth 1 https://github.com/lucikap/luci-app-ua2f.git package/luci-app-ua2f
+git clone --depth 1 https://github.com/Zxilly/UA2F.git package/ua2f
+mv package/ua2f/openwrt/* feeds/packages/net/ua2f
+rm -rf package/ua2f
 
 if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
