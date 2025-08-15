@@ -2,9 +2,10 @@
 sed -i 's/192.168.1.1/10.3.2.1/g' package/base-files/files/bin/config_generate
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/10.3.2.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 sed -i "s/immortalwrt.lan/openwrt.lan/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
-
 sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 sed -i 's/ImmortalWrt/OpenWrt/g' include/version.mk
+mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
+mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/mac80211.uc package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 
 if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
@@ -13,7 +14,7 @@ if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     rm -rf package/openclash-core
 fi
 
-mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
+
 #mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/998-ipq.sh package/base-files/files/etc/uci-defaults/998-ipq.sh
 mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/998-ipq60xx.sh package/base-files/files/etc/uci-defaults/998-ipq60xx.sh
 #mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/998-ipq807x.sh package/base-files/files/etc/uci-defaults/998-ipq807x.sh
