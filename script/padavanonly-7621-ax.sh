@@ -6,7 +6,8 @@ sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.5.1/g" $(find ./feeds/luci/modules/lu
 #白雾定制
 sed -i 's/ImmortalWrt/TikTok/g' package/base-files/files/bin/config_generate
 mv $GITHUB_WORKSPACE/patch/tiktok/7621/bw-diy.sh package/base-files/files/etc/uci-defaults/zz-diy.sh
-mv $GITHUB_WORKSPACE/patch/tiktok/7621/bw-index.htm package/base-files/files/etc/bw-index.htm
+#mv $GITHUB_WORKSPACE/patch/tiktok/7621/bw-index.htm package/base-files/files/etc/bw-index.htm
+mv $GITHUB_WORKSPACE/patch/tiktok/7621/bw-school-index.htm package/base-files/files/etc/bw-index.htm
 rm -rf feeds/luci/applications/luci-app-ua2f
 git clone --depth 1 https://github.com/lucikap/luci-app-ua2f.git package/luci-app-ua2f
 
