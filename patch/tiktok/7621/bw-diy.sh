@@ -12,8 +12,7 @@ sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 
 
 cp /etc/my-clash /etc/openclash/core/clash_meta
-#mv /etc/bw-index.htm /usr/lib/lua/luci/view/admin_status/index.htm
-mv /etc/bw-school-index.htm /usr/lib/lua/luci/view/admin_status/index.htm
+mv /etc/bw-index.htm /usr/lib/lua/luci/view/admin_status/index.htm
 
 sed -i '/UA2F/d' /etc/opkg/distfeeds.conf
 sed -i '/ua2f/d' /etc/opkg/distfeeds.conf
