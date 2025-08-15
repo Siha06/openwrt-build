@@ -96,17 +96,18 @@ set ${s}.${id}
 set ${s}.band='${band_name}'
 set ${s}.channel='${channel}'
 set ${s}.htmode='${htmode}'
-set ${s}.country='${country || ''}'
+set ${s}.country='CN'
 set ${s}.num_global_macaddr='${num_global_macaddr || ''}'
 set ${s}.disabled='0'
+set ${s}.txpower='20'
 
 set ${si}=wifi-iface
 set ${si}.device='${name}'
 set ${si}.network='lan'
 set ${si}.mode='ap'
 set ${si}.ssid='${defaults?.ssid || "ImmortalWrt"}'
-set ${si}.encryption='${defaults?.encryption || "none"}'
-set ${si}.key='${defaults?.key || ""}'
+set ${si}.encryption='psk2+ccmp'
+set ${si}.key='password'
 
 `);
 		config[name] = {};
