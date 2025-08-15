@@ -1,3 +1,4 @@
+src-git ua2f_packages https://github.com/Zxilly/UA2F.git
 src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git^0b13cfd9330ec2e7794febdc10f920e7b6be2993
 src-git luci_app_passwall https://github.com/xiaorouji/openwrt-passwall.git^ba0a00ef6a141ac3b2eb29c641a84b3d3ecce957
 src-git luci_app_passwall2 https://github.com/xiaorouji/openwrt-passwall2.git^06090971230814fbf7da80b13270ff4a743333e0
