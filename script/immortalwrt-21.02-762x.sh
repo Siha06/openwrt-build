@@ -1,5 +1,5 @@
-sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
-sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
+sed -i 's/192.168.1.1/10.3.2.1/g' package/base-files/files/bin/config_generate
+sed -i "s/192\.168\.[0-9]*\.[0-9]*/10.3.2.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 sed -i 's/ImmortalWrt/OpenWrt/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 #mv $GITHUB_WORKSPACE/patch/imm21.02/mac80211.sh $OPENWRT_PATH/package/kernel/mac80211/files/lib/wifi/mac80211.sh
@@ -8,12 +8,13 @@ sed -i 's#mirrors.vsean.net/openwrt#mirror.nju.edu.cn/immortalwrt#g' package/emo
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 sed -i 's/ImmortalWrt/OpenWrt/g' include/version.mk
 
-#if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
-#    git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
-#    tar -zxf package/openclash-core/master/meta/clash-linux-mipsle-softfloat.tar.gz -C package/base-files/files/etc/
-#    mv package/base-files/files/etc/clash package/base-files/files/etc/my-clash
-#    rm -rf package/openclash-core
-#fi
+if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
+    git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
+    tar -zxf package/openclash-core/master/meta/clash-linux-mipsle-softfloat.tar.gz -C package/base-files/files/etc/
+    mv package/base-files/files/etc/clash package/base-files/files/etc/my-clash
+    rm -rf package/openclash-core
+fi
+
 #完全删除luci版本,缩减luci长度
 sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
 #sed -i "s/+ ' ' + luciversion.revision//" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
@@ -21,10 +22,19 @@ sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-stat
 sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/usr/lib/os-release
 sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/etc/openwrt_release
 
+#雷神加速器
 git clone --depth 1 https://github.com/coolsnowwolf/lede.git package/lede
 mv package/lede/package/lean/luci-app-leigod-acc package/luci-app-leigod-acc
 mv package/lede/package/lean/leigod-acc package/leigod-acc
 rm -rf package/lede
+
+#拼拼WiFi
+git clone --depth 1 https://github.com/wiwizcom/WiFiPortal.git package/WiFiPortal
+cp -r package/WiFiPortal/dcc2-wiwiz package/
+cp -r package/WiFiPortal/eqos-master-wiwiz package/
+cp -r package/WiFiPortal/wifidog-wiwiz package/
+rm -rf feeds/packages/net/eqos
+rm -rf feeds/luci/applications/luci-app-eqos
 
 #有编译openwrt环境后，加入UA2F模块和RKP-IPID模块
 git clone --depth 1 https://github.com/lucikap/luci-app-ua2f.git package/luci-app-ua2f
