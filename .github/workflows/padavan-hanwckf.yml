@@ -32,7 +32,7 @@ jobs:
       run: |
         mv $GITHUB_WORKSPACE/patch/padavan/default-Aimydee.h /opt/rt-n56u/trunk/user/shared/defaults.h
         mv $GITHUB_WORKSPACE/patch/padavan/www.zip /opt/rt-n56u/trunk/www.zip
-        mv $GITHUB_WORKSPACE/config/PSG1218_nano /opt/rt-n56u/trunk/configs/templates/PSG1218_nano.config
+        mv $GITHUB_WORKSPACE/config/padavan/PSG1218_nano /opt/rt-n56u/trunk/configs/templates/PSG1218_nano.config
         cd /opt/rt-n56u/trunk
         rm -rf user/www
         unzip www.zip -d user/
