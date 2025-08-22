@@ -50,9 +50,9 @@ rm -rf package/openclash
 #git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/passwall
 #git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
 
-rm -rf feeds/packages/net/adguardhome
+#rm -rf feeds/packages/net/adguardhome
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/kz8-small
-mv package/kz8-small/adguardhome package/adguardhome
+#mv package/kz8-small/adguardhome package/adguardhome
 mv package/kz8-small/luci-app-adguardhome package/luci-app-adguardhome
 mv package/kz8-small/luci-app-ikoolproxy package/luci-app-ikoolproxy
 mv package/kz8-small/luci-app-wrtbwmon package/luci-app-wrtbwmon
