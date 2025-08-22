@@ -35,8 +35,8 @@ rm -rf feeds/luci/themes/luci-theme-argon
 rm -rf feeds/luci/applications/luci-app-argon-config
 git clone -b 18.06 --depth 1 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
 
-rm -rf feeds/packages/lang/golang
-git clone --depth 1 https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
+#rm -rf feeds/packages/lang/golang
+#git clone --depth 1 https://github.com/sbwml/packages_lang_golang -b 20.x feeds/packages/lang/golang
 #删除自带的老旧依赖，ssr-plus，passwall
 rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-ssr-plus,luci-app-mosdns}
 
