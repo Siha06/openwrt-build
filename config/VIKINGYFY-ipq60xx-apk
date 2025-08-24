@@ -1,6 +1,6 @@
 CONFIG_TARGET_qualcommax=y
 CONFIG_TARGET_qualcommax_ipq60xx=y
-CONFIG_TARGET_qualcommax_ipq60xx_DEVICE_jdcloud_re-ss-01=y
+CONFIG_TARGET_qualcommax_ipq60xx_DEVICE_zn_m2=y
 # CONFIG_TARGET_ROOTFS_INITRAMFS is not set
 # CONFIG_ATH11K_MEM_PROFILE_1G is not set
 CONFIG_ATH11K_MEM_PROFILE_512M=y
@@ -44,26 +44,28 @@ CONFIG_PACKAGE_usb-modeswitch=y
 CONFIG_PACKAGE_usbmuxd=y
 CONFIG_PACKAGE_usbutils=y
 CONFIG_PACKAGE_libimobiledevice=y
-CONFIG_PACKAGE_kmod-usb-net-ipheth=y
-CONFIG_PACKAGE_kmod-usb-net-rndis=y
-CONFIG_PACKAGE_kmod-usb-storage=y
-CONFIG_PACKAGE_kmod-usb-storage-extras=y
-CONFIG_PACKAGE_kmod-usb3=y
+CONFIG_PACKAGE_kmod-usb-net-ipheth=n
+CONFIG_PACKAGE_kmod-usb-net-rndis=n
+CONFIG_PACKAGE_kmod-usb-storage=n
+CONFIG_PACKAGE_kmod-usb-storage-extras=n
+CONFIG_PACKAGE_kmod-usb3=n
 CONFIG_NSS_FIRMWARE_VERSION_12_5=y
 # CONFIG_NSS_FIRMWARE_VERSION_12_2 is not set
 # CONFIG_NSS_FIRMWARE_VERSION_12_1 is not set
 # CONFIG_NSS_FIRMWARE_VERSION_11_4 is not set
 
-CONFIG_PACKAGE_luci-theme-argon=n
-# CONFIG_PACKAGE_luci-app-autoreboot is not set
+CONFIG_PACKAGE_luci-theme-argon=y
+CONFIG_PACKAGE_luci-app-autoreboot=y
 CONFIG_PACKAGE_luci-app-cpufreq=y
 # CONFIG_PACKAGE_luci-app-diskman is not set
 CONFIG_PACKAGE_luci-app-filemanager=y
 CONFIG_PACKAGE_luci-app-ramfree=y
 CONFIG_PACKAGE_luci-app-ttyd=y
 
-CONFIG_PACKAGE_luci-app-nikki=y
-CONFIG_PACKAGE_luci-app-homeproxy=y
+
+CONFIG_PACKAGE_luci-app-zerotier=y
+CONFIG_PACKAGE_luci-app-nikki=n
+CONFIG_PACKAGE_luci-app-homeproxy=n
 CONFIG_PACKAGE_luci-app-openclash=y
 
 CONFIG_PACKAGE_luci-app-passwall2=y
