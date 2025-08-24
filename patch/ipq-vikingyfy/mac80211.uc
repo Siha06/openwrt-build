@@ -105,7 +105,7 @@ set ${si}=wifi-iface
 set ${si}.device='${name}'
 set ${si}.network='lan'
 set ${si}.mode='ap'
-set ${si}.ssid='${defaults?.ssid || "ImmortalWrt"}'
+set ${si}.ssid='OpenWrt'
 set ${si}.encryption='psk2+ccmp'
 set ${si}.key='password'
 
