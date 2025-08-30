@@ -74,7 +74,8 @@ jobs:
     - name: Clone Source Code(克隆源代码)
       run: |
         df -hT $GITHUB_WORKSPACE
-        git clone --depth=1 -b $REPO_BRANCH --single-branch $REPO_URL openwrt
+        # git clone --depth=1 -b $REPO_BRANCH --single-branch $REPO_URL openwrt
+        git clone --depth 1 https://github.com/VIKINGYFY/immortalwrt.git^17bb7b4700d55b1815974650407e913cc01f6693 openwrt
         cd openwrt
         echo "OPENWRT_PATH=$PWD" >> $GITHUB_ENV
         VERSION_INFO=$(git show -s --date=short --format="作者: %an<br/>时间: %cd<br/>内容: %s<br/>hash: %H")
