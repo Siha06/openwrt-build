@@ -52,7 +52,7 @@ sed -i 's/hybrid/server/g' target/linux/qualcommax/base-files/etc/uci-defaults/9
 #rm -rf feeds/nss_packages/wwan
 
 rm -rf feeds/packages/lang/golang
-git clone https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang -b 25.x feeds/packages/lang/golang
 rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-openclash}
 rm -rf feeds/packages/net/{mosdns,v2ray-geodata}
 git clone --depth 1 https://github.com/vernesong/OpenClash.git package/OpenClash
