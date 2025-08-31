@@ -6,7 +6,7 @@ sed -i '/nss/d' /etc/apk/repositories.d/distfeeds.list
 sed -i '/sqm/d' /etc/apk/repositories.d/distfeeds.list
 sed -i '/qualcommax/d' /etc/apk/repositories.d/distfeeds.list
 sed -i 's#https://downloads.immortalwrt.org#http://mirrors.pku.edu.cn/immortalwrt#g' /etc/apk/repositories.d/distfeeds.list
-sed -i '$a https://mirrors.pku.edu.cn/immortalwrt/snapshots/targets/qualcommax/ipq807x/kmods/6.12.40-1-d20c5db7b2dc8733542c1105bbf02291/packages.adb' /etc/apk/repositories.d/customfeeds.list
+sed -i '$a https://mirrors.pku.edu.cn/immortalwrt/snapshots/targets/qualcommax/ipq807x/kmods/6.12.43-1-f481933d2e9bfdc88ab5c82b0e3b8ba7/packages.adb' /etc/apk/repositories.d/customfeeds.list
 sed -i '$a http://mirrors.pku.edu.cn/immortalwrt/snapshots/targets/qualcommax/ipq807x/packages/packages.adb' /etc/apk/repositories.d/customfeeds.list
 
 # 设置所有网口可访问网页终端
