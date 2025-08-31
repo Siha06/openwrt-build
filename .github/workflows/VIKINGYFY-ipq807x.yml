@@ -74,10 +74,9 @@ jobs:
     - name: Clone Source Code(克隆源代码)
       run: |
         df -hT $GITHUB_WORKSPACE
-        # git clone --depth=1 -b $REPO_BRANCH --single-branch $REPO_URL openwrt
-        git clone https://github.com/VIKINGYFY/immortalwrt.git openwrt
+        git clone --depth 1 -b $REPO_BRANCH --single-branch $REPO_URL openwrt
+        
         cd openwrt
-        git checkout f84446f
         echo "OPENWRT_PATH=$PWD" >> $GITHUB_ENV
         VERSION_INFO=$(git show -s --date=short --format="作者: %an<br/>时间: %cd<br/>内容: %s<br/>hash: %H")
         echo "VERSION_INFO=$VERSION_INFO" >> $GITHUB_ENV
@@ -98,7 +97,7 @@ jobs:
       run: |
         cd $OPENWRT_PATH
         sed -i '1i src-git luci_app_ssrp https://github.com/fw876/helloworld.git' feeds.conf.default
-        sed -i '1i src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git^0e4b2c7146023916b5c3c86da588332b1a666fe8' feeds.conf.default
+        sed -i '1i src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git' feeds.conf.default
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds update -a
