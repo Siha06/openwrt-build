@@ -17,10 +17,11 @@ CONFIG_PACKAGE_kmod-usb2=n
 CONFIG_PACKAGE_kmod-usb-net-rndis=n
 
 CONFIG_PACKAGE_luci-theme-argon=n
-# CONFIG_PACKAGE_luci-app-filetransfer is not set
-# CONFIG_PACKAGE_luci-app-turboacc is not set
-
-CONFIG_PACKAGE_luci-app-wireguard=y
+CONFIG_PACKAGE_luci-app-filetransfer=y
+CONFIG_PACKAGE_luci-app-turboacc=y
+CONFIG_PACKAGE_curl=y
+CONFIG_PACKAGE_kmod-tun=y
+CONFIG_PACKAGE_luci-app-tinyproxy=y
 
 CONFIG_PACKAGE_luci-app-passwall=n
 # CONFIG_PACKAGE_luci-app-passwall_Iptables_Transparent_Proxy is not set
