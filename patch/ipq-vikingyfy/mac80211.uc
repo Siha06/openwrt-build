@@ -107,7 +107,7 @@ set ${si}.network='lan'
 set ${si}.mode='ap'
 set ${si}.ssid='OpenWrt'
 set ${si}.encryption='psk2+ccmp'
-set ${si}.key='password'
+set ${si}.key='123456qwerty'
 
 `);
 		config[name] = {};
