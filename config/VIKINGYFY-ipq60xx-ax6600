@@ -82,20 +82,20 @@ CONFIG_NSS_FIRMWARE_VERSION_12_5=y
 # CONFIG_NSS_FIRMWARE_VERSION_12_1 is not set
 # CONFIG_NSS_FIRMWARE_VERSION_11_4 is not set
 
-CONFIG_PACKAGE_luci-theme-argon=n
+CONFIG_PACKAGE_luci-theme-argon=y
 CONFIG_PACKAGE_luci-app-autoreboot=y
-CONFIG_PACKAGE_luci-app-cpufreq=n
+CONFIG_PACKAGE_luci-app-cpufreq=y
 # CONFIG_PACKAGE_luci-app-diskman is not set
-CONFIG_PACKAGE_luci-app-filemanager=n
+CONFIG_PACKAGE_luci-app-filemanager=y
 CONFIG_PACKAGE_luci-app-ramfree=y
 CONFIG_PACKAGE_luci-app-ttyd=y
 CONFIG_PACKAGE_luci-app-athena-led=y
 
 CONFIG_PACKAGE_luci-app-ddnsto=y
-CONFIG_PACKAGE_luci-app-homeproxy=n
-CONFIG_PACKAGE_luci-app-openclash=n
+CONFIG_PACKAGE_luci-app-homeproxy=y
+CONFIG_PACKAGE_luci-app-openclash=y
 
-CONFIG_PACKAGE_luci-app-passwall2=n
+CONFIG_PACKAGE_luci-app-passwall2=y
 CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Haproxy=y
 # CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Hysteria is not set
 # CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_NaiveProxy is not set
