@@ -23,25 +23,25 @@ sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/usr/
 sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/etc/openwrt_release
 
 #雷神加速器
-git clone --depth 1 https://github.com/coolsnowwolf/lede.git package/lede
-mv package/lede/package/lean/luci-app-leigod-acc package/luci-app-leigod-acc
-mv package/lede/package/lean/leigod-acc package/leigod-acc
-rm -rf package/lede
+#git clone --depth 1 https://github.com/coolsnowwolf/lede.git package/lede
+#mv package/lede/package/lean/luci-app-leigod-acc package/luci-app-leigod-acc
+#mv package/lede/package/lean/leigod-acc package/leigod-acc
+#rm -rf package/lede
 
 #拼拼WiFi
-git clone --depth 1 https://github.com/wiwizcom/WiFiPortal.git package/WiFiPortal
-cp -r package/WiFiPortal/dcc2-wiwiz package/
-cp -r package/WiFiPortal/eqos-master-wiwiz package/
-cp -r package/WiFiPortal/wifidog-wiwiz package/
-rm -rf feeds/packages/net/eqos
-rm -rf feeds/luci/applications/luci-app-eqos
+#git clone --depth 1 https://github.com/wiwizcom/WiFiPortal.git package/WiFiPortal
+#cp -r package/WiFiPortal/dcc2-wiwiz package/
+#cp -r package/WiFiPortal/eqos-master-wiwiz package/
+#cp -r package/WiFiPortal/wifidog-wiwiz package/
+#rm -rf feeds/packages/net/eqos
+#rm -rf feeds/luci/applications/luci-app-eqos
 
 #有编译openwrt环境后，加入UA2F模块和RKP-IPID模块
 git clone --depth 1 https://github.com/lucikap/luci-app-ua2f.git package/luci-app-ua2f
-#git clone --depth 1 https://github.com/Zxilly/UA2F.git package/ua2f
+git clone --depth 1 https://github.com/Zxilly/UA2F.git package/ua2f
 #git clone https://github.com/EOYOHOO/UA2F.git package/UA2F
 #git clone https://github.com/EOYOHOO/rkp-ipid.git package/rkp-ipid
-#rm -rf feeds/packages/net/ua2f
+rm -rf feeds/packages/net/ua2f
 rm -rf feeds/luci/applications/luci-app-ua2f
 
 #安装最新openclash
