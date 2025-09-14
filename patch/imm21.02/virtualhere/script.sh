@@ -3,7 +3,6 @@ sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.101.1/g" $(find ./feeds/luci/modules/
 sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 sed -i 's/ImmortalWrt/OpenWrt/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 #mv $GITHUB_WORKSPACE/patch/imm21.02/mac80211.sh $OPENWRT_PATH/package/kernel/mac80211/files/lib/wifi/mac80211.sh
-mv $GITHUB_WORKSPACE/patch/imm21.02/199-mt762x package/base-files/files/etc/uci-defaults/199-mt762x
 sed -i 's#mirrors.vsean.net/openwrt#mirror.nju.edu.cn/immortalwrt#g' package/emortal/default-settings/files/99-default-settings-chinese
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 sed -i 's/ImmortalWrt/OpenWrt/g' include/version.mk
