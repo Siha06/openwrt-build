@@ -9,7 +9,7 @@ sed -i 's/ImmortalWrt/OpenWrt/g' include/version.mk
 
 mv $GITHUB_WORKSPACE/patch/imm21.02/virtualhere/199-diy.sh package/base-files/files/etc/uci-defaults/199-diy.sh
 mv $GITHUB_WORKSPACE/patch/imm21.02/virtualhere/virtualhere package/base-files/files/etc/virtualhere
-mv $GITHUB_WORKSPACE/patch/imm21.02/virtualhere/config.ini package/base-files/files/etc/config.ini
+mv $GITHUB_WORKSPACE/patch/imm21.02/virtualhere/config.ini package/base-files/files/etc/virtualhere-config.ini
 
 #完全删除luci版本,缩减luci长度
 sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
