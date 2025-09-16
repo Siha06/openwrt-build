@@ -26,8 +26,22 @@ config ddnsto
 EOF
 /etc/init.d/ddnsto restart
 
-uci set dhcp.lan.start='10'
-uci set dhcp.lan.limit='90'
+# 10–11 192.168.1.10/31  
+# 12–15 192.168.1.12/30   
+# 16–31 192.168.1.16/28   
+# 32–63 192.168.1.32/27   
+# 64–95 192.168.1.64/27   
+
+uci add firewall rule
+uci set firewall.@rule[-1].src='lan'
+uci set firewall.@rule[-1].src_ip='10.5.1.64/27'
+uci set firewall.@rule[-1].dest='wan'
+uci set firewall.@rule[-1].name="ban"
+uci add_list firewall.@rule[-1].proto='all'
+uci set firewall.@rule[-1].target='REJECT'
+
+uci set dhcp.lan.start='65'
+uci set dhcp.lan.limit='25'
 uci set wireless.default_radio0.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-5G1
 uci set wireless.default_radio1.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-2.4G
 uci set wireless.default_radio2.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-5G2
