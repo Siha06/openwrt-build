@@ -41,7 +41,7 @@ uci set firewall.@rule[-1].dest='wan'
 uci set firewall.@rule[-1].name="ban"
 uci add_list firewall.@rule[-1].proto='all'
 uci set firewall.@rule[-1].target='REJECT'
-uci set firewall.@rule[-1].enabled='0'
+# uci set firewall.@rule[-1].enabled='0'
 uci commit
 
 uci set dhcp.lan.start='20'
