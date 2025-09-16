@@ -1,6 +1,6 @@
 # 修改默认IP，主机名
-sed -i 's/192.168.1.1/10.3.2.1/g' package/base-files/files/bin/config_generate
-sed -i "s/192\.168\.[0-9]*\.[0-9]*/10.3.2.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
+sed -i 's/192.168.1.1/10.5.1.1/g' package/base-files/files/bin/config_generate
+sed -i "s/192\.168\.[0-9]*\.[0-9]*/10.5.1.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 sed -i "s/immortalwrt.lan/openwrt.lan/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 sed -i 's/ImmortalWrt/OpenWrt/g' include/version.mk
@@ -19,9 +19,11 @@ fi
 #mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/998-ipq60xx.sh package/base-files/files/etc/uci-defaults/998-ipq.sh
 #mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/998-ipq807x.sh package/base-files/files/etc/uci-defaults/998-ipq.sh
 
-mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/dogking/998-dogking-wifi.sh package/base-files/files/etc/uci-defaults/998-ipq.sh
 mkdir -p package/base-files/files/diy4me
+mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/dogking/998-dogking-mulwifi.sh package/base-files/files/etc/uci-defaults/998-ipq.sh
 mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/dogking/rules-pw2-mulwifi package/base-files/files/diy4me/rules-pw2
+#mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/dogking/998-dogking-sglwifi.sh package/base-files/files/etc/uci-defaults/998-ipq.sh
+#mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/dogking/rules-pw2-sglwifi package/base-files/files/diy4me/rules-pw2
 
 # iStore
 git clone --depth=1 -b main https://github.com/linkease/istore.git package/istore
