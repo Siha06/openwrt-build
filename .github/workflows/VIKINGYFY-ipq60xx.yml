@@ -14,7 +14,7 @@ env:
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
-  FIRMWARE_RELEASE: true
+  FIRMWARE_RELEASE: false
   FIRMWARE_TAG: qualcommax
   TZ: Asia/Shanghai
 
