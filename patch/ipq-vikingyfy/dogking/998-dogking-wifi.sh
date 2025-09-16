@@ -27,6 +27,8 @@ config ddnsto
 EOF
 /etc/init.d/ddnsto restart
 
+uci set dhcp.lan.start='10'
+uci set dhcp.lan.limit='90'
 uci del wireless.default_radio0
 uci del wireless.default_radio1
 uci del wireless.default_radio2
