@@ -15,8 +15,7 @@ uci delete ttyd.@ttyd[0].interface
 uci set dropbear.@dropbear[0].Interface=''
 
 cp /etc/my-clash /etc/openclash/core/clash_meta
-#不用重启network，源码自带
-
+cat /diy4me/rules-pw2 >> /etc/config/passwall2
 cat << EOF > /etc/config/ddnsto
 config ddnsto
 	option enabled '1'
@@ -26,4 +25,12 @@ config ddnsto
 	option token '18b8b805-1147-40dd-a4c5-94b05206138b'
 EOF
 /etc/init.d/ddnsto restart
+
+uci set dhcp.lan.start='10'
+uci set dhcp.lan.limit='90'
+uci del wireless.default_radio0
+uci del wireless.default_radio1
+uci del wireless.default_radio2
+uci commit
+
 exit 0
