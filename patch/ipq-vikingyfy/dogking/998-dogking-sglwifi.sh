@@ -28,9 +28,10 @@ EOF
 
 uci set dhcp.lan.start='10'
 uci set dhcp.lan.limit='90'
-uci del wireless.default_radio0
-uci del wireless.default_radio1
-uci del wireless.default_radio2
+uci set wireless.default_radio0.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-5G1
+uci set wireless.default_radio1.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-2.4G
+uci set wireless.default_radio2.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-5G2
+uci commit wireless
 uci commit
 
 exit 0
