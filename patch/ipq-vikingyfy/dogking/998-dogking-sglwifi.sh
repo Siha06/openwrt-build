@@ -34,14 +34,18 @@ EOF
 
 uci add firewall rule
 uci set firewall.@rule[-1].src='lan'
-uci set firewall.@rule[-1].src_ip='10.5.1.64/27'
+uci add_list firewall.@rule[-1].src_ip='10.5.1.16/28'
+uci add_list firewall.@rule[-1].src_ip='10.5.1.32/27'
+uci add_list firewall.@rule[-1].src_ip='10.5.1.64/27'
 uci set firewall.@rule[-1].dest='wan'
 uci set firewall.@rule[-1].name="ban"
 uci add_list firewall.@rule[-1].proto='all'
 uci set firewall.@rule[-1].target='REJECT'
+uci set firewall.@rule[-1].enabled='0'
+uci commit
 
-uci set dhcp.lan.start='65'
-uci set dhcp.lan.limit='25'
+uci set dhcp.lan.start='20'
+uci set dhcp.lan.limit='70'
 uci set wireless.default_radio0.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-5G1
 uci set wireless.default_radio1.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-2.4G
 uci set wireless.default_radio2.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-5G2
