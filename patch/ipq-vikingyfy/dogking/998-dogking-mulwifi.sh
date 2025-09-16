@@ -61,6 +61,7 @@ uci set firewall.@rule[-1].dest='wan'
 uci set firewall.@rule[-1].name="ban-local"
 uci add_list firewall.@rule[-1].proto='all'
 uci set firewall.@rule[-1].target='REJECT'
+uci set firewall.@rule[-1].enabled='0'
 
 # 生成配置
 for i in $(seq 1 24); do
@@ -113,6 +114,6 @@ uci commit wireless
 uci commit network
 uci commit dhcp
 uci commit firewall
-
+uci commit 
 
 exit 0
