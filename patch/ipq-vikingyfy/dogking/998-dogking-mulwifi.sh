@@ -40,10 +40,27 @@ ssid=OpenWrt
 password=123456789
 # WiFi地址
 ipaddr=10.10.1.1
+
+
 a=$(echo "$ipaddr" | awk -F. '{print $1}')
 b=$(echo "$ipaddr" | awk -F. '{print $2}')
 c=$(echo "$ipaddr" | awk -F. '{print $3}')
 d=$(echo "$ipaddr" | awk -F. '{print $4}')
+
+uci add firewall zone
+uci set firewall.@zone[-1].name="proxy"
+uci set firewall.@zone[-1].input='ACCEPT'
+uci set firewall.@zone[-1].output='ACCEPT'
+uci set firewall.@zone[-1].forward='ACCEPT'
+uci add firewall forwarding
+uci set firewall.@forwarding[-1].src="proxy"
+uci set firewall.@forwarding[-1].dest='wan'
+uci add firewall rule
+uci set firewall.@rule[-1].src="proxy"
+uci set firewall.@rule[-1].dest='wan'
+uci set firewall.@rule[-1].name="ban-local"
+uci add_list firewall.@rule[-1].proto='all'
+uci set firewall.@rule[-1].target='REJECT'
 
 # 生成配置
 for i in $(seq 1 24); do
@@ -88,22 +105,7 @@ for i in $(seq 1 24); do
     uci set dhcp.wifi${wifi_id}.interface="wifi${wifi_id}"
 
     # 配置防火墙
-    uci add firewall zone
-    uci set firewall.@zone[-1].name="wifi${wifi_id}"
-    uci set firewall.@zone[-1].input='ACCEPT'
-    uci set firewall.@zone[-1].output='ACCEPT'
-    uci set firewall.@zone[-1].forward='ACCEPT'
     uci add_list firewall.@zone[-1].network="wifi${wifi_id}"
-    uci add firewall forwarding
-    uci set firewall.@forwarding[-1].src="wifi${wifi_id}"
-    uci set firewall.@forwarding[-1].dest='wan'
-
-    uci add firewall rule
-    uci set firewall.@rule[-1].src="wifi${wifi_id}"
-    uci set firewall.@rule[-1].dest='wan'
-    uci set firewall.@rule[-1].name="wifi${wifi_id}"
-    uci add_list firewall.@rule[-1].proto='all'
-    uci set firewall.@rule[-1].target='REJECT'
 done
 
 # 提交配置
