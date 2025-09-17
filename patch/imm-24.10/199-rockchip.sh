@@ -39,11 +39,11 @@ cp /etc/my-clash /etc/openclash/core/clash_meta
 #uci set network.cfg030f15.macaddr="8C:DA:$(date +"%d:%H:%M:%S")"
 #uci set network.cfg060f15.macaddr="9C:DA:$(date +"%d:%H:%M:%S")"
 #uci commit network
-#uci set wireless.default_radio0.macaddr='random'
-#uci commit wireless
+uci set wireless.default_radio0.macaddr='random'
+uci commit wireless
 
 uci commit
 
-#/etc/init.d/network restart
+/etc/init.d/network restart
 
 exit 0
