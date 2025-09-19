@@ -15,7 +15,7 @@ uci delete ttyd.@ttyd[0].interface
 uci set dropbear.@dropbear[0].Interface=''
 
 cp /etc/my-clash /etc/openclash/core/clash_meta
-cat /diy4me/rules-pw2-40ip >> /usr/share/passwall2/0_default_config
+cat /diy4me/rules-pw2 >> /usr/share/passwall2/0_default_config
 cat << EOF > /etc/config/ddnsto
 config ddnsto
 	option enabled '1'
