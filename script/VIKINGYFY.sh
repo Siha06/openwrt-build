@@ -20,10 +20,10 @@ fi
 #mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/998-ipq807x.sh package/base-files/files/etc/uci-defaults/998-ipq.sh
 
 mkdir -p package/base-files/files/diy4me
-#mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/dogking/998-dogking-mulwifi.sh package/base-files/files/etc/uci-defaults/998-ipq.sh
-#mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/dogking/rules-pw2-mulwifi package/base-files/files/diy4me/rules-pw2
-mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/dogking/998-dogking-sglwifi.sh package/base-files/files/etc/uci-defaults/998-ipq.sh
-mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/dogking/rules-pw2-sglwifi package/base-files/files/diy4me/rules-pw2
+mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/dogking/998-dogking-mulwifi.sh package/base-files/files/etc/uci-defaults/998-ipq.sh
+mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/dogking/rules-pw2-mulwifi package/base-files/files/diy4me/rules-pw2
+#mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/dogking/998-dogking-sglwifi.sh package/base-files/files/etc/uci-defaults/998-ipq.sh
+#mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/dogking/rules-pw2-sglwifi package/base-files/files/diy4me/rules-pw2
 
 # iStore
 git clone --depth=1 -b main https://github.com/linkease/istore.git package/istore
