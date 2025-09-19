@@ -15,7 +15,7 @@ uci delete ttyd.@ttyd[0].interface
 uci set dropbear.@dropbear[0].Interface=''
 
 cp /etc/my-clash /etc/openclash/core/clash_meta
-cat /diy4me/rules-pw2 >> /etc/config/passwall2
+cat /diy4me/rules-pw2-40ip >> /usr/share/passwall2/0_default_config
 cat << EOF > /etc/config/ddnsto
 config ddnsto
 	option enabled '1'
@@ -110,6 +110,14 @@ for i in $(seq 1 24); do
 done
 
 # 提交配置
+
+uci set wireless.radio0.channel='149'
+uci set wireless.radio1.channel='11'
+uci set wireless.radio2.channel='44'
+uci set wireless.radio0.cell_density='0'
+uci set wireless.radio1.cell_density='0'
+uci set wireless.radio2.cell_density='0'
+
 uci commit wireless
 uci commit network
 uci commit dhcp
