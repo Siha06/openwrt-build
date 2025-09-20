@@ -31,19 +31,24 @@ EOF
 # 16–31 192.168.1.16/28   
 # 32–63 192.168.1.32/27   
 # 64–95 192.168.1.64/27   
-
-uci set wireless.default_radio0.ssid=$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-5G1
+uci set wireless.radio0.channel='149'
+uci set wireless.radio1.channel='11'
+uci set wireless.radio2.channel='44'
+uci set wireless.radio0.cell_density='0'
+uci set wireless.radio1.cell_density='0'
+uci set wireless.radio2.cell_density='0'
+uci set wireless.default_radio0.ssid=$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-5G
 uci set wireless.default_radio1.ssid=$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-2.4G
 uci del wireless.default_radio2.ssid=$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-OpenWrt
 uci commit wireless
 
-uci add_list firewall.@rule[-1].src_ip='10.10.1.16/28'
-uci add_list firewall.@rule[-1].src_ip='10.10.1.32/27'
-uci add_list firewall.@rule[-1].src_ip='10.10.1.64/27'
-uci commit
+#uci add_list firewall.@rule[-1].src_ip='10.10.1.16/28'
+#uci add_list firewall.@rule[-1].src_ip='10.10.1.32/27'
+#uci add_list firewall.@rule[-1].src_ip='10.10.1.64/27'
+#uci commit
 
-uci set dhcp.openwrt.start='20'
-uci set dhcp.openwrt.limit='70'
+uci set dhcp.openwrt.start='10'
+uci set dhcp.openwrt.limit='80'
 
 uci commit dhcp
 uci commit
