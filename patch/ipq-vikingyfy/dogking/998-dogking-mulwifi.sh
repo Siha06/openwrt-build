@@ -39,7 +39,7 @@ ssid=OpenWrt
 # WiFi密码
 password=123456789
 # WiFi地址
-ipaddr=10.10.1.1
+ipaddr=10.10.101.1
 
 
 a=$(echo "$ipaddr" | awk -F. '{print $1}')
