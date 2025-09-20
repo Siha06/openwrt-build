@@ -39,7 +39,7 @@ uci set wireless.radio1.cell_density='0'
 uci set wireless.radio2.cell_density='0'
 uci set wireless.default_radio0.ssid=$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-5G
 uci set wireless.default_radio1.ssid=$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-2.4G
-uci del wireless.default_radio2.ssid=$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-OpenWrt
+uci set wireless.default_radio2.ssid=$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-OpenWrt
 uci commit wireless
 
 #uci add_list firewall.@rule[-1].src_ip='10.10.1.16/28'
@@ -47,8 +47,8 @@ uci commit wireless
 #uci add_list firewall.@rule[-1].src_ip='10.10.1.64/27'
 #uci commit
 
-uci set dhcp.openwrt.start='10'
-uci set dhcp.openwrt.limit='80'
+uci set dhcp.lan.start='10'
+uci set dhcp.lan.limit='80'
 
 uci commit dhcp
 uci commit
