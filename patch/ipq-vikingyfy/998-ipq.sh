@@ -1,6 +1,7 @@
 #!/bin/sh
 
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
+sed -i '/passwall/d' /etc/opkg/distfeeds.conf
 sed -i '/nss/d' /etc/opkg/distfeeds.conf
 sed -i '/sqm/d' /etc/opkg/distfeeds.conf
 sed -i '/qualcommax/d' /etc/opkg/distfeeds.conf
