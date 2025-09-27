@@ -21,6 +21,19 @@ echo "DISTRIB_REVISION='V${date_version}'" >> /etc/openwrt_release
 sed -i '/DISTRIB_DESCRIPTION/d' /etc/openwrt_release
 echo "DISTRIB_DESCRIPTION='OpenWrt  '" >> /etc/openwrt_release
 
-#/etc/init.d/network restart
+sed -i 's/192.168.1.1/192.168.5.1/g' /etc/wireless/mt7615/mt7615.1.5G.dat
+#sed -i 's/Openwrt_5G/Openwrt-5G/g' /etc/wireless/mt7615/mt7615.1.5G.dat
+sed -i 's/12345678/password/g' /etc/wireless/mt7615/mt7615.1.5G.dat
+sed -i 's/AuthMode=OPEN/AuthMode=WPA2PSK/g' /etc/wireless/mt7615/mt7615.1.5G.dat
+sed -i 's/EncrypType=NONE/EncrypType=AES/g' /etc/wireless/mt7615/mt7615.1.5G.dat
+
+sed -i 's/192.168.1.1/192.168.5.1/g' /etc/wireless/mt7615/mt7615.1.2G.dat
+sed -i 's/CR660X_2.4G/Openwrt_2.4G/g' /etc/wireless/mt7615/mt7615.1.2G.dat
+sed -i 's/12345678/password/g' /etc/wireless/mt7615/mt7615.1.2G.dat
+sed -i 's/AuthMode=OPEN/AuthMode=WPA2PSK/g' /etc/wireless/mt7615/mt7615.1.2G.dat
+sed -i 's/EncrypType=NONE/EncrypType=AES/g' /etc/wireless/mt7615/mt7615.1.2G.dat
+
+
+/etc/init.d/network restart
 
 exit 0
