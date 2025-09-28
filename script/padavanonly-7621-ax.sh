@@ -35,6 +35,7 @@ rm -rf feeds/luci/themes/luci-theme-argonv2
 rm -rf feeds/luci/themes/luci-theme-argon
 rm -rf feeds/luci/applications/luci-app-argon-config
 git clone -b 18.06 --depth 1 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
+git clone --depth 1 https://github.com/Erope/openwrt_nezha.git package/openwrt_nezha
 
 rm -rf feeds/packages/lang/golang
 git clone --depth 1 https://github.com/sbwml/packages_lang_golang -b 25.x feeds/packages/lang/golang
