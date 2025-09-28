@@ -8,7 +8,7 @@ env:
   REPO_URL: https://github.com/openwrt/openwrt.git
   REPO_BRANCH: openwrt-24.10
   CONFIG_FILE: config/x86-openwrt24.10
-  DIY_SCRIPT: script/x86-openwrt24.sh
+  DIY_SCRIPT: script/x86-openwrt.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
@@ -19,7 +19,7 @@ env:
 
 jobs:
   Build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
 
     steps:
     - name: Check Server Performance(检查服务器性能)
@@ -95,7 +95,7 @@ jobs:
     - name: Install Feeds(安装feeds)
       run: |
         cd $OPENWRT_PATH
-        git checkout v24.10.1
+        git checkout v24.10.3
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds update -a
