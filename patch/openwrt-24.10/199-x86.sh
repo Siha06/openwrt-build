@@ -37,7 +37,9 @@ sed -i '/passwall/d' /etc/opkg/distfeeds.conf
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 sed -i 's#downloads.openwrt.org#mirrors.pku.edu.cn/openwrt#g' /etc/opkg/distfeeds.conf
 sed -i '/targets/d' /etc/opkg/distfeeds.conf
-sed -i '$a src/gz kmods https://mirror.nju.edu.cn/openwrt/releases/24.10.3/targets/x86/64/kmods/6.6.104-1-3505295dd1edf1c0eda57c9ce372bf57' /etc/opkg/distfeeds.conf
+
+sed -i '$a src/gz kmods https://mirror.nju.edu.cn/openwrt/releases/24.10.2/targets/x86/64/kmods/6.6.93-1-1745ebad77278f5cdc8330d17a3f43d6' /etc/opkg/distfeeds.conf
+#sed -i '$a src/gz kmods https://mirror.nju.edu.cn/openwrt/releases/24.10.3/targets/x86/64/kmods/6.6.104-1-3505295dd1edf1c0eda57c9ce372bf57' /etc/opkg/distfeeds.conf
 sed -i '$a src/gz others https://mirror.nju.edu.cn/openwrt/releases/24.10.3/targets/x86/64/packages' /etc/opkg/distfeeds.conf
 #sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/openwrt/releases/23.05.3/targets/x86/64/kmods/5.15.150-1-e496746edd89318b9810e48e36a8bd9c' /etc/opkg/customfeeds.conf
 sed -i '$a #src/gz kiddin9 https://dl.openwrt.ai/packages-24.10/x86_64/kiddin9' /etc/opkg/customfeeds.conf
