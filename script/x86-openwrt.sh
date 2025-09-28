@@ -3,8 +3,8 @@
 sed -i 's/192.168.1.1/192.168.86.1/g' package/base-files/files/bin/config_generate
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.86.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 sed -i 's/${defaults ? 0 : 1}/0/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
-
 mv $GITHUB_WORKSPACE/patch/openwrt-24.10/199-x86.sh package/base-files/files/etc/uci-defaults/199-x86.sh
+
 if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
     tar -zxf package/openclash-core/master/meta/clash-linux-amd64.tar.gz -C package/base-files/files/etc/
@@ -92,11 +92,11 @@ mv package/kwrt-packages/luci-app-npc package/luci-app-npc
 rm -rf package/kwrt-packages
 
 #有编译openwrt环境后，加入UA2F模块和RKP-IPID模块
-#git clone --depth 1 https://github.com/lucikap/luci-app-ua2f.git package/luci-app-ua2f
-#git clone --depth 1 https://github.com/Zxilly/UA2F.git package/ua2f
+git clone --depth 1 https://github.com/lucikap/luci-app-ua2f.git package/luci-app-ua2f
+git clone --depth 1 https://github.com/Zxilly/UA2F.git package/ua2f
 #git clone https://github.com/EOYOHOO/UA2F.git package/UA2F
 #git clone https://github.com/EOYOHOO/rkp-ipid.git package/rkp-ipid
 rm -rf feeds/packages/net/ua2f
 rm -rf feeds/luci/applications/luci-app-ua2f
 
-git clone --depth 1 https://github.com/SunBK201/UA3F.git package/UA3F
+#git clone --depth 1 https://github.com/SunBK201/UA3F.git package/UA3F
