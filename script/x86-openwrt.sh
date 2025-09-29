@@ -100,3 +100,7 @@ rm -rf feeds/packages/net/ua2f
 rm -rf feeds/luci/applications/luci-app-ua2f
 
 git clone --depth 1 https://github.com/SunBK201/UA3F.git package/UA3F
+#修复TailScale配置文件冲突
+sed -i '/\/files/d'  feeds/packages/net/tailscale/Makefile
+#修复Rust编译失败
+sed -i 's/ci-llvm=true/ci-llvm=false/g' feeds/packages/lang/rust/Makefile
