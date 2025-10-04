@@ -48,8 +48,7 @@ git clone --depth 1 https://github.com/sirpdboy/netspeedtest.git package/netspee
 git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/openwrt-oaf
 
 mkdir package/mypkg
-git clone --depth 1 -b openwrt-23.05 https://github.com/immortalwrt/luci.git package/mypkg/imm24-luci
-#git clone --depth 1 -b openwrt-24.10 https://github.com/immortalwrt/luci.git package/mypkg/imm24-luci
+git clone --depth 1 -b openwrt-24.10 https://github.com/immortalwrt/luci.git package/mypkg/imm24-luci
 mv package/mypkg/imm24-luci/applications/luci-app-autoreboot package/mypkg/luci-app-autoreboot
 mv package/mypkg/imm24-luci/applications/luci-app-diskman package/mypkg/luci-app-diskman
 mv package/mypkg/imm24-luci/applications/luci-app-homeproxy package/mypkg/luci-app-homeproxy
