@@ -2,7 +2,7 @@
 sed -i 's/192.168.1.1/192.168.86.1/g' package/base-files/files/bin/config_generate
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.86.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 sed -i 's/${defaults ? 0 : 1}/0/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
-mv $GITHUB_WORKSPACE/patch/openwrt-24.10/199-x86.sh package/base-files/files/etc/uci-defaults/199-x86.sh
+mv $GITHUB_WORKSPACE/patch/openwrt-22.03/199-x86.sh package/base-files/files/etc/uci-defaults/199-x86.sh
 
 if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
