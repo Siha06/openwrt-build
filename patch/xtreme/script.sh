@@ -14,6 +14,11 @@ mv $GITHUB_WORKSPACE/patch/xtreme/argon.svg feeds/luci/themes/luci-theme-argon/h
 mv $GITHUB_WORKSPACE/patch/xtreme/footer.htm feeds/luci/themes/luci-theme-argon/luasrc/view/themes/argon/footer.htm
 mv $GITHUB_WORKSPACE/patch/xtreme/footer_login.htm feeds/luci/themes/luci-theme-argon/luasrc/view/themes/argon/footer_login.htm
 
+#完全删除luci版本,缩减luci长度
+sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
+#添加编译日期
+sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/usr/lib/os-release
+sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/etc/openwrt_release
 
 if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
