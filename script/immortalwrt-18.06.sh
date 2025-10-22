@@ -17,26 +17,28 @@ if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     rm -rf package/openclash-core
 fi
 
-#rm -rf feeds/luci/modules/luci-base/po/zh-cn
-#rm -rf feeds/luci/applications/luci-app-passwall/po/zh-cn
-#rm -rf feeds/luci/applications/luci-app-timecontrol/po/zh-cn
-#rm -rf feeds/luci/applications/luci-app-firewall/po/zh-cn
-#rm -rf feeds/luci/applications/luci-app-upnp/po/zh-cn
 
 #git clone --depth 1 https://github.com/lllrrr/luci-app-sfe.git package/luci-app-sfe
 #mv $GITHUB_WORKSPACE/patch/lean/luci-app-sfe.zip package/luci-app-sfe.zip
 #unzip package/luci-app-sfe.zip -d package/luci-app-sfe
 
-#rm -rf feeds/luci/themes/luci-theme-argonv3
-#rm -rf feeds/luci/themes/luci-theme-argonv2
+
 rm -rf feeds/luci/themes/luci-theme-argon
 # rm -rf feeds/luci/applications/luci-app-argon-config
 git clone -b 18.06 --depth 1 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
 # git clone -b 18.06 --depth 1 https://github.com/jerrykuku/luci-app-argon-config feeds/luci/applications/luci-app-argon-config
+
 #git clone --depth 1 https://github.com/kenzok8/openwrt-packages.git  package/openwrt-packages
 #mv package/openwrt-packages/luci-theme-design package/luci-theme-design
 #rm -rf package/openwrt-packages
 
+#有编译openwrt环境后，加入UA2F模块和RKP-IPID模块
+git clone --depth 1 https://github.com/lucikap/luci-app-ua2f.git package/luci-app-ua2f
+git clone --depth 1 https://github.com/Zxilly/UA2F.git package/ua2f
+#git clone https://github.com/EOYOHOO/UA2F.git package/UA2F
+#git clone https://github.com/EOYOHOO/rkp-ipid.git package/rkp-ipid
+rm -rf feeds/packages/net/ua2f
+rm -rf feeds/luci/applications/luci-app-ua2f
 # git clone --depth 1 https://github.com/sirpdboy/luci-app-eqosplus package/luci-app-eqosplus
 
 
