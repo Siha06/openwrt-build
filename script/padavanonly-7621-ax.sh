@@ -1,12 +1,11 @@
 #sed -i 's/192.168.6.1/10.3.2.1/g' package/base-files/files/bin/config_generate
 #sed -i "s/192\.168\.[0-9]*\.[0-9]*/10.3.2.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
-#sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
+sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 mv $GITHUB_WORKSPACE/patch/7621-237imm/zz-diy package/base-files/files/etc/uci-defaults/zz-diy
 
 #白雾定制
 sed -i 's/192.168.6.1/192.168.5.1/g' package/base-files/files/bin/config_generate
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.5.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
-sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 mv $GITHUB_WORKSPACE/patch/tiktok/7621/bw-diy.sh package/base-files/files/etc/uci-defaults/zz-diy.sh
 mv $GITHUB_WORKSPACE/patch/tiktok/7621/bw-index.htm package/base-files/files/etc/bw-index.htm
 #mv $GITHUB_WORKSPACE/patch/tiktok/7621/bw-school-index.htm package/base-files/files/etc/bw-index.htm
@@ -53,10 +52,11 @@ git clone --depth 1 -b main https://github.com/linkease/nas-packages-luci.git pa
 mv package/nas-packages/network/services/* package/nas-packages/
 rm -rf package/nas-packages/network
 
-rm -rf feeds/packages/net/adguardhome
+rm -rf feeds/packages/net/{adguardhome,frp}
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/kz8-small
 mv package/kz8-small/adguardhome package/adguardhome
 mv package/kz8-small/luci-app-adguardhome package/luci-app-adguardhome
+mv package/kz8-small/frp package/frp
 mv package/kz8-small/luci-app-ikoolproxy package/luci-app-ikoolproxy
 mv package/kz8-small/luci-app-wrtbwmon package/luci-app-wrtbwmon
 mv package/kz8-small/wrtbwmon package/wrtbwmon
