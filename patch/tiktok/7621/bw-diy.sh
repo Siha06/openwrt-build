@@ -14,6 +14,7 @@ sed -i '/ua2f/d' /etc/opkg/distfeeds.conf
 sed -i '/passwall/d' /etc/opkg/distfeeds.conf
 sed -i '/core/d' /etc/opkg/distfeeds.conf
 sed -i '/helloworld/d' /etc/opkg/distfeeds.conf
+sed -i '/ssrp/d' /etc/opkg/distfeeds.conf
 
 cp /etc/my-clash /etc/openclash/core/clash_meta
 #mv /etc/bw-index.htm /usr/lib/lua/luci/view/admin_status/index.htm
