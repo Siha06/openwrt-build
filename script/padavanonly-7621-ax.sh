@@ -1,13 +1,13 @@
 #sed -i 's/192.168.6.1/10.3.2.1/g' package/base-files/files/bin/config_generate
 #sed -i "s/192\.168\.[0-9]*\.[0-9]*/10.3.2.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
-mv $GITHUB_WORKSPACE/patch/7621-237imm/zz-diy package/base-files/files/etc/uci-defaults/zz-diy
+#mv $GITHUB_WORKSPACE/patch/7621-237imm/zz-diy package/base-files/files/etc/uci-defaults/zz-diy
 
 #白雾定制
 sed -i 's/192.168.6.1/192.168.5.1/g' package/base-files/files/bin/config_generate
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.5.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
-mv $GITHUB_WORKSPACE/patch/tiktok/7621/bw-diy.sh package/base-files/files/etc/uci-defaults/zz-diy.sh
-mv $GITHUB_WORKSPACE/patch/tiktok/7621/bw-index.htm package/base-files/files/etc/bw-index.htm
+#mv $GITHUB_WORKSPACE/patch/tiktok/7621/bw-diy.sh package/base-files/files/etc/uci-defaults/zz-diy.sh
+#mv $GITHUB_WORKSPACE/patch/tiktok/7621/bw-index.htm package/base-files/files/etc/bw-index.htm
 #mv $GITHUB_WORKSPACE/patch/tiktok/7621/bw-school-index.htm package/base-files/files/etc/bw-index.htm
 #rm -rf feeds/luci/applications/luci-app-ua2f
 #rm -rf feeds/packages/net/ua2f/*
@@ -33,8 +33,8 @@ git clone --depth 1 https://github.com/Erope/openwrt_nezha.git package/openwrt_n
 git clone --depth 1 -b lua https://github.com/sirpdboy/luci-app-ddns-go.git package/ddns-go
 git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
 
-rm -rf feeds/packages/lang/golang
-git clone --depth 1 https://github.com/sbwml/packages_lang_golang -b 25.x feeds/packages/lang/golang
+#rm -rf feeds/packages/lang/golang
+#git clone --depth 1 https://github.com/sbwml/packages_lang_golang -b 25.x feeds/packages/lang/golang
 
 rm -rf feeds/packages/net/{mosdns,v2ray-geodata}
 rm -rf feeds/luci/applications/{luci-app-openclash,luci-app-passwall,luci-app-ssr-plus,luci-app-mosdns}
