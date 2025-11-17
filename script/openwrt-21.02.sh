@@ -14,4 +14,4 @@ sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/etc/
 
 
 mv $GITHUB_WORKSPACE/patch/imm21.02/vodip/zz-7621.sh package/base-files/files/etc/uci-defaults/zz-7621.sh
-mv $GITHUB_WORKSPACE/patch/imm21.02/vodip/backup20251117.tar.gz package/base-files/files/etc/backup20251117.tar.gz
+mv $GITHUB_WORKSPACE/patch/imm21.02/vodip/8929-20251117-2137819%40vodip.cn.tar.gz package/base-files/files/etc/8929-20251117-2137819%40vodip.cn.tar.gz
