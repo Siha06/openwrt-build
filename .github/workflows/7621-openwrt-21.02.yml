@@ -7,7 +7,7 @@ on:
 env:
   REPO_URL: https://github.com/openwrt/openwrt.git
   REPO_BRANCH: openwrt-21.02
-  CONFIG_FILE: config/7621-openwrt21.02
+  CONFIG_FILE: config/7621-openwrt-21.02
   DIY_SCRIPT: script/openwrt21.02.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
@@ -84,6 +84,7 @@ jobs:
     - name: Install Feeds(安装feeds)
       run: |
         cd $OPENWRT_PATH
+        git checkout v21.02.7
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds update -a
