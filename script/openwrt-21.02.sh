@@ -1,0 +1,17 @@
+sed -i 's/192.168.1.1/192.168.0.18/g' package/base-files/files/bin/config_generate
+sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.0.18/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
+#mv $GITHUB_WORKSPACE/patch/imm21.02/199-mt762x-openwrt package/base-files/files/etc/uci-defaults/zz-iy
+
+
+
+#完全删除luci版本,缩减luci长度
+sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
+#sed -i "s/+ ' ' + luciversion.revision//" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
+#添加编译日期
+sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/usr/lib/os-release
+sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/etc/openwrt_release
+
+
+
+mv $GITHUB_WORKSPACE/patch/imm21.02/vodip/zz-7621.sh package/base-files/files/etc/uci-defaults/zz-7621.sh
+mv $GITHUB_WORKSPACE/patch/imm21.02/vodip/backup20251117.tar.gz package/base-files/files/etc/backup20251117.tar.gz
