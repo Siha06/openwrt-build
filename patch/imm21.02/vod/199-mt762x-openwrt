@@ -32,8 +32,15 @@ sed -i '$a src/gz openwrt_packages http://s2.vodip.cn:30000/c%3a/releases/21.02.
 sed -i '$a src/gz openwrt_routing http://s2.vodip.cn:30000/c%3a/releases/21.02.3/packages/mipsel_24kc/routing' /etc/opkg/distfeeds.conf
 sed -i '$a src/gz openwrt_telephony http://s2.vodip.cn:30000/c%3a/releases/21.02.3/packages/mipsel_24kc/telephony' /etc/opkg/distfeeds.conf
 
+cat << EOF > /etc/rc.local
+sleep 10
+/etc/init.d/apache2 disable
+exit 0
+EOF
+
 #sysupgrade --restore-backup /etc/8929-20251117-2137819@vodip.cn.tar.gz
-tar -xzvf /etc/8929-20251117-2137819@vodip.cn.tar.gz -C /
+tar -xzvf /etc/8929-20251119-vodip.cn.tar.gz -C /
+
 #/etc/init.d/system restart
 /etc/init.d/network restart
 
