@@ -39,7 +39,7 @@ exit 0
 EOF
 
 #sysupgrade --restore-backup /etc/8929-20251117-2137819@vodip.cn.tar.gz
-tar -xzvf /etc/8929-20251119-vodip.cn.tar.gz -C /
+tar -xzvf /etc/8929-YC-2025-11-21.tar.gz -C /
 
 #/etc/init.d/system restart
 /etc/init.d/network restart
