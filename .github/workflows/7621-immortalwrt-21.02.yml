@@ -8,8 +8,8 @@ env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt.git
   REPO_BRANCH: openwrt-21.02
   CONFIG_FILE: config/7621-openwrt-21.02
-  #DIY_SCRIPT: script/immortalwrt-21.02-762x.sh
-  DIY_SCRIPT: patch/xtreme/script.sh
+  DIY_SCRIPT: script/immortalwrt-21.02-762x.sh
+  #DIY_SCRIPT: patch/xtreme/script.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
