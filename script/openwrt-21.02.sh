@@ -1,6 +1,6 @@
-sed -i 's/192.168.1.1/192.169.0.18/g' package/base-files/files/bin/config_generate
-sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.169.0.18/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
-#mv $GITHUB_WORKSPACE/patch/imm21.02/199-mt762x-openwrt package/base-files/files/etc/uci-defaults/zz-iy
+sed -i 's/192.168.1.1/10.3.2.1/g' package/base-files/files/bin/config_generate
+sed -i "s/192\.168\.[0-9]*\.[0-9]*/10.3.2.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
+mv $GITHUB_WORKSPACE/patch/imm21.02/199-mt762x-openwrt package/base-files/files/etc/uci-defaults/zz-iy
 
 
 
@@ -11,7 +11,3 @@ sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-stat
 sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/usr/lib/os-release
 sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/etc/openwrt_release
 
-
-
-mv $GITHUB_WORKSPACE/patch/imm21.02/vod/199-mt762x-openwrt package/base-files/files/etc/uci-defaults/zz-7621.sh
-mv $GITHUB_WORKSPACE/patch/imm21.02/vod/8929-YC-2025-11-21.tar.gz package/base-files/files/etc/8929-YC-2025-11-21.tar.gz
