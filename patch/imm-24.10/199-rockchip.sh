@@ -23,8 +23,9 @@ sed -i 's#downloads.immortalwrt.org#mirrors.pku.edu.cn/immortalwrt#g' /etc/opkg/
 #sed -i '$a src/gz openwrt_packages https://mirrors.pku.edu.cn/openwrt/releases/24.10.2/packages/aarch64_generic/packages' /etc/opkg/distfeeds.conf
 #sed -i '$a src/gz openwrt_routing https://mirrors.pku.edu.cn/openwrt/releases/24.10.2/packages/aarch64_generic/routing' /etc/opkg/distfeeds.conf
 #sed -i '$a src/gz openwrt_telephony https://mirrors.pku.edu.cn/openwrt/releases/24.10.2/packages/aarch64_generic/telephony' /etc/opkg/distfeeds.conf
-
-sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/immortalwrt/releases/24.10.2/targets/rockchip/armv8/kmods/6.6.93-1-9e686cc1e0d5129337ca1ca28c2ab984' /etc/opkg/distfeeds.conf
+sed -i '/rockchip/d' /etc/opkg/distfeeds.conf
+sed -i '$a src/gz rockchip_pkg https://mirrors.pku.edu.cn/immortalwrt/releases/24.10.4/targets/rockchip/armv8/packages' /etc/opkg/distfeeds.conf
+sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/immortalwrt/releases/24.10.4/targets/rockchip/armv8/kmods/6.6.110-1-23375d261da0c0e9da36857794905cf7' /etc/opkg/distfeeds.conf
 sed -i '$a #src/gz kiddin9 https://dl.openwrt.ai/packages-24.10/aarch64_generic/kiddin9' /etc/opkg/customfeeds.conf
 
 #sed -i 's/root::0:0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/g' /etc/shadow
@@ -39,11 +40,11 @@ cp /etc/my-clash /etc/openclash/core/clash_meta
 #uci set network.cfg030f15.macaddr="8C:DA:$(date +"%d:%H:%M:%S")"
 #uci set network.cfg060f15.macaddr="9C:DA:$(date +"%d:%H:%M:%S")"
 #uci commit network
-uci set wireless.default_radio0.macaddr='random'
-uci commit wireless
+#uci set wireless.default_radio0.macaddr='random'
+#uci commit wireless
 
 uci commit
 
-/etc/init.d/network restart
+#/etc/init.d/network restart
 
 exit 0
