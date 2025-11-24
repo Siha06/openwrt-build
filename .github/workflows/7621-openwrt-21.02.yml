@@ -7,8 +7,10 @@ on:
 env:
   REPO_URL: https://github.com/openwrt/openwrt.git
   REPO_BRANCH: openwrt-21.02
-  CONFIG_FILE: config/7621-openwrt-21.02
-  DIY_SCRIPT: script/openwrt-21.02.sh
+  #CONFIG_FILE: config/7621-openwrt-21.02
+  CONFIG_FILE: patch/imm21.02/vod/config
+  #DIY_SCRIPT: script/openwrt-21.02.sh
+  DIY_SCRIPT: patch/imm21.02/vod/script.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
