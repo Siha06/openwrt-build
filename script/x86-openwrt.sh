@@ -1,5 +1,5 @@
 #添加TurboAcc
-#curl -sSL https://raw.githubusercontent.com/chenmozhijin/turboacc/luci/add_turboacc.sh -o add_turboacc.sh && bash add_turboacc.sh
+curl -sSL https://raw.githubusercontent.com/chenmozhijin/turboacc/luci/add_turboacc.sh -o add_turboacc.sh && bash add_turboacc.sh
 sed -i 's/192.168.1.1/192.168.86.1/g' package/base-files/files/bin/config_generate
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.86.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 sed -i 's/${defaults ? 0 : 1}/0/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
@@ -56,12 +56,12 @@ git clone --depth 1 https://github.com/sirpdboy/luci-app-eqosplus.git package/lu
 git clone --depth 1 https://github.com/sirpdboy/netspeedtest.git package/netspeedtest
 git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/openwrt-oaf
 
-git clone --depth 1 -b main https://github.com/kiddin9/kwrt-packages.git package/kwrt-pkg
+#git clone --depth 1 -b main https://github.com/kiddin9/kwrt-packages.git package/kwrt-pkg
 #mv package/kwrt-pkg/luci-app-passwall package/luci-app-passwall
 #mv package/kwrt-pkg/luci-app-passwall2 package/luci-app-passwall2
-mv package/kwrt-pkg/fullconenat package/fullconenat
-mv package/kwrt-pkg/fullconenat-nft package/fullconenat-nft
-rm -rf package/kwrt-pkg
+#mv package/kwrt-pkg/fullconenat package/fullconenat
+#mv package/kwrt-pkg/fullconenat-nft package/fullconenat-nft
+#rm -rf package/kwrt-pkg
 
 mkdir package/mypkg
 git clone --depth 1 -b openwrt-24.10 https://github.com/immortalwrt/luci.git package/mypkg/imm24-luci
