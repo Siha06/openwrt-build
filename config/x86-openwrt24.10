@@ -47,3 +47,5 @@ CONFIG_PACKAGE_luci-app-poweroff=n
 CONFIG_PACKAGE_fullconenat-nft=y
 CONFIG_PACKAGE_kmod-ipt-fullconenat=y
 CONFIG_PACKAGE_kmod-nf-ipt=y
+CONFIG_PACKAGE_iptables-mod-fullconenat=y
+CONFIG_PACKAGE_kmod-nft-nat=y
