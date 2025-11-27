@@ -56,6 +56,11 @@ git clone --depth 1 https://github.com/sirpdboy/luci-app-eqosplus.git package/lu
 git clone --depth 1 https://github.com/sirpdboy/netspeedtest.git package/netspeedtest
 git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/openwrt-oaf
 
+git clone --depth 1 -b main https://github.com/kiddin9/kwrt-packages.git package/kwrt-pkg
+#mv package/kwrt-pkg/luci-app-passwall package/luci-app-passwall
+mv package/kwrt-pkg/fullconenat-nft package/fullconenat-nft
+rm -rf package/kwrt-pkg
+
 mkdir package/mypkg
 git clone --depth 1 -b openwrt-24.10 https://github.com/immortalwrt/luci.git package/mypkg/imm24-luci
 mv package/mypkg/imm24-luci/applications/luci-app-autoreboot package/mypkg/luci-app-autoreboot
