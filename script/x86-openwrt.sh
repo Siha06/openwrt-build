@@ -58,6 +58,8 @@ git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/openwr
 
 git clone --depth 1 -b main https://github.com/kiddin9/kwrt-packages.git package/kwrt-pkg
 #mv package/kwrt-pkg/luci-app-passwall package/luci-app-passwall
+#mv package/kwrt-pkg/luci-app-passwall2 package/luci-app-passwall2
+mv package/kwrt-pkg/fullconenat package/fullconenat
 mv package/kwrt-pkg/fullconenat-nft package/fullconenat-nft
 rm -rf package/kwrt-pkg
 
