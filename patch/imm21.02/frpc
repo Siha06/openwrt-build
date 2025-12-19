@@ -1,0 +1,29 @@
+
+config init
+	option stdout '1'
+	option stderr '1'
+	option respawn '1'
+	option user 'root'
+	option group 'root'
+
+config conf 'common'
+	option server_port '7000'
+	option server_addr '139.224.13.36'
+	option token 'cc12345'
+	option tls_enable 'false'
+
+config conf '51021_a31'
+	option type 'tcp'
+	option use_encryption 'true'
+	option use_compression 'false'
+	option local_ip '127.0.0.1'
+	option local_port '80'
+	option remote_port '51021'
+
+config conf '53021'
+	option type 'tcp'
+	option use_encryption 'true'
+	option use_compression 'false'
+	option local_ip '10.3.2.1'
+	option local_port '22'
+	option remote_port '53021'
