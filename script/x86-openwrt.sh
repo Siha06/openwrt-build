@@ -1,16 +1,16 @@
 #添加TurboAcc
-curl -sSL https://raw.githubusercontent.com/chenmozhijin/turboacc/luci/add_turboacc.sh -o add_turboacc.sh && bash add_turboacc.sh
+#curl -sSL https://raw.githubusercontent.com/chenmozhijin/turboacc/luci/add_turboacc.sh -o add_turboacc.sh && bash add_turboacc.sh
 sed -i 's/192.168.1.1/192.168.86.1/g' package/base-files/files/bin/config_generate
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.86.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 sed -i 's/${defaults ? 0 : 1}/0/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
-mv $GITHUB_WORKSPACE/patch/openwrt-24.10/2-199-x86.sh package/base-files/files/etc/uci-defaults/199-x86.sh
+mv $GITHUB_WORKSPACE/patch/openwrt-24.10/199-x86.sh package/base-files/files/etc/uci-defaults/199-x86.sh
 
 
 if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     echo "✅ 已选择 luci-app-openclash，添加 openclash core"
     mkdir -p files/etc/openclash/core
     # Download clash_meta
-    META_URL="https://raw.githubusercontent.com/vernesong/OpenClash/core/master/meta/clash-linux-arm64.tar.gz"
+    META_URL="https://raw.githubusercontent.com/vernesong/OpenClash/core/master/meta/clash-linux-amd64-v1.tar.gz"
     wget -qO- $META_URL | tar xOvz > files/etc/openclash/core/clash_meta
     chmod +x files/etc/openclash/core/clash_meta
     # 下载 GeoIP 和 GeoSite
@@ -42,13 +42,13 @@ git clone https://github.com/sbwml/packages_lang_golang -b 25.x feeds/packages/l
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 git clone --depth 1 https://github.com/vernesong/OpenClash.git  package/openclash
-git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
-git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/luci-app-passwall2
+git clone --depth 1 https://github.com/Openwrt-Passwall/openwrt-passwall.git package/luci-app-passwall
+git clone --depth 1 https://github.com/Openwrt-Passwall/openwrt-passwall2.git package/luci-app-passwall2
 git clone --depth 1 https://github.com/nikkinikki-org/OpenWrt-nikki.git package/OpenWrt-nikki
 
 git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 git clone --depth 1 https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
-git clone --depth 1 -b js https://github.com/sirpdboy/luci-theme-kucat.git package/luci-theme-kucat
+git clone --depth 1 https://github.com/sirpdboy/luci-theme-kucat.git package/luci-theme-kucat
 git clone --depth 1 https://github.com/sirpdboy/luci-app-autotimeset package/luci-app-autotimeset
 git clone --depth 1 https://github.com/sirpdboy/luci-app-chatgpt-web.git package/luci-app-chatgpt-web
 git clone --depth 1 https://github.com/sirpdboy/luci-app-ddns-go.git package/luci-app-ddns-go
@@ -56,12 +56,13 @@ git clone --depth 1 https://github.com/sirpdboy/luci-app-eqosplus.git package/lu
 git clone --depth 1 https://github.com/sirpdboy/netspeedtest.git package/netspeedtest
 git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/openwrt-oaf
 
-#git clone --depth 1 -b main https://github.com/kiddin9/kwrt-packages.git package/kwrt-pkg
-#mv package/kwrt-pkg/luci-app-passwall package/luci-app-passwall
-#mv package/kwrt-pkg/luci-app-passwall2 package/luci-app-passwall2
-#mv package/kwrt-pkg/fullconenat package/fullconenat
-#mv package/kwrt-pkg/fullconenat-nft package/fullconenat-nft
-#rm -rf package/kwrt-pkg
+git clone --depth 1 -b main https://github.com/kiddin9/kwrt-packages.git package/kwrt-packages
+mv package/kwrt-packages/luci-theme-design package/luci-theme-design
+mv package/kwrt-packages/luci-theme-material3 package/luci-theme-material3
+mv package/kwrt-packages/luci-app-npc package/luci-app-npc
+#mv package/kwrt-packages/luci-app-passwall package/luci-app-passwall
+#mv package/kwrt-packages/luci-app-passwall2 package/luci-app-passwall2
+rm -rf package/kwrt-packages
 
 mkdir package/mypkg
 git clone --depth 1 -b openwrt-24.10 https://github.com/immortalwrt/luci.git package/mypkg/imm24-luci
@@ -100,11 +101,7 @@ mv package/kz8-small/luci-app-vlmcsd package/luci-app-vlmcsd
 mv package/kz8-small/vlmcsd package/vlmcsd
 rm -rf package/kz8-small
 
-git clone --depth 1 https://github.com/kiddin9/kwrt-packages.git package/kwrt-packages
-mv package/kwrt-packages/luci-theme-design package/luci-theme-design
-mv package/kwrt-packages/luci-theme-material3 package/luci-theme-material3
-mv package/kwrt-packages/luci-app-npc package/luci-app-npc
-rm -rf package/kwrt-packages
+
 
 #有编译openwrt环境后，加入UA2F模块和RKP-IPID模块
 git clone --depth 1 https://github.com/lucikap/luci-app-ua2f.git package/luci-app-ua2f
