@@ -6,6 +6,11 @@ sed -i 's/disabled='"'"'\${defaults ? 0 : 1}'"'"'/disabled=0/g' package/network/
 #mv $GITHUB_WORKSPACE/patch/openwrt-24.10/199-7621.sh package/base-files/files/etc/uci-defaults/199-7621.sh
 mv $GITHUB_WORKSPACE/patch/openwrt-24.10/199-rockchip.sh package/base-files/files/etc/uci-defaults/199-rockchip.sh
 
+#rock3b
+sed -i 's/RK_PB7 GPIO_ACTIVE_LOW/RK_PB321 GPIO_ACTIVE_LOW/g' target/linux/rockchip/patches-6.6/014-v6.11-arm64-dts-rockchip-Add-Radxa-ROCK-3B.patch
+sed -i 's/RK_PB0 GPIO_ACTIVE_LOW/RK_PB7 GPIO_ACTIVE_LOW/g' target/linux/rockchip/patches-6.6/014-v6.11-arm64-dts-rockchip-Add-Radxa-ROCK-3B.patch
+sed -i 's/RK_PB321 GPIO_ACTIVE_LOW/RK_PB0 GPIO_ACTIVE_LOW/g' target/linux/rockchip/patches-6.6/014-v6.11-arm64-dts-rockchip-Add-Radxa-ROCK-3B.patch
+
 # mipsle-softfloat
 if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     echo "✅ 已选择 luci-app-openclash，添加 openclash core"
