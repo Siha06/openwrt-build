@@ -18,40 +18,32 @@ if ! uci -q get system.@imm_init[0].system_chn > "/dev/null"; then
 	EOF
 fi
 
+# 设置默认防火墙规则，方便虚拟机首次访问 WebUI
+#uci set firewall.@zone[1].input='ACCEPT'
 
-# 设置主机名映射，解决安卓原生 TV 无法联网的问题
-uci add dhcp domain
-uci set "dhcp.@domain[-1].name=time.android.com"
-uci set "dhcp.@domain[-1].ip=203.107.6.88"
 # 设置所有网口可访问网页终端
 uci delete ttyd.@ttyd[0].interface
 
 # 设置所有网口可连接 SSH
 uci set dropbear.@dropbear[0].Interface=''
 
-#其他网络设置
-#uci del wireless.radio0.disabled
-#uci del wireless.default_radio0.disabled
-#uci commit wireless
 
-#uci set network.usbwan=interface
-#uci set network.usbwan.proto='dhcp'
-#uci set network.usbwan.device='usb0'
-#uci commit network
+#uci set luci.main.mediaurlbase=/luci-static/infinityfreedom
+#uci commit luci
 
 uci commit
 
+sed -i '/modem/d' /etc/opkg/distfeeds.conf
+sed -i '/Modem/d' /etc/opkg/distfeeds.conf
+sed -i '/passwall/d' /etc/opkg/distfeeds.conf
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 sed -i 's#downloads.openwrt.org#mirrors.pku.edu.cn/openwrt#g' /etc/opkg/distfeeds.conf
-sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/openwrt/releases/24.10.0/targets/rockchip/armv8/kmods/6.6.73-1-f35e93bc2c89b98d107e57cdea041972' /etc/opkg/customfeeds.conf
-sed -i '$a src/gz kiddin9 https://dl.openwrt.ai/packages-24.10/aarch64_generic/kiddin9' /etc/opkg/customfeeds.conf
+sed -i '/targets/d' /etc/opkg/distfeeds.conf
+sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/openwrt/releases/24.10.5/targets/rockchip/armv8/kmods/6.6.119-1-77d4782035a23e6f19f9c4751451b4e3' /etc/opkg/distfeeds.conf
+sed -i '$a src/gz others https://mirrors.pku.edu.cn/openwrt/releases/24.10.5/targets/rockchip/armv8/packages' /etc/opkg/distfeeds.conf
+sed -i '$a #src/gz kiddin9 https://dl.openwrt.ai/packages-25.12/aarch64_generic/kiddin9' /etc/opkg/customfeeds.conf
 
-OPENCLASH_FILE="/etc/config/openclash"
-if [ -f "$OPENCLASH_FILE" ]; then
-    mv /etc/my-clash /etc/openclash/core/clash_meta
-fi
-
-#wifi up
-/etc/init.d/network restart
+uci commit
+#/etc/init.d/network restart
 
 exit 0
