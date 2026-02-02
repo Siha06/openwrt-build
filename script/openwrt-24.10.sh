@@ -3,8 +3,8 @@
 sed -i 's/192.168.1.1/10.3.2.1/g' package/base-files/files/bin/config_generate
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/10.3.2.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 sed -i 's/disabled='"'"'\${defaults ? 0 : 1}'"'"'/disabled=0/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
-#mv $GITHUB_WORKSPACE/patch/openwrt-24.10/199-7621.sh package/base-files/files/etc/uci-defaults/199-7621.sh
-mv $GITHUB_WORKSPACE/patch/openwrt-24.10/199-rockchip.sh package/base-files/files/etc/uci-defaults/199-rockchip.sh
+mv $GITHUB_WORKSPACE/patch/openwrt-24.10/199-7621.sh package/base-files/files/etc/uci-defaults/199-7621.sh
+#mv $GITHUB_WORKSPACE/patch/openwrt-24.10/199-rockchip.sh package/base-files/files/etc/uci-defaults/199-rockchip.sh
 
 #rock3b
 sed -i 's/RK_PB7 GPIO_ACTIVE_LOW/RK_PB321 GPIO_ACTIVE_LOW/g' target/linux/rockchip/patches-6.6/014-v6.11-arm64-dts-rockchip-Add-Radxa-ROCK-3B.patch
@@ -16,7 +16,7 @@ if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     echo "✅ 已选择 luci-app-openclash，添加 openclash core"
     mkdir -p files/etc/openclash/core
     # Download clash_meta
-    META_URL="https://raw.githubusercontent.com/vernesong/OpenClash/core/master/meta/clash-linux-arm64.tar.gz"
+    META_URL="https://raw.githubusercontent.com/vernesong/OpenClash/core/master/meta/clash-linux-mipsle-softfloat.tar.gz"
     wget -qO- $META_URL | tar xOvz > files/etc/openclash/core/clash_meta
     chmod +x files/etc/openclash/core/clash_meta
     # 下载 GeoIP 和 GeoSite
@@ -35,7 +35,6 @@ sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/etc/
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/sbwml/packages_lang_golang -b 25.x feeds/packages/lang/golang
 
-#git clone --depth 1 https://github.com/fw876/helloworld.git package/helloworld
 git clone --depth 1 https://github.com/vernesong/OpenClash.git  package/openclash
 git clone --depth 1 https://github.com/Openwrt-Passwall/openwrt-passwall package/luci-app-passwall
 git clone --depth 1 https://github.com/Openwrt-Passwall/openwrt-passwall2 package/luci-app-passwall2
