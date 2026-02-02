@@ -35,15 +35,22 @@ uci delete ttyd.@ttyd[0].interface
 uci set dropbear.@dropbear[0].Interface=''
 
 #其他网络设置
-uci set network.lan.ip6assign='64'
-uci set network.lan.ip6ifaceid='eui64'
+#uci set network.lan.ip6assign='64'
+#uci set network.lan.ip6ifaceid='eui64'
 
-uci commit network
+#uci commit network
 
+sed -i '/modem/d' /etc/opkg/distfeeds.conf
+sed -i '/Modem/d' /etc/opkg/distfeeds.conf
+sed -i '/passwall/d' /etc/opkg/distfeeds.conf
+sed -i '/helloworld/d' /etc/opkg/distfeeds.conf
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 sed -i 's#downloads.openwrt.org#mirrors.pku.edu.cn/openwrt#g' /etc/opkg/distfeeds.conf
-sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/openwrt/releases/24.10-SNAPSHOT/targets/ramips/mt7621/kmods/6.6.92-1-c3c3b24968d2c7083ed39a0b911b24a3' /etc/opkg/distfeeds.conf
+sed -i '/targets/d' /etc/opkg/distfeeds.conf
+sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/openwrt/releases/24.10.5/targets/ramips/mt7621/kmods/6.6.119-1-6c0cbfffdf5543d41b1de30e3a9c928d' /etc/opkg/distfeeds.conf
+sed -i '$a src/gz mt7621pkg https://mirrors.pku.edu.cn/openwrt/releases/24.10.5/targets/ramips/mt7621/packages/' /etc/opkg/distfeeds.conf
 
-/etc/init.d/network restart
+uci commit
+#/etc/init.d/network restart
 
 exit 0
