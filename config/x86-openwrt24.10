@@ -53,6 +53,7 @@ CONFIG_PACKAGE_luci-app-qmodem-ttl=n
 
 CONFIG_PACKAGE_luci-app-adguardhome=n
 CONFIG_PACKAGE_luci-app-ddns-go=n
+CONFIG_PACKAGE_luci-app-ddnsto=y
 CONFIG_PACKAGE_luci-app-wol=n
 CONFIG_PACKAGE_luci-app-upnp=n
 CONFIG_PACKAGE_luci-app-mosdns=n
