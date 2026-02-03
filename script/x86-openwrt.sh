@@ -45,6 +45,7 @@ git clone --depth 1 https://github.com/vernesong/OpenClash.git  package/openclas
 git clone --depth 1 https://github.com/Openwrt-Passwall/openwrt-passwall.git package/luci-app-passwall
 git clone --depth 1 https://github.com/Openwrt-Passwall/openwrt-passwall2.git package/luci-app-passwall2
 git clone --depth 1 https://github.com/nikkinikki-org/OpenWrt-nikki.git package/OpenWrt-nikki
+mv $GITHUB_WORKSPACE/patch/passwall/passwall2_config package/luci-app-passwall2/root/usr/share/passwall2/0_default_config
 
 git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 git clone --depth 1 https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
