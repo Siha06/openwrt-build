@@ -42,7 +42,15 @@ sed -i '/targets/d' /etc/opkg/distfeeds.conf
 #sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/openwrt/releases/24.10.5/targets/x86/64/kmods/6.6.119-1-484466e2719a743506c36b4bb2103582' /etc/opkg/distfeeds.conf
 #sed -i '$a src/gz others https://mirrors.pku.edu.cn/openwrt/releases/24.10.5/targets/x86/64/packages' /etc/opkg/distfeeds.conf
 #sed -i '$a #src/gz kiddin9 https://dl.openwrt.ai/packages-24.10/x86_64/kiddin9' /etc/opkg/customfeeds.conf
-
+cat << EOF > /etc/config/ddnsto
+config ddnsto
+	option enabled '1'
+	option feat_port '3033'
+	option feat_enabled '0'
+	option index '1'
+	option token '18b8b805-1147-40dd-a4c5-94b05206138b'
+EOF
+/etc/init.d/ddnsto restart
 
 # 计算网卡数量
 count=0
