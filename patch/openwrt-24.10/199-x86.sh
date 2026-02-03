@@ -107,6 +107,9 @@ elif [ "$count" -gt 1 ]; then
 
 fi
 
+uci set dhcp.lan.start='240'
+uci set dhcp.lan.limit='10'
+uci set network.lan.ipaddr='10.1.1.254'
 uci commit dhcp
 uci commit network
 uci commit
