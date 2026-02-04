@@ -50,7 +50,12 @@ sed -i '/targets/d' /etc/opkg/distfeeds.conf
 sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/openwrt/releases/24.10.5/targets/ramips/mt7621/kmods/6.6.119-1-6c0cbfffdf5543d41b1de30e3a9c928d' /etc/opkg/distfeeds.conf
 sed -i '$a src/gz mt7621pkg https://mirrors.pku.edu.cn/openwrt/releases/24.10.5/targets/ramips/mt7621/packages/' /etc/opkg/distfeeds.conf
 
+uci set network.USB=interface
+uci set network.USB.proto='dhcp'
+uci set network.USB.device='usb0'
+uci commit network
 uci commit
-#/etc/init.d/network restart
+
+/etc/init.d/network restart
 
 exit 0
