@@ -39,9 +39,9 @@ sed -i '/passwall/d' /etc/opkg/distfeeds.conf
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 sed -i 's#downloads.openwrt.org#mirrors.pku.edu.cn/openwrt#g' /etc/opkg/distfeeds.conf
 sed -i '/targets/d' /etc/opkg/distfeeds.conf
-#sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/openwrt/releases/24.10.5/targets/x86/64/kmods/6.6.119-1-484466e2719a743506c36b4bb2103582' /etc/opkg/distfeeds.conf
-#sed -i '$a src/gz others https://mirrors.pku.edu.cn/openwrt/releases/24.10.5/targets/x86/64/packages' /etc/opkg/distfeeds.conf
-#sed -i '$a #src/gz kiddin9 https://dl.openwrt.ai/packages-24.10/x86_64/kiddin9' /etc/opkg/customfeeds.conf
+sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/openwrt/releases/24.10.5/targets/x86/64/kmods/6.6.119-1-484466e2719a743506c36b4bb2103582' /etc/opkg/distfeeds.conf
+sed -i '$a src/gz others https://mirrors.pku.edu.cn/openwrt/releases/24.10.5/targets/x86/64/packages' /etc/opkg/distfeeds.conf
+sed -i '$a #src/gz kiddin9 https://dl.openwrt.ai/packages-24.10/x86_64/kiddin9' /etc/opkg/customfeeds.conf
 cat << EOF > /etc/config/ddnsto
 config ddnsto
 	option enabled '1'
