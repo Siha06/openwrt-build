@@ -74,6 +74,7 @@ mv package/mypkg/imm24-luci/applications/luci-app-ramfree package/mypkg/luci-app
 mv package/mypkg/imm24-luci/applications/luci-app-zerotier package/mypkg/luci-app-zerotier
 rm -rf feeds/luci/modules
 mv package/mypkg/imm24-luci/modules feeds/luci/modules
+sed -i 's/ImmortalWrt/OpenWrt/g' feeds/luci/modules/luci-mod-network/htdocs/luci-static/resources/view/network/wireless.js
 rm -rf package/mypkg/imm24-luci
 sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' $(find ./package/mypkg/ -type f -name "Makefile")
 #完全删除luci版本
