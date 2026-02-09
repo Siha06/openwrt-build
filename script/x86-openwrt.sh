@@ -79,6 +79,7 @@ mv package/mypkg/imm24-luci/applications/luci-app-vsftpd package/mypkg/luci-app-
 rm -rf feeds/luci/modules
 mv package/mypkg/imm24-luci/modules feeds/luci/modules
 rm -rf package/mypkg/imm24-luci
+sed -i 's/ImmortalWrt/OpenWrt/g' feeds/luci/modules/luci-mod-network/htdocs/luci-static/resources/view/network/wireless.js
 sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' $(find ./package/mypkg/ -type f -name "Makefile")
 #完全删除luci版本
 sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
