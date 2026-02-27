@@ -35,6 +35,7 @@ uci commit
 
 sed -i '/modem/d' /etc/opkg/distfeeds.conf
 sed -i '/Modem/d' /etc/opkg/distfeeds.conf
+sed -i '/helloworld/d' /etc/opkg/distfeeds.conf
 sed -i '/passwall/d' /etc/opkg/distfeeds.conf
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 sed -i 's#downloads.openwrt.org#mirrors.pku.edu.cn/openwrt#g' /etc/opkg/distfeeds.conf
