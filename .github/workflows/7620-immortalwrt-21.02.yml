@@ -1,4 +1,4 @@
-name: 7620-openwrt-21.02
+name: 7620-immortalwrt-21.02
 # 脚本参考github/haiibo和dzlea
 # Add a button to trigger the workflow
 on: 
@@ -7,7 +7,7 @@ on:
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt.git
   REPO_BRANCH: openwrt-21.02
-  CONFIG_FILE: config/newifi-y1
+  CONFIG_FILE: config/7620-openwrt
   DIY_SCRIPT: script/immortalwrt2.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
