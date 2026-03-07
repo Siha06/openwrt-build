@@ -51,6 +51,7 @@ git clone --depth 1 https://github.com/sirpdboy/luci-app-parentcontrol package/l
 git clone --depth 1 https://github.com/lwb1978/openwrt-gecoosac.git package/openwrt-gecoosac
 git clone --depth 1 https://github.com/sirpdboy/luci-app-eqosplus.git package/luci-app-eqosplus
 git clone --depth 1 -b js https://github.com/sirpdboy/luci-app-netspeedtest.git package/luci-app-netspeedtest
+git clone --depth 1 https://github.com/zyqfork/luci-app-ap-modem.git package/luci-app-ap-modem
 
 
 rm -rf feeds/packages/net/{adguardhome,tailscale}
