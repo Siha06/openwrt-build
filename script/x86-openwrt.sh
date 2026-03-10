@@ -54,6 +54,7 @@ git clone --depth 1 https://github.com/sirpdboy/luci-app-ddns-go.git package/luc
 git clone --depth 1 https://github.com/sirpdboy/luci-app-eqosplus.git package/luci-app-eqosplus
 git clone --depth 1 https://github.com/sirpdboy/netspeedtest.git package/netspeedtest
 git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/openwrt-oaf
+git clone --depth 1 https://github.com/lcodecorex/WeakNetwork.git package/openwrt-WeakNetwork
 
 git clone --depth 1 -b main https://github.com/kiddin9/kwrt-packages.git package/kwrt-packages
 mv package/kwrt-packages/luci-theme-design package/luci-theme-design
