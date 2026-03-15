@@ -36,7 +36,7 @@ mv package/nas-packages/network/services/* package/nas-packages/
 rm -rf package/nas-packages/network
 
 rm -rf feeds/packages/lang/golang
-git clone https://github.com/sbwml/packages_lang_golang -b 25.x feeds/packages/lang/golang
+git clone --depth 1 https://github.com/sbwml/packages_lang_golang feeds/packages/lang/golang
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 git clone --depth 1 https://github.com/vernesong/OpenClash.git  package/openclash
@@ -56,10 +56,10 @@ git clone --depth 1 https://github.com/sirpdboy/netspeedtest.git package/netspee
 git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/openwrt-oaf
 git clone --depth 1 https://github.com/lcodecorex/WeakNetwork.git package/openwrt-WeakNetwork
 
-git clone --depth 1 -b main https://github.com/kiddin9/kwrt-packages.git package/kwrt-packages
-mv package/kwrt-packages/luci-theme-design package/luci-theme-design
-mv package/kwrt-packages/luci-theme-material3 package/luci-theme-material3
-mv package/kwrt-packages/luci-app-npc package/luci-app-npc
+#git clone --depth 1 -b main https://github.com/kiddin9/kwrt-packages.git package/kwrt-packages
+#mv package/kwrt-packages/luci-theme-design package/luci-theme-design
+#mv package/kwrt-packages/luci-theme-material3 package/luci-theme-material3
+#mv package/kwrt-packages/luci-app-npc package/luci-app-npc
 #mv package/kwrt-packages/luci-app-passwall package/luci-app-passwall
 #mv package/kwrt-packages/luci-app-passwall2 package/luci-app-passwall2
 rm -rf package/kwrt-packages
@@ -91,7 +91,7 @@ mv package/mypkg/imm24-packages/net/nps package/nps
 rm -rf package/mypkg/imm24-packages
 
 rm -rf feeds/packages/net/adguardhome
-git clone --depth 1 https://github.com/kenzok8/small-package.git package/kz8-small
+git clone --depth 1 https://github.com/kenzok8/jell.git package/kz8-small
 mv package/kz8-small/adguardhome package/adguardhome
 mv package/kz8-small/luci-app-adguardhome package/luci-app-adguardhome
 mv package/kz8-small/easytier package/easytier
