@@ -42,6 +42,8 @@ uci del dhcp.lan.ndp
 uci del network.wan6
 uci del network.lan.ip6assign
 
+uci set network.lan.ipaddr=10.0.0.1
+
 uci commit dhcp
 uci commit network
 
@@ -58,6 +60,8 @@ sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/openwrt/releases/24.10.5/targ
 sed -i '$a src/gz others https://mirrors.pku.edu.cn/openwrt/releases/24.10.5/targets/x86/64/packages' /etc/opkg/distfeeds.conf
 sed -i '$a #src/gz kiddin9 https://dl.openwrt.ai/packages-24.10/x86_64/kiddin9' /etc/opkg/customfeeds.conf
 
+sed -i 's/root::0:0:99999:7:::/root:$1$5U.FfGvb$ShXrTEUy.HqsWswqolNTW.:0:0:99999:7:::/g' /etc/shadow
+sed -i 's/root:::0:99999:7:::/root:$1$5U.FfGvb$ShXrTEUy.HqsWswqolNTW.:0:0:99999:7:::/g' /etc/shadow
 
 /etc/init.d/network restart
 exit 0
