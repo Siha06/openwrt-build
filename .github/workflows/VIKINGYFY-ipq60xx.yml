@@ -8,13 +8,13 @@ on:
 env:
   REPO_URL: https://github.com/VIKINGYFY/immortalwrt.git
   REPO_BRANCH: main
-  CONFIG_FILE: config/VIKINGYFY-ipq60xx-apk
+  CONFIG_FILE: config/VIKINGYFY-ipq60xx-ipk
   DIY_SCRIPT: script/VIKINGYFY.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
-  FIRMWARE_RELEASE: false
+  FIRMWARE_RELEASE: true
   FIRMWARE_TAG: qualcommax
   TZ: Asia/Shanghai
 
@@ -96,7 +96,8 @@ jobs:
     - name: Install Feeds(安装feeds)
       run: |
         cd $OPENWRT_PATH
-        sed -i '1i src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git' feeds.conf.default
+        git checkout 87d78b4
+        sed -i '1i src-git passwall_packages https://github.com/Openwrt-Passwall/openwrt-passwall-packages.git' feeds.conf.default
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds update -a
@@ -111,10 +112,10 @@ jobs:
     - name: edit md5（编辑内核值）
       run: |
         rm -rf $OPENWRT_PATH/.vermagic
-        mv $GITHUB_WORKSPACE/vm/vikingyfy-ipq60xx $OPENWRT_PATH/vermagic
+        mv $GITHUB_WORKSPACE/vm/kwrt $OPENWRT_PATH/vermagic
         cd $OPENWRT_PATH
-        sed -i '130d' include/kernel-defaults.mk
-        sed -i '130i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
+        sed -i '129d' include/kernel-defaults.mk
+        sed -i '129i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
         sed -i '30d' package/kernel/linux/Makefile
         sed -i '30i\  STAMP_BUILT:=$(STAMP_BUILT)_$(shell cat $(LINUX_DIR)/.vermagic)' package/kernel/linux/Makefile
 
