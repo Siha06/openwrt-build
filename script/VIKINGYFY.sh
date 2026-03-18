@@ -1,18 +1,33 @@
+
+IPQ_TARGET=$(grep -o 'CONFIG_TARGET_qualcommax_[^=]*' $GITHUB_WORKSPACE/$CONFIG_FILE | sed -n 's/CONFIG_TARGET_qualcommax_//p' | head -n1)
+mv $GITHUB_WORKSPACE/patch/998-kwrt-$IPQ_TARGET.sh package/base-files/files/etc/uci-defaults/998-ipq.sh
+
+#移除luci-app-attendedsysupgrade
+sed -i "/attendedsysupgrade/d" $(find ./feeds/luci/collections/ -type f -name "Makefile")
 # 修改默认IP，主机名
 sed -i 's/192.168.1.1/10.3.2.1/g' package/base-files/files/bin/config_generate
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/10.3.2.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 sed -i "s/immortalwrt.lan/openwrt.lan/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
-sed -i 's/ImmortalWrt/OpenWrt/g' include/version.mk
+sed -i 's/ImmortalWRT/OpenWrt/g' include/version.mk
+sed -i 's/ImmortalWrt/OpenWrt/g' feeds/luci/modules/luci-mod-network/htdocs/luci-static/resources/view/network/wireless.js
+sed -i "s/%V/25.12/g" package/base-files/files/usr/lib/os-release
+sed -i "s/%V/25.12/g" package/base-files/files/etc/openwrt_release
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/mac80211.uc package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
-#mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/rust-Makefile feeds/packages/lang/rust/Makefile
 
-if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
-    git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
-    tar -zxf package/openclash-core/master/meta/clash-linux-arm64.tar.gz -C package/base-files/files/etc/
-    mv package/base-files/files/etc/clash package/base-files/files/etc/my-clash
-    rm -rf package/openclash-core
+if grep -q "openclash=y" $GITHUB_WORKSPACE/$CONFIG_FILE; then
+    echo "✅ 已选择 luci-app-openclash，添加 openclash core"
+    mkdir -p files/etc/openclash/core
+    # Download clash_meta
+    META_URL="https://raw.githubusercontent.com/vernesong/OpenClash/core/master/meta/clash-linux-arm64.tar.gz"
+    wget -qO- $META_URL | tar xOvz > files/etc/openclash/core/clash_meta
+    chmod +x files/etc/openclash/core/clash_meta
+    # 下载 GeoIP 和 GeoSite
+    # wget -q https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat -O files/etc/openclash/GeoIP.dat
+    # wget -q https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat -O files/etc/openclash/GeoSite.dat
+else
+    echo "⚪️ 未选择 luci-app-openclash"
 fi
 
 
@@ -42,14 +57,6 @@ sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/etc/
 #mv $GITHUB_WORKSPACE/patch/ipq-breeze/QINGYINSSIDMAC1.sh package/base-files/files/etc/QINGYINSSIDMAC1.sh
 #mv $GITHUB_WORKSPACE/patch/ipq-breeze/10_system.js feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
 
-#默认WiFi设置
-#sed -i 's/OWRT/WiFi/g' target/linux/qualcommax/base-files/etc/uci-defaults/990_set-wireless.sh
-#sed -i 's/12345678/password/g' target/linux/qualcommax/base-files/etc/uci-defaults/990_set-wireless.sh
-#sed -i '/BASE_WORD/d' target/linux/qualcommax/base-files/etc/uci-defaults/990_set-wireless.sh
-#sed -i 's/psk2+ccmp/none/g' target/linux/qualcommax/base-files/etc/uci-defaults/990_set-wireless.sh
-
-sed -i 's/hybrid/server/g' target/linux/qualcommax/base-files/etc/uci-defaults/991_set-network.sh
-
 #下载5g模块
 #git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
 #rm -rf feeds/packages/net/quectel-cm
@@ -59,34 +66,37 @@ sed -i 's/hybrid/server/g' target/linux/qualcommax/base-files/etc/uci-defaults/9
 #rm -rf feeds/nss_packages/wwan
 
 rm -rf feeds/packages/lang/golang
-git clone https://github.com/sbwml/packages_lang_golang -b 25.x feeds/packages/lang/golang
-rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-openclash}
-rm -rf feeds/packages/net/{mosdns,v2ray-geodata}
-git clone --depth 1 https://github.com/vernesong/OpenClash.git package/OpenClash
-git clone --depth 1 https://github.com/nikkinikki-org/OpenWrt-nikki.git package/OpenWrt-nikki
-git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/passwall
-git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
-git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
-#sed -i 's/146fa4511a52da2aaa1e11ea0294cfb450e62643156c5da3b10e037ef43961f6/ffdd71e26d8c6f82083b5868025a7882eaad3846569d21610547720b999b6aaa/g' package/passwall-packages/shadowsocksr-libev/Makefile
-#sed -i 's/575b21803b28db8ab59ecbdb2cf21c4282881507b3a4267cc24f55bad12819cb/9d2293f16629d1e30ede304ccddbaaa4e922c1c5e7ea04cef0e9d274aafa6109/g' package/passwall-packages/shadowsocks-libev/Makefile
+git clone --depth 1 https://github.com/sbwml/packages_lang_golang feeds/packages/lang/golang
+rm -rf feeds/packages/net/{adguardhome,smartdns}
+rm -rf feeds/luci/applications/{luci-app-adguardhome,luci-app-smartdns}
+git clone --depth 1 https://github.com/kenzok8/jell.git package/small-package
+mv package/small-package/adguardhome package/adguardhome
+mv package/small-package/luci-app-adguardhome package/luci-app-adguardhome
+mv package/small-package/luci-app-easymesh package/luci-app-easymesh
+mv package/small-package/luci-app-ikoolproxy package/luci-app-ikoolproxy
+mv package/small-package/luci-app-pushbot package/luci-app-pushbot
+mv package/small-package/wrtbwmon package/wrtbwmon
+mv package/small-package/luci-app-wrtbwmon package/luci-app-wrtbwmon
+rm -rf package/small-package
 
-git clone --depth 1 https://github.com/destan19/OpenAppFilter.git  package/oaf
+rm -rf feeds/packages/net/{mosdns,v2ray-geodata}
+rm -rf feeds/luci/applications/{luci-app-openclash,luci-app-passwall,luci-app-ssr-plus,luci-app-mosdns}
+git clone --depth 1 https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
+git clone --depth 1 https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
+git clone --depth 1 https://github.com/vernesong/OpenClash.git  package/openclash
+git clone --depth 1 https://github.com/Openwrt-Passwall/openwrt-passwall.git package/luci-app-passwall
+git clone --depth 1 https://github.com/Openwrt-Passwall/openwrt-passwall2.git package/luci-app-passwall2
+git clone --depth 1 https://github.com/nikkinikki-org/OpenWrt-momo.git package/OpenWrt-momo
+git clone --depth 1 https://github.com/nikkinikki-org/OpenWrt-nikki.git package/OpenWrt-nikki
+#git clone --depth 1 https://github.com/fw876/helloworld.git package/helloworld-ssr-plus
+
+
+rm -rf feeds/packages/net/{open-app-filter}
+git clone --depth 1 https://github.com/sbwml/luci-app-openlist2 package/openlist2
 git clone --depth 1 https://github.com/sirpdboy/luci-app-parentcontrol package/luci-app-parentcontrol
 git clone --depth 1 https://github.com/lwb1978/openwrt-gecoosac.git package/openwrt-gecoosac
-
-
-rm -rf feeds/packages/net/adguardhome
-git clone --depth 1 https://github.com/kenzok8/small-package.git package/kz8-small
-mv package/kz8-small/adguardhome package/adguardhome
-mv package/kz8-small/luci-app-adguardhome package/luci-app-adguardhome
-mv package/kz8-small/luci-app-easymesh package/luci-app-easymesh
-mv package/kz8-small/luci-app-onliner package/luci-app-onliner
-mv package/kz8-small/luci-app-partexp package/luci-app-partexp
-mv package/kz8-small/luci-app-pptp-server package/luci-app-pptp-server
-mv package/kz8-small/luci-app-pushbot package/luci-app-pushbot
-mv package/kz8-small/luci-app-wrtbwmon package/luci-app-wrtbwmon
-mv package/kz8-small/wrtbwmon package/wrtbwmon
-rm -rf package/kz8-small
+git clone --depth 1 https://github.com/gdy666/luci-app-lucky.git package/lucky
+git clone --depth 1 https://github.com/sirpdboy/netspeedtest package/netspeedtest
 
 #git clone --depth 1 -b openwrt-21.02 https://github.com/immortalwrt/luci.git package/imm21-luci
 #mv package/imm21-luci/applications/luci-app-filetransfer package/luci-app-filetransfer
@@ -99,6 +109,14 @@ rm -rf package/kz8-small
 #if grep -q "uugamebooster=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
 #    mv $GITHUB_WORKSPACE/patch/Makefile-uugame package/uugamebooster/Makefile
 #fi
+
+DTS_PATH=target/linux/qualcommax/dts/
+	#无WIFI配置调整Q6大小
+	if grep -Eq "luci-app-nowifi=y" $GITHUB_WORKSPACE/$CONFIG_FILE; then
+		find $DTS_PATH -type f ! -iname '*nowifi*' -exec sed -i 's/ipq\(6018\|8074\).dtsi/ipq\1-nowifi.dtsi/g' {} +
+		echo "qualcommax set up nowifi successfully!"
+	fi
+
 #修改qca-nss-drv启动顺序
 sed -i 's/START=.*/START=85/g' feeds/nss_packages/qca-nss-drv/files/qca-nss-drv.init
 #修改qca-nss-pbuf启动顺序
@@ -108,6 +126,9 @@ sed -i '/\/files/d'  feeds/packages/net/tailscale/Makefile
 #修复Rust编译失败
 sed -i 's/ci-llvm=true/ci-llvm=false/g' feeds/packages/lang/rust/Makefile
 #修复DiskMan编译失败(未找到该文件)
-#sed -i 's/fs-ntfs/fs-ntfs3/g' feeds/luci/applications/luci-app-diskman/Makefile
+sed -i '/ntfs-3g-utils /d' feeds/luci/applications/luci-app-diskman/Makefile
 #修复Coremark编译失败（已不需要）
 #sed -i 's/mkdir/mkdir -p/g' feeds/packages/utils/coremark/Makefile
+#修复luci-app-netspeedtest相关问题
+#sed -i '$a\exit 0' ./netspeedtest/files/99_netspeedtest.defaults
+#sed -i 's/ca-certificates/ca-bundle/g' package/netspeedtest/ookla-speedtest/Makefile
