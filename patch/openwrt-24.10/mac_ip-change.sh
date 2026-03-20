@@ -20,8 +20,6 @@
     NEW_MAC_1="${selected_prefix}${random_suffix_1}"
 
 
-	uci set wireless.default_radio0.macaddr='random'
-	uci set wireless.default_radio1.macaddr='random'
     uci set network.@device[0].macaddr="$NEW_MAC_0"
     uci set network.@device[1].macaddr="$NEW_MAC_1"
 
