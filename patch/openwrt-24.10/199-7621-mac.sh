@@ -59,6 +59,8 @@ sed -i '/targets/d' /etc/opkg/distfeeds.conf
 sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/openwrt/releases/24.10.6/targets/ramips/mt7621/kmods/6.6.127-1-f31f6f85a36836e510d64a18a9a5f1bf' /etc/opkg/distfeeds.conf
 sed -i '$a src/gz mt7621pkg https://mirrors.pku.edu.cn/openwrt/releases/24.10.6/targets/ramips/mt7621/packages/' /etc/opkg/distfeeds.conf
 
+uci set wireless.default_radio0.ssid='WiFi-2.4G'
+uci set wireless.default_radio1.ssid='WiFi-5G'
 uci set wireless.default_radio0.macaddr='random'
 uci set wireless.default_radio1.macaddr='random'
 uci add network device
