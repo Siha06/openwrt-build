@@ -65,7 +65,7 @@ uci set wireless.default_radio0.macaddr='random'
 uci set wireless.default_radio1.macaddr='random'
 uci add network device
 uci set network.@device[-1].name='wan'
-uci set network.@device[-1].macaddr='28:D0:F5:96:57:05'
+uci set network.@device[-1].macaddr='5e:28:7a:bb:98:68'
 chmod +x /etc/mac_ip-change.sh
 cat << 'EOF' > /etc/rc.local
 sleep 3
