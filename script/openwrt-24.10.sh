@@ -1,5 +1,8 @@
 #添加TurboAcc
 #curl -sSL https://raw.githubusercontent.com/chenmozhijin/turboacc/luci/add_turboacc.sh -o add_turboacc.sh && bash add_turboacc.sh
+#修改mac和ip
+mv $GITHUB_WORKSPACE/patch/openwrt-24.10/mac_ip-change.sh package/base-files/files/etc/mac_ip-change.sh
+
 sed -i 's/192.168.1.1/10.3.2.1/g' package/base-files/files/bin/config_generate
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/10.3.2.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 sed -i 's/disabled='"'"'\${defaults ? 0 : 1}'"'"'/disabled=0/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
