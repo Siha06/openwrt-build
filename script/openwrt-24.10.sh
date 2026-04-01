@@ -6,7 +6,7 @@ mv $GITHUB_WORKSPACE/patch/openwrt-24.10/mac_ip-change.sh package/base-files/fil
 sed -i 's/192.168.1.1/10.1.1.1/g' package/base-files/files/bin/config_generate
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/10.1.1.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 sed -i 's/disabled='"'"'\${defaults ? 0 : 1}'"'"'/disabled=0/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
-mv $GITHUB_WORKSPACE/patch/openwrt-24.10/199-762x-mac.sh package/base-files/files/etc/uci-defaults/199-762x.sh
+mv $GITHUB_WORKSPACE/patch/openwrt-24.10/199-7620-mac.sh package/base-files/files/etc/uci-defaults/199-diy.sh
 #mv $GITHUB_WORKSPACE/patch/openwrt-24.10/199-rockchip.sh package/base-files/files/etc/uci-defaults/199-rockchip.sh
 
 #rock3b
