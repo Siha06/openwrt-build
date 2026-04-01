@@ -115,6 +115,9 @@ elif [ "$count" -gt 1 ]; then
 
 fi
 
+uci set network.lan.ipaddr='192.168.88.200'
+uci set network.lan.gateway='192.168.88.1'
+uci set network.lan.netmask='255.255.255.0'
 uci set dhcp.lan.start='240'
 uci set dhcp.lan.limit='10'
 uci set network.lan.ipaddr='10.1.1.254'
