@@ -1,13 +1,28 @@
 #!/bin/sh
 
+uci add network device
+uci set network.@device[-1].name='wlan0'
+uci set network.@device[-1].macaddr='3A:7C:AB:2F:CD:80'
+uci add network device
+uci set network.@device[-1].name='wlan1'
+uci set network.@device[-1].macaddr='22:A7:5E:BE:31:BB'
+
+chmod +x /etc/mac_ip-change.sh
+cat << 'EOF' > /etc/rc.local
+sleep 3
+bash /etc/mac_ip-change.sh
+exit 0
+EOF
+
+uci commit network
+uci commit
+
 uci set wireless.default_radio0.ssid=OpenWrt-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-2.4G
 uci set wireless.default_radio1.ssid=OpenWrt-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-5G
-#uci set wireless.default_radio0.ssid=TIKTOK-2.4G
-#uci set wireless.default_radio1.ssid=TIKTOK-5G
-uci set wireless.default_radio0.encryption=psk2+ccmp
-uci set wireless.default_radio1.encryption=psk2+ccmp
-uci set wireless.default_radio0.key=password
-uci set wireless.default_radio1.key=password
+#uci set wireless.default_radio0.encryption=psk2+ccmp
+#uci set wireless.default_radio1.encryption=psk2+ccmp
+#uci set wireless.default_radio0.key=password
+#uci set wireless.default_radio1.key=password
 uci commit wireless
 
 # 设置所有网口可访问网页终端
@@ -26,7 +41,7 @@ uci commit
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 sed -i 's#downloads.immortalwrt.org#mirrors.pku.edu.cn/immortalwrt#g' /etc/opkg/distfeeds.conf
 
-#cp /etc/my-clash /etc/openclash/core/clash_meta
+
 
 #/etc/init.d/system restart
 /etc/init.d/network restart
