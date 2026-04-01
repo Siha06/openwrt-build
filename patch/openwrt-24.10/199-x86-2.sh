@@ -50,8 +50,6 @@ sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/openwrt/releases/24.10.6/targ
 sed -i '$a src/gz others https://mirrors.pku.edu.cn/openwrt/releases/24.10.6/targets/x86/64/packages' /etc/opkg/distfeeds.conf
 sed -i '$a #src/gz kiddin9 https://dl.openwrt.ai/packages-25.12/x86_64/kiddin9' /etc/opkg/customfeeds.conf
 
-uci set network.lan.ipaddr='192.168.88.200'
-uci set network.lan.gateway='192.168.88.1'
-uci set network.lan.netmask='255.255.255.0'
+
 /etc/init.d/network restart
 exit 0
