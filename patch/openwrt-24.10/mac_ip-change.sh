@@ -19,13 +19,24 @@ generate_mac() {
 NEW_MAC1=$(generate_mac)
 NEW_MAC2=$(generate_mac)
 
-uci set network.@device[0].macaddr="$NEW_MAC1"
-uci set network.@device[1].macaddr="$NEW_MAC2"
+uci set network.@device[1].macaddr="$NEW_MAC1"
+uci set network.@device[2].macaddr="$NEW_MAC2"
 
 OCTET2=$((RANDOM % 254 + 1))
 OCTET3=$((RANDOM % 254 + 1))
 NEW_IP="10.${OCTET2}.${OCTET3}.1"
 uci set network.lan.ipaddr="$NEW_IP"
+
+# ====== SSID ======
+BRANDS=("Xiaomi" "Huawei" "TP-LINK" "ASUS" "Redmi" "Tenda" "Netcore" "H3C" "CMCC" "ChinaNet" "ChinaUnicom" "NETGEAR")
+LEN=4
+INDEX=$(($RANDOM % ${#BRANDS[@]}))
+PREFIX=${BRANDS[$INDEX]}
+RAND=$(tr -dc A-Za-z0-9 </dev/urandom | head -c $LEN)
+SSID="${PREFIX}-${RAND}"
+
+uci set wireless.default_radio0.ssid="${SSID}-2.4G"
+uci set wireless.default_radio1.ssid="${SSID}-5G"
 
 uci commit network
 uci commit wireless
