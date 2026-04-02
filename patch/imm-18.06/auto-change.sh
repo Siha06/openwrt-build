@@ -48,12 +48,6 @@ SSID="${PREFIX}-${RAND}"
 uci set wireless.default_radio0.ssid="${SSID}-5G"
 uci set wireless.default_radio1.ssid="${SSID}-2.4G"
 
-echo "$NEW_MAC1"
-echo "$NEW_MAC2"
-echo "$NEW_MAC3"
-echo "$NEW_MAC4"
-echo "$SSID"
-echo "$NEW_IP"
 
 uci commit network
 uci commit wireless
