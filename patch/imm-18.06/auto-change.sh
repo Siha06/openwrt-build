@@ -21,8 +21,8 @@ NEW_MAC2=$(generate_mac)
 NEW_MAC3=$(generate_mac)
 NEW_MAC4=$(generate_mac)
 
-uci set network.@device[0].macaddr="$NEW_MAC1"
-uci set network.@device[1].macaddr="$NEW_MAC2"
+uci set network.lan.macaddr="$NEW_MAC1"
+uci set network.wan.macaddr="$NEW_MAC2"
 uci set wireless.default_radio0.macaddr="$NEW_MAC3"
 uci set wireless.default_radio1.macaddr="$NEW_MAC4"
 
