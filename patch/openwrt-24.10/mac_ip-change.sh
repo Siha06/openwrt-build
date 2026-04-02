@@ -19,8 +19,8 @@ generate_mac() {
 NEW_MAC1=$(generate_mac)
 NEW_MAC2=$(generate_mac)
 
-uci set network.@device[1].macaddr="$NEW_MAC1"
-uci set network.@device[2].macaddr="$NEW_MAC2"
+uci set network.@device[0].macaddr="$NEW_MAC1"
+uci set network.@device[1].macaddr="$NEW_MAC2"
 
 OCTET2=$((RANDOM % 254 + 1))
 OCTET3=$((RANDOM % 254 + 1))
