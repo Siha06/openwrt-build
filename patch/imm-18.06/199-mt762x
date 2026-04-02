@@ -18,10 +18,10 @@ echo 'DISTRIB_DESCRIPTION="OpenWrt  "' >> /etc/openwrt_release
 sed -i '/OPENWRT_RELEASE/d' /usr/lib/os-release
 echo 'OPENWRT_RELEASE="OpenWrt V${date_version}"' >> /usr/lib/os-release
 
-chmod +x /etc/mac_ip-change.sh
+chmod +x /etc/auto-change.sh
 cat << 'EOF' > /etc/rc.local
 sleep 3
-bash /etc/mac_ip-change.sh
+bash /etc/auto-change.sh
 exit 0
 EOF
 
