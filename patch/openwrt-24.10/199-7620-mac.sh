@@ -63,7 +63,9 @@ uci set wireless.default_radio0.ssid='WiFi-5G'
 uci set wireless.default_radio1.ssid='WiFi-2.4G'
 uci set wireless.default_radio0.macaddr='random'
 uci set wireless.default_radio1.macaddr='random'
-
+uci add network device
+uci set network.@device[-1].name='eth0.2'
+uci set network.@device[-1].macaddr='5e:28:7a:bb:98:68'
 chmod +x /etc/mac_ip-change.sh
 cat << 'EOF' > /etc/rc.local
 sleep 3
