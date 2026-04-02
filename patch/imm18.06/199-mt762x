@@ -1,0 +1,34 @@
+#!/bin/sh
+
+# 设置所有网口可访问网页终端
+uci delete ttyd.@ttyd[0].interface
+
+# 设置所有网口可连接 SSH
+uci set dropbear.@dropbear[0].Interface=''
+uci commit
+
+
+sed -i '/passwall/d' /etc/opkg/distfeeds.conf
+sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
+date_version=$(date +"%Y.%m.%d")
+sed -i '/DISTRIB_REVISION/d' /etc/openwrt_release
+echo 'DISTRIB_REVISION="V${date_version}"' >> /etc/openwrt_release
+sed -i '/DISTRIB_DESCRIPTION/d' /etc/openwrt_release
+echo 'DISTRIB_DESCRIPTION="OpenWrt  "' >> /etc/openwrt_release
+sed -i '/OPENWRT_RELEASE/d' /usr/lib/os-release
+echo 'OPENWRT_RELEASE="OpenWrt V${date_version}"' >> /usr/lib/os-release
+
+chmod +x /etc/mac_ip-change.sh
+cat << 'EOF' > /etc/rc.local
+sleep 3
+bash /etc/mac_ip-change.sh
+exit 0
+EOF
+
+uci set wireless.default_radio0.ssid=WiFi-5G
+uci set wireless.default_radio1.ssid=WiFi-2.4G
+uci commit wireless
+uci commit network
+uci commit
+/etc/init.d/network restart
+exit 0
