@@ -5,7 +5,7 @@ sed -i 's/ImmortalWrt/OpenWrt/g' package/kernel/mac80211/files/lib/wifi/mac80211
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 cp package/base-files/files/etc/banner package/emortal/default-settings/files/openwrt_banner
 mv $GITHUB_WORKSPACE/patch/imm-18.06/199-mt762x package/base-files/files/etc/uci-defaults/zz-diy
-mv $GITHUB_WORKSPACE/patch/imm-18.06/auto-change.sh package/base-files/files/etc/z-auto-change.sh
+mv $GITHUB_WORKSPACE/patch/imm-18.06/auto-change.sh package/base-files/files/etc/auto-change.sh
 sed -i '/passwd/d' package/emortal/default-settings/files/99-default-settings-chinese
 sed -i 's#mirrors.pku.edu.cn/immortalwrt#mirrors.vsean.net/openwrt#g' package/emortal/default-settings/files/99-default-settings-chinese
 
