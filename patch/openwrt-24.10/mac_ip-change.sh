@@ -35,8 +35,8 @@ PREFIX=${BRANDS[$INDEX]}
 RAND=$(tr -dc A-Za-z0-9 </dev/urandom | head -c $LEN)
 SSID="${PREFIX}-${RAND}"
 
-uci set wireless.default_radio0.ssid="${SSID}-2.4G"
-uci set wireless.default_radio1.ssid="${SSID}-5G"
+uci set wireless.default_radio0.ssid="${SSID}-5G"
+uci set wireless.default_radio1.ssid="${SSID}-2.4G"
 
 uci commit network
 uci commit wireless
