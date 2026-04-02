@@ -3,8 +3,11 @@ sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/10.1.1.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 sed -i 's/ImmortalWrt/OpenWrt/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
-mv $GITHUB_WORKSPACE/patch/imm18.06/199-mt762x package/base-files/files/etc/uci-defaults/zz-diy
-mv $GITHUB_WORKSPACE/patch/imm18.06/change.sh package/base-files/files/etc/change.sh
+cp package/base-files/files/etc/banner package/emortal/default-settings/files/openwrt_banner
+mv $GITHUB_WORKSPACE/patch/imm-18.06/199-mt762x package/base-files/files/etc/uci-defaults/zz-diy
+mv $GITHUB_WORKSPACE/patch/imm-18.06/auto-change.sh package/base-files/files/etc/change.sh
+sed -i '/passwd/d' package/emortal/default-settings/files/99-default-settings-chinese
+sed -i 's#mirrors.pku.edu.cn/immortalwrt#mirrors.vsean.net/openwrt#g' package/emortal/default-settings/files/99-default-settings-chinese
 
 #安装最新openclash
 rm -rf feeds/luci/applications/luci-app-openclash
