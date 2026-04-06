@@ -16,12 +16,12 @@ echo "DISTRIB_REVISION='V${date_version}'" >> /etc/openwrt_release
 sed -i '/DISTRIB_DESCRIPTION/d' /etc/openwrt_release
 echo "DISTRIB_DESCRIPTION='OpenWrt  '" >> /etc/openwrt_release
 
-chmod +x /etc/auto-change.sh
-cat << 'EOF' > /etc/rc.local
-sleep 3
-bash /etc/auto-change.sh
-exit 0
-EOF
+#chmod +x /etc/auto-change.sh
+#cat << 'EOF' > /etc/rc.local
+#sleep 3
+#bash /etc/auto-change.sh
+#exit 0
+#EOF
 
 uci set wireless.default_radio0.ssid=WiFi-5G
 uci set wireless.default_radio1.ssid=WiFi-2.4G
