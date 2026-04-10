@@ -52,6 +52,7 @@ git clone --depth 1 https://github.com/sirpdboy/luci-app-autotimeset package/luc
 git clone --depth 1 https://github.com/sirpdboy/luci-app-chatgpt-web.git package/luci-app-chatgpt-web
 git clone --depth 1 https://github.com/sirpdboy/luci-app-ddns-go.git package/luci-app-ddns-go
 git clone --depth 1 https://github.com/sirpdboy/luci-app-eqosplus.git package/luci-app-eqosplus
+git clone --depth 1 https://github.com/sirpdboy/luci-app-poweroffdevice.git package/luci-app-poweroffdevice
 git clone --depth 1 https://github.com/sirpdboy/netspeedtest.git package/netspeedtest
 git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/openwrt-oaf
 git clone --depth 1 https://github.com/lcodecorex/WeakNetwork.git package/openwrt-WeakNetwork
@@ -100,7 +101,6 @@ mv package/kz8-small/luci-app-ikoolproxy package/luci-app-ikoolproxy
 mv package/kz8-small/luci-app-partexp package/luci-app-partexp
 mv package/kz8-small/luci-app-wrtbwmon package/luci-app-wrtbwmon
 mv package/kz8-small/wrtbwmon package/wrtbwmon
-mv package/kz8-small/luci-app-poweroff package/luci-app-poweroff
 mv package/kz8-small/luci-app-vlmcsd package/luci-app-vlmcsd
 mv package/kz8-small/vlmcsd package/vlmcsd
 rm -rf package/kz8-small
