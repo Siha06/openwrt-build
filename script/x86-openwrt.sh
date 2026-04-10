@@ -43,7 +43,8 @@ git clone --depth 1 https://github.com/vernesong/OpenClash.git  package/openclas
 git clone --depth 1 https://github.com/Openwrt-Passwall/openwrt-passwall.git package/luci-app-passwall
 git clone --depth 1 https://github.com/Openwrt-Passwall/openwrt-passwall2.git package/luci-app-passwall2
 git clone --depth 1 https://github.com/nikkinikki-org/OpenWrt-nikki.git package/OpenWrt-nikki
-#mv $GITHUB_WORKSPACE/patch/passwall/passwall2_config package/luci-app-passwall2/root/usr/share/passwall2/0_default_config
+git clone --depth 1 https://github.com/fw876/helloworld.git package/OpenWrt-helloworld
+
 
 git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 git clone --depth 1 https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
@@ -69,7 +70,7 @@ mkdir package/mypkg
 git clone --depth 1 -b openwrt-24.10 https://github.com/immortalwrt/luci.git package/mypkg/imm24-luci
 mv package/mypkg/imm24-luci/applications/luci-app-autoreboot package/mypkg/luci-app-autoreboot
 mv package/mypkg/imm24-luci/applications/luci-app-diskman package/mypkg/luci-app-diskman
-mv package/mypkg/imm24-luci/applications/luci-app-homeproxy package/mypkg/luci-app-homeproxy
+#mv package/mypkg/imm24-luci/applications/luci-app-homeproxy package/mypkg/luci-app-homeproxy
 mv package/mypkg/imm24-luci/applications/luci-app-ipsec-vpnserver-manyusers package/mypkg/luci-app-ipsec-vpnserver-manyusers
 mv package/mypkg/imm24-luci/applications/luci-app-msd_lite package/mypkg/luci-app-msd_lite
 mv package/mypkg/imm24-luci/applications/luci-app-ramfree package/mypkg/luci-app-ramfree
@@ -93,6 +94,7 @@ rm -rf package/mypkg/imm24-packages
 
 rm -rf feeds/packages/net/adguardhome
 git clone --depth 1 https://github.com/kenzok8/jell.git package/kz8-small
+mv package/kz8-small/luci-app-homeproxy package/luci-app-homeproxy
 mv package/kz8-small/adguardhome package/adguardhome
 mv package/kz8-small/luci-app-adguardhome package/luci-app-adguardhome
 mv package/kz8-small/easytier package/easytier
