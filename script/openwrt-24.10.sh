@@ -7,7 +7,8 @@ sed -i 's/192.168.1.1/10.1.1.1/g' package/base-files/files/bin/config_generate
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/10.1.1.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 sed -i 's/disabled='"'"'\${defaults ? 0 : 1}'"'"'/disabled=0/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 #mv $GITHUB_WORKSPACE/patch/openwrt-24.10/199-7620-mac.sh package/base-files/files/etc/uci-defaults/199-diy.sh
-mv $GITHUB_WORKSPACE/patch/openwrt-24.10/199-rockchip.sh package/base-files/files/etc/uci-defaults/199-rockchip.sh
+#mv $GITHUB_WORKSPACE/patch/openwrt-24.10/199-rockchip.sh package/base-files/files/etc/uci-defaults/199-diy.sh
+mv $GITHUB_WORKSPACE/patch/openwrt-24.10/199-7621.sh package/base-files/files/etc/uci-defaults/199-diy.sh
 
 #rock3b
 sed -i 's/RK_PB7 GPIO_ACTIVE_LOW/RK_PB321 GPIO_ACTIVE_LOW/g' target/linux/rockchip/patches-6.6/014-v6.11-arm64-dts-rockchip-Add-Radxa-ROCK-3B.patch
@@ -67,6 +68,8 @@ git clone --depth 1 https://github.com/sirpdboy/netspeedtest.git package/netspee
 git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/openwrt-oaf
 #git clone --depth 1 https://github.com/Diciya/luci-app-broadbandacc.git package/broadbandacc
 #git clone --depth 1 https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git package/unblockneteasemusic
+git clone --depth 1 https://github.com/mr-Abdrahimov/luci-podkop-subscribe.git package/luci-podkop-subscribe
+git clone --depth 1 https://github.com/amnezia-vpn/amneziawg-openwrt.git package/amneziawg-openwrt
 
 git clone --depth 1 -b openwrt-24.10 https://github.com/immortalwrt/luci.git package/mypkg/imm24-luci
 mv package/mypkg/imm24-luci/applications/luci-app-autoreboot package/mypkg/luci-app-autoreboot
