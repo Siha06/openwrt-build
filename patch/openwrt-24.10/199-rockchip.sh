@@ -27,9 +27,9 @@ uci delete ttyd.@ttyd[0].interface
 # 设置所有网口可连接 SSH
 uci set dropbear.@dropbear[0].Interface=''
 
-
+uci set luci.main.lang='zh_cn'
 #uci set luci.main.mediaurlbase=/luci-static/infinityfreedom
-#uci commit luci
+uci commit luci
 
 uci commit
 
@@ -39,8 +39,8 @@ sed -i '/passwall/d' /etc/opkg/distfeeds.conf
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 sed -i 's#downloads.openwrt.org#mirrors.pku.edu.cn/openwrt#g' /etc/opkg/distfeeds.conf
 sed -i '/targets/d' /etc/opkg/distfeeds.conf
-sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/openwrt/releases/24.10.5/targets/rockchip/armv8/kmods/6.6.119-1-77d4782035a23e6f19f9c4751451b4e3' /etc/opkg/distfeeds.conf
-sed -i '$a src/gz others https://mirrors.pku.edu.cn/openwrt/releases/24.10.5/targets/rockchip/armv8/packages' /etc/opkg/distfeeds.conf
+sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/openwrt/releases/24.10.6/targets/rockchip/armv8/kmods/6.6.127-1-77d4782035a23e6f19f9c4751451b4e3' /etc/opkg/distfeeds.conf
+sed -i '$a src/gz others https://mirrors.pku.edu.cn/openwrt/releases/24.10.6/targets/rockchip/armv8/packages' /etc/opkg/distfeeds.conf
 sed -i '$a #src/gz kiddin9 https://dl.openwrt.ai/packages-25.12/aarch64_generic/kiddin9' /etc/opkg/customfeeds.conf
 
 uci commit
