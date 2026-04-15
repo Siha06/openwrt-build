@@ -47,13 +47,13 @@ sed -i '/helloworld/d' /etc/opkg/distfeeds.conf
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 sed -i 's#downloads.openwrt.org#mirrors.pku.edu.cn/openwrt#g' /etc/opkg/distfeeds.conf
 sed -i '/targets/d' /etc/opkg/distfeeds.conf
-sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/openwrt/releases/24.10.5/targets/ramips/mt7621/kmods/6.6.119-1-6c0cbfffdf5543d41b1de30e3a9c928d' /etc/opkg/distfeeds.conf
-sed -i '$a src/gz mt7621pkg https://mirrors.pku.edu.cn/openwrt/releases/24.10.5/targets/ramips/mt7621/packages/' /etc/opkg/distfeeds.conf
+sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/openwrt/releases/24.10.6/targets/ramips/mt7621/kmods/6.6.127-1-f31f6f85a36836e510d64a18a9a5f1bf' /etc/opkg/distfeeds.conf
+sed -i '$a src/gz mt7621pkg https://mirrors.pku.edu.cn/openwrt/releases/24.10.6/targets/ramips/mt7621/packages/' /etc/opkg/distfeeds.conf
 
-uci set network.USB=interface
-uci set network.USB.proto='dhcp'
-uci set network.USB.device='usb0'
-uci commit network
+#uci set network.USB=interface
+#uci set network.USB.proto='dhcp'
+#uci set network.USB.device='usb0'
+#uci commit network
 uci commit
 
 /etc/init.d/network restart
