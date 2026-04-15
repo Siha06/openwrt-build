@@ -22,36 +22,23 @@ sed -i '$a src/gz kmods https://downloads.immortalwrt.org/releases/24.10.2/targe
 #uci set wireless.default_radio1.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-2.4G
 uci set wireless.default_radio0.ssid=OpenWrt-2.4G
 uci set wireless.default_radio1.ssid=OpenWrt-5G
-uci set wireless.default_radio0.encryption=psk2+ccmp
-uci set wireless.default_radio1.encryption=psk2+ccmp
-uci set wireless.default_radio0.key=password
-uci set wireless.default_radio1.key=password
+#uci set wireless.default_radio0.encryption=psk2+ccmp
+#uci set wireless.default_radio1.encryption=psk2+ccmp
+#uci set wireless.default_radio0.key=password
+#uci set wireless.default_radio1.key=password
 
-#uci add firewall rule
-#uci set firewall.@rule[-1].src='wan'
-#uci set firewall.@rule[-1].name='allow5422'
-#uci set firewall.@rule[-1].dest_port='5422'
-#uci set firewall.@rule[-1].target='ACCEPT'
-#uci commit firewall
 
-uci set network.usbwan=interface
-uci set network.usbwan.proto='dhcp'
-uci set network.usbwan.device='usb0'
 
-#uci del firewall.cfg02dc81.network
-#uci add_list firewall.cfg02dc81.network='lan'
-#uci add_list firewall.cfg02dc81.network='wifi1'
-#uci del firewall.cfg03dc81.network
-#uci add_list firewall.cfg03dc81.network='wan'
-uci add_list firewall.cfg03dc81.network='usbwan'
 
-#/etc/init.d/firewall restart >/dev/null 2>&1
 
-cp /etc/my-clash /etc/openclash/core/clash_meta
+
+
+
+
 
 uci commit wireless
 uci commit network
-uci commit firewall
+uci commit 
 
 /etc/init.d/network restart >/dev/null 2>&1
 /etc/init.d/firewall restart >/dev/null 2>&1
