@@ -56,7 +56,7 @@ git clone --depth 1 https://github.com/mr-Abdrahimov/luci-podkop-subscribe.git p
 git clone --depth 1 https://github.com/amnezia-vpn/amneziawg-openwrt.git package/amneziawg-openwrt
 
 #rm -rf feeds/packages/net/adguardhome
-git clone --depth 1 https://github.com/kenzok8/small-package.git package/kz8-small
+git clone --depth 1 https://github.com/kenzok8/jell.git package/kz8-small
 mv package/kz8-small/luci-app-adguardhome package/luci-app-adguardhome
 mv package/kz8-small/luci-app-ikoolproxy package/luci-app-ikoolproxy
 mv package/kz8-small/luci-app-macvlan package/luci-app-macvlan
@@ -71,11 +71,11 @@ mv package/kz8-small/luci-app-tailscale package/luci-app-tailscale
 sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
 rm -rf package/kz8-small
 
-git clone --depth 1 -b openwrt-21.02 https://github.com/immortalwrt/luci.git package/mypkg/imm21-luci
-mv package/mypkg/imm21-luci/applications/luci-app-advancedsetting package/mypkg/luci-app-advancedsetting
-mv package/mypkg/imm21-luci/applications/luci-app-filetransfer package/mypkg/luci-app-filetransfer
-mv package/mypkg/imm21-luci/applications/luci-app-webadmin package/mypkg/luci-app-webadmin
-mv package/mypkg/imm21-luci/applications/luci-app-wireguard package/mypkg/luci-app-wireguard
-mv package/mypkg/imm21-luci/libs/luci-lib-fs package/mypkg/luci-lib-fs
-rm -rf package/mypkg/imm21-luci
-sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' $(find ./package/mypkg/ -type f -name "Makefile")
+#git clone --depth 1 -b openwrt-21.02 https://github.com/immortalwrt/luci.git package/mypkg/imm21-luci
+#mv package/mypkg/imm21-luci/applications/luci-app-advancedsetting package/mypkg/luci-app-advancedsetting
+#mv package/mypkg/imm21-luci/applications/luci-app-filetransfer package/mypkg/luci-app-filetransfer
+#mv package/mypkg/imm21-luci/applications/luci-app-webadmin package/mypkg/luci-app-webadmin
+#mv package/mypkg/imm21-luci/applications/luci-app-wireguard package/mypkg/luci-app-wireguard
+#mv package/mypkg/imm21-luci/libs/luci-lib-fs package/mypkg/luci-lib-fs
+#rm -rf package/mypkg/imm21-luci
+#sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' $(find ./package/mypkg/ -type f -name "Makefile")
