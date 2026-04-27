@@ -79,3 +79,8 @@ rm -rf package/kz8-small
 #mv package/mypkg/imm21-luci/libs/luci-lib-fs package/mypkg/luci-lib-fs
 #rm -rf package/mypkg/imm21-luci
 #sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' $(find ./package/mypkg/ -type f -name "Makefile")
+
+#修复TailScale配置文件冲突
+sed -i '/\/files/d'  feeds/packages/net/tailscale/Makefile
+#修复Rust编译失败
+sed -i 's/ci-llvm=true/ci-llvm=false/g' feeds/packages/lang/rust/Makefile
