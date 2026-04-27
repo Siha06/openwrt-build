@@ -104,3 +104,7 @@ mv package/kz8-small/luci-app-wechatpush package/luci-app-wechatpush
 mv package/kz8-small/luci-app-wolplus package/luci-app-wolplus
 rm -rf package/kz8-small
 
+#修复TailScale配置文件冲突
+sed -i '/\/files/d'  feeds/packages/net/tailscale/Makefile
+#修复Rust编译失败
+sed -i 's/ci-llvm=true/ci-llvm=false/g' feeds/packages/lang/rust/Makefile
