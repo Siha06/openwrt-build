@@ -12,7 +12,7 @@ env:
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
-  UPLOAD_FIRMWARE: true
+  UPLOAD_FIRMWARE: false
   FIRMWARE_RELEASE: true
   FIRMWARE_TAG: x86-openwrt-25.12
   TZ: Asia/Shanghai
