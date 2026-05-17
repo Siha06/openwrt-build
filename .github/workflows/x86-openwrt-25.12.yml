@@ -8,7 +8,7 @@ env:
   REPO_URL: https://github.com/openwrt/openwrt.git
   REPO_BRANCH: openwrt-25.12
   CONFIG_FILE: config/x86-openwrt
-  DIY_SCRIPT: script/x86-openwrt.sh
+  DIY_SCRIPT: script/x86-openwrt-25.12.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
