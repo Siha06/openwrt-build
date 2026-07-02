@@ -39,8 +39,8 @@ sed -i '/helloworld/d' /etc/apk/repositories.d/distfeeds.list
 sed -i '/passwall/d' /etc/apk/repositories.d/distfeeds.list
 sed -i 's#downloads.openwrt.org#mirrors.pku.edu.cn/openwrt#g' /etc/apk/repositories.d/distfeeds.list
 sed -i '/targets/d' /etc/apk/repositories.d/distfeeds.list
-sed -i '$a https://mirrors.pku.edu.cn/openwrt/releases/25.12.4/targets/x86/64/kmods/6.12.87-1-d037e17efc2c7cd4972f63d6de88677f/packages.adb' /etc/apk/repositories.d/distfeeds.list
-sed -i '$a https://mirrors.pku.edu.cn/openwrt/releases/25.12.4/targets/x86/64/packages/packages.adb' /etc/apk/repositories.d/distfeeds.list
+sed -i '$a https://mirrors.pku.edu.cn/openwrt/releases/25.12.5/targets/x86/64/kmods/6.12.94-1-a7bc15f451f9652701ba04af9cfb0b95/packages.adb' /etc/apk/repositories.d/distfeeds.list
+sed -i '$a https://mirrors.pku.edu.cn/openwrt/releases/25.12.5/targets/x86/64/packages/packages.adb' /etc/apk/repositories.d/distfeeds.list
 
 
 
