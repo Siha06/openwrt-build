@@ -1,22 +1,28 @@
 #添加TurboAcc
 #curl -sSL https://raw.githubusercontent.com/chenmozhijin/turboacc/luci/add_turboacc.sh -o add_turboacc.sh && bash add_turboacc.sh
-sed -i 's/192.168.1.1/10.3.2.1/g' package/base-files/files/bin/config_generate
-sed -i "s/192\.168\.[0-9]*\.[0-9]*/10.3.2.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
-#sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/10.1.1.1/g' package/base-files/files/bin/config_generate
+sed -i "s/192\.168\.[0-9]*\.[0-9]*/10.1.1.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
+# sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
+# mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 sed -i 's/ImmortalWrt/WiFi/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
-# mv $GITHUB_WORKSPACE/patch/imm-24.10/mac80211.uc package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
-#sed -i 's/ImmortalWrt/WiFi/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
-mv $GITHUB_WORKSPACE/patch/imm-24.10/199-rockchip.sh package/base-files/files/etc/uci-defaults/zz-rockchip.sh
-#mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 
-#mv $GITHUB_WORKSPACE/patch/imm-24.10/rc.local package/base-files/files/etc/rc.local
-#mv $GITHUB_WORKSPACE/patch/imm-24.10/my-crontabs package/base-files/files/etc/my-crontabs
+#mv $GITHUB_WORKSPACE/patch/imm-24.10/199-rockchip.sh package/base-files/files/etc/uci-defaults/zz-rockchip.sh
+mv $GITHUB_WORKSPACE/patch/imm-25.12/199-rockchip.sh package/base-files/files/etc/uci-defaults/zz-rockchip.sh
+
+
 
 if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
-    git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
-    tar -zxf package/openclash-core/master/meta/clash-linux-arm64.tar.gz -C package/base-files/files/etc/
-    mv package/base-files/files/etc/clash package/base-files/files/etc/my-clash
-    rm -rf package/openclash-core
+    echo "✅ 已选择 luci-app-openclash，添加 openclash core"
+    mkdir -p files/etc/openclash/core
+    # Download clash_meta
+    META_URL="https://raw.githubusercontent.com/vernesong/OpenClash/core/master/meta/clash-linux-arm64.tar.gz"
+    wget -qO- $META_URL | tar xOvz > files/etc/openclash/core/clash_meta
+    chmod +x files/etc/openclash/core/clash_meta
+    # 下载 GeoIP 和 GeoSite
+    # wget -q https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat -O files/etc/openclash/GeoIP.dat
+    # wget -q https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat -O files/etc/openclash/GeoSite.dat
+else
+    echo "⚪️ 未选择 luci-app-openclash"
 fi
 
 
@@ -27,7 +33,7 @@ sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/usr/
 sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/etc/openwrt_release
 
 rm -rf feeds/packages/lang/golang
-git clone https://github.com/sbwml/packages_lang_golang -b 25.x feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang feeds/packages/lang/golang
 git clone --depth 1 https://github.com/vernesong/OpenClash.git package/OpenClash
 git clone --depth 1 https://github.com/nikkinikki-org/OpenWrt-nikki.git package/OpenWrt-nikki
 git clone --depth 1 https://github.com/nikkinikki-org/OpenWrt-momo.git package/OpenWrt-momo
@@ -35,12 +41,7 @@ git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/pa
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
 rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-openclash}
 rm -rf feeds/packages/net/{mosdns,v2ray-geodata}
-git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
-
-#git clone --depth 1 https://github.com/yichya/luci-app-xray.git package/luci-app-xray
-#git clone --depth 1 https://github.com/Thaolga/openwrt-nekobox.git package/openwrt-nekobox
-#git clone --depth 1 https://github.com/fcshark-org/openwrt-fchomo.git package/openwrt-fchomo
-#git clone --depth 1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
+git clone https://github.com/sbwml/luci-app-mosdns package/mosdns
 
 # iStore
 git clone --depth 1 -b main https://github.com/linkease/istore.git package/istore
@@ -79,14 +80,6 @@ mv package/kz8-small/luci-app-webrestriction package/luci-app-webrestriction
 mv package/kz8-small/luci-app-wolplus package/luci-app-wolplus
 rm -rf package/kz8-small
 
-#git clone --depth 1 -b openwrt-21.02 https://github.com/immortalwrt/luci.git package/mypkg/imm21-luci
-#mv package/mypkg/imm21-luci/applications/luci-app-advancedsetting package/mypkg/luci-app-advancedsetting
-#mv package/mypkg/imm21-luci/applications/luci-app-filetransfer package/mypkg/luci-app-filetransfer
-#mv package/mypkg/imm21-luci/applications/luci-app-webadmin package/mypkg/luci-app-webadmin
-# mv package/mypkg/imm21-luci/applications/luci-app-wireguard package/mypkg/luci-app-wireguard
-#mv package/mypkg/imm21-luci/libs/luci-lib-fs package/mypkg/luci-lib-fs
-#rm -rf package/mypkg/imm21-luci
-#sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' $(find ./package/mypkg/ -type f -name "Makefile")
 
 #修复TailScale配置文件冲突
 sed -i '/\/files/d'  package/tailscale/Makefile
