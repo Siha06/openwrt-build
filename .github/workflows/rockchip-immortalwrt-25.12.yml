@@ -114,8 +114,8 @@ jobs:
         rm -rf $OPENWRT_PATH/.vermagic
         mv $GITHUB_WORKSPACE/vm/rockchip-imm-25.12 $OPENWRT_PATH/vermagic
         cd $OPENWRT_PATH
-        sed -i '129' include/kernel-defaults.mk
-        sed -i '129\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
+        sed -i '129d' include/kernel-defaults.mk
+        sed -i '129i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
         sed -i '30d' package/kernel/linux/Makefile
         sed -i '30i\  STAMP_BUILT:=$(STAMP_BUILT)_$(shell cat $(LINUX_DIR)/.vermagic)' package/kernel/linux/Makefile
 
