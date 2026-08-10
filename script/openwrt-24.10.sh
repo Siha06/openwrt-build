@@ -11,9 +11,9 @@ sed -i 's/disabled='"'"'\${defaults ? 0 : 1}'"'"'/disabled=0/g' package/network/
 mv $GITHUB_WORKSPACE/patch/openwrt-24.10/199-7621.sh package/base-files/files/etc/uci-defaults/199-diy.sh
 
 #rock3b
-sed -i 's/RK_PB7 GPIO_ACTIVE_LOW/RK_PB321 GPIO_ACTIVE_LOW/g' target/linux/rockchip/patches-6.6/014-v6.11-arm64-dts-rockchip-Add-Radxa-ROCK-3B.patch
-sed -i 's/RK_PB0 GPIO_ACTIVE_LOW/RK_PB7 GPIO_ACTIVE_LOW/g' target/linux/rockchip/patches-6.6/014-v6.11-arm64-dts-rockchip-Add-Radxa-ROCK-3B.patch
-sed -i 's/RK_PB321 GPIO_ACTIVE_LOW/RK_PB0 GPIO_ACTIVE_LOW/g' target/linux/rockchip/patches-6.6/014-v6.11-arm64-dts-rockchip-Add-Radxa-ROCK-3B.patch
+#sed -i 's/RK_PB7 GPIO_ACTIVE_LOW/RK_PB321 GPIO_ACTIVE_LOW/g' target/linux/rockchip/patches-6.6/014-v6.11-arm64-dts-rockchip-Add-Radxa-ROCK-3B.patch
+#sed -i 's/RK_PB0 GPIO_ACTIVE_LOW/RK_PB7 GPIO_ACTIVE_LOW/g' target/linux/rockchip/patches-6.6/014-v6.11-arm64-dts-rockchip-Add-Radxa-ROCK-3B.patch
+#sed -i 's/RK_PB321 GPIO_ACTIVE_LOW/RK_PB0 GPIO_ACTIVE_LOW/g' target/linux/rockchip/patches-6.6/014-v6.11-arm64-dts-rockchip-Add-Radxa-ROCK-3B.patch
 
 # mipsle-softfloat #arm64
 if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
@@ -87,7 +87,7 @@ sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' $(find ./package/mypkg/ 
 sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
 
 rm -rf feeds/packages/net/adguardhome
-git clone --depth 1 https://github.com/kenzok8/jell.git package/kz8-small
+git clone --depth 1 https://github.com/kenzok8/small-package.git package/kz8-small
 mv package/kz8-small/adguardhome package/adguardhome
 mv package/kz8-small/luci-app-adguardhome package/luci-app-adguardhome
 mv package/kz8-small/baidupcs-web package/baidupcs-web
